@@ -155,13 +155,63 @@
         .frame-note h3 .frame-tag { white-space: normal; margin-left: 0; margin-top: 6px; display: inline-block; }
         .wrap { padding: 0 16px 56px; }
       }
+    
+      /* ---------- series nav ---------- */
+      .series-nav {
+        border-bottom: 1px solid var(--line);
+        background: var(--bg);
+        font-size: 13px;
+      }
+      .series-nav .inner {
+        max-width: 1020px;
+        margin: 0 auto;
+        padding: 10px 20px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px 0;
+        align-items: baseline;
+      }
+      .series-nav a {
+        color: var(--ink-2);
+        text-decoration: none;
+        font-weight: 500;
+      }
+      .series-nav a:hover,
+      .series-nav a:focus-visible { color: var(--accent-ink); }
+      .series-nav a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+      .series-nav .home {
+        font-weight: 700;
+        color: var(--accent-ink);
+        margin-right: 14px;
+        letter-spacing: .06em;
+      }
+      .series-nav .home.here { color: var(--ink); }
+      .series-nav .vols {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px 0;
+        align-items: baseline;
+      }
+      .series-nav .vols a,
+      .series-nav .vols .here { padding: 0 8px; }
+      .series-nav .vols .here { font-weight: 700; color: var(--ink); }
+      .series-nav .sep { color: var(--muted); opacity: .55; user-select: none; }
+      footer a { color: var(--accent-ink); text-decoration: none; border-bottom: 1px solid currentColor; }
+      footer a:hover, footer a:focus-visible { color: var(--accent); }
+
     </style>
   </head>
   <body>
+    <nav class="series-nav" aria-label="アトラスシリーズ">
+      <div class="inner">
+        <a class="home" href="../">アトラス大全</a>
+        <div class="vols"><a href="../virtual-reality/">仮想現実</a><span class="sep" aria-hidden="true">/</span><span class="here" aria-current="page">時空間</span><span class="sep" aria-hidden="true">/</span><a href="../management-society/">管理社会</a><span class="sep" aria-hidden="true">/</span><a href="../post-apocalypse/">ポストアポカリプス</a><span class="sep" aria-hidden="true">/</span><a href="../end-of-the-world/">終焉</a><span class="sep" aria-hidden="true">/</span><a href="../ai/">人工知能</a></div>
+      </div>
+    </nav>
     <main class="wrap">
 
       <div class="intro">
-        <p class="kicker">アトラスシリーズ ― 『仮想現実アトラス』に続く時間編</p>
+        <p class="kicker">アトラスシリーズ ― 根源的な問い／時間の操作</p>
         <h1>時空間アトラス<span class="thin">― 時間ものは、移動の派手さではなく「ルールの発明」で格が決まる ―</span></h1>
         <p class="lead">時間旅行の物語は、仮想現実の物語よりずっと古い。機械が発明される何世紀も前から、人は「あちらでは三年、こちらでは三百年」という<strong>時間のずれ</strong>を昔話で語っていた。そしてSFが機械を持ち込んでからも、本当に新しい作品は、速く遠くへ行けた作品ではなく、<strong>時間の扱いに新しいルールをひとつ足した作品</strong>だった。</p>
         <p class="lead">このリストは年表であると同時に、型の分類である。移動する、繰り返す、書き換える、閉じる、ずれる、逆向きに知覚する、操る者と守る者――七つの型に切ると、浦島太郎と『トップを狙え！』が同じ線の上に並び、『リプレイ』と『Outer Wilds』が同じ問いを共有しているのが見えてくる。本編46作＋付録9作、全55作。</p>
@@ -790,7 +840,8 @@
 
       <footer>
         <p>時空間アトラス ― 本編46作＋付録9作、全55作。型の分類は「時間をどう扱ったか」による。</p>
-        <p>アトラスシリーズ：仮想現実アトラス（仮想現実の系譜）／時空間アトラス（時間の系譜）。二つの系譜は『シュタインズ・ゲート』で交差する。</p>
+        <p>アトラスシリーズ全6冊：<a href="../virtual-reality/">仮想現実アトラス</a>／<a href="../spacetime/">時空間アトラス</a>／<a href="../management-society/">管理社会アトラス</a>／<a href="../post-apocalypse/">ポストアポカリプスアトラス</a>／<a href="../end-of-the-world/">終焉アトラス</a>／<a href="../ai/">人工知能アトラス（下書き）</a>。</p>
+        <p>他巻との交差 ― 『シュタインズ・ゲート』は<a href="../virtual-reality/">仮想現実アトラス</a>の付録にもある。『ターミネーター』『ドラえもん』『火の鳥 異形編』は<a href="../ai/">人工知能アトラス</a>と重なり、『ターミネーター』の未来戦の断片は<a href="../post-apocalypse/">ポストアポカリプスアトラス</a>の付録にも置かれている。</p>
       </footer>
 
     </main>

@@ -275,6 +275,7 @@
         color: var(--accent-ink);
         font-weight: 700;
       }
+      .xatlas-inline a { color: inherit; text-decoration: none; border-bottom: 1px solid currentColor; }
       .xatlas-inline {
         display: inline-block;
         font-size: 11px;
@@ -329,14 +330,64 @@
 
 
     
+    
+      /* ---------- series nav ---------- */
+      .series-nav {
+        border-bottom: 1px solid var(--line);
+        background: var(--bg);
+        font-size: 13px;
+      }
+      .series-nav .inner {
+        max-width: 1020px;
+        margin: 0 auto;
+        padding: 10px 20px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px 0;
+        align-items: baseline;
+      }
+      .series-nav a {
+        color: var(--ink-2);
+        text-decoration: none;
+        font-weight: 500;
+      }
+      .series-nav a:hover,
+      .series-nav a:focus-visible { color: var(--accent-ink); }
+      .series-nav a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+      .series-nav .home {
+        font-weight: 700;
+        color: var(--accent-ink);
+        margin-right: 14px;
+        letter-spacing: .06em;
+      }
+      .series-nav .home.here { color: var(--ink); }
+      .series-nav .vols {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px 0;
+        align-items: baseline;
+      }
+      .series-nav .vols a,
+      .series-nav .vols .here { padding: 0 8px; }
+      .series-nav .vols .here { font-weight: 700; color: var(--ink); }
+      .series-nav .sep { color: var(--muted); opacity: .55; user-select: none; }
+      footer a { color: var(--accent-ink); text-decoration: none; border-bottom: 1px solid currentColor; }
+      footer a:hover, footer a:focus-visible { color: var(--accent); }
+
     </style>
   </head>
   <body>
+    <nav class="series-nav" aria-label="アトラスシリーズ">
+      <div class="inner">
+        <a class="home" href="../">アトラス大全</a>
+        <div class="vols"><a href="../virtual-reality/">仮想現実</a><span class="sep" aria-hidden="true">/</span><a href="../spacetime/">時空間</a><span class="sep" aria-hidden="true">/</span><a href="../management-society/">管理社会</a><span class="sep" aria-hidden="true">/</span><a href="../post-apocalypse/">ポストアポカリプス</a><span class="sep" aria-hidden="true">/</span><a href="../end-of-the-world/">終焉</a><span class="sep" aria-hidden="true">/</span><span class="here" aria-current="page">人工知能</span></div>
+      </div>
+    </nav>
     <p class="draft-flag">下書き ― 収録作の選定も本文も、これから詰められる前提の初稿です</p>
     <main class="wrap">
 
       <div class="intro">
-        <p class="kicker">アトラスシリーズ ― 『仮想現実アトラス』に対をなす意識編<span class="draft-mark">下書き</span></p>
+        <p class="kicker">アトラスシリーズ ― 根源的な問い／意識の判定<span class="draft-mark">下書き</span></p>
         <h1>人工知能アトラス<span class="thin">― 作られた知性に心はあるか。問われているのは、意識そのものだ ―</span></h1>
         <p class="lead">『フランケンシュタイン』（1818）は、怪物の話ではない。<strong>作った者が、逃げた話</strong>だ。それからおよそ二百年、作られた知性の物語は同じ場所に戻ってくる。機械に心はあるのか。そしてその問いは、ほとんど最初から裏返される。では、心とは何か。</p>
         <p class="lead">仮想現実アトラスが「何で現実を判定するか」を軸に世界の真偽を追ったように、この一冊の軸は<strong>「何をもって意識があると判定するか」</strong>である。チューリングは、外側から見て人間と区別できなければ、考えると言ってよい、と書いた。サールは、記号を規則どおりに処理できても、理解していることにはならない、と反論した。ネーゲルは、コウモリであることの主観は、外側の記述では届かないと言い、チャーマーズは、機能を説明し尽くしても「なぜ経験があるのか」が残ると指摘した。作品の格は、ロボットがどれだけ賢く見えるかでは決まらない。判定の装置をどれだけ鋭く発明したかで決まる。</p>
@@ -424,7 +475,7 @@
       </section>
 
       <section class="block" aria-labelledby="h-list">
-        <div class="block-head"><span class="no">其二</span><h2 id="h-list">年表 ― 全29作</h2></div>
+        <div class="block-head"><span class="no">其二</span><h2 id="h-list">年表 ― 本編29作</h2></div>
         <div class="filters" role="group" aria-label="絞り込み">
           <button type="button" data-filter="all" aria-pressed="true">すべて</button>
           <button type="button" data-filter="philosophy" aria-pressed="false">哲学・思想</button>
@@ -1028,43 +1079,47 @@
 
       <section class="block" aria-labelledby="h-cross">
         <div class="block-head"><span class="no">其五</span><h2 id="h-cross">他巻との交差</h2></div>
-        <p class="app-lead">アトラスシリーズの他の巻に、同じ作品か、すぐ隣の作品がある場合だけを挙げる。ページへのリンクは置かず、巻の名で示す。確認できていない収録へは、線を引かない。</p>
+        <p class="app-lead">アトラスシリーズの他の巻に、同じ作品か、すぐ隣の作品がある場合だけを挙げる。巻の名は各アトラスへリンクする。確認できていない収録へは、線を引かない。</p>
         <ul class="cross-list">
           <li>
-            <h3>メトロポリス<span class="xatlas-inline">→ 管理社会アトラス</span></h3>
+            <h3>メトロポリス<span class="xatlas-inline">→ <a href="../management-society/">管理社会アトラス</a></span></h3>
             <p>管理社会アトラスの本編では、垂直の都市と階級の文法の原点として置く。こちらでは、機械人間マリアが人の顔を借りて人を動かす、という発明を本籍にする。同じ一本を、管理の空間と、作られた顔の両側から読める。</p>
           </li>
           <li>
-            <h3>ドラえもん<span class="xatlas-inline">→ 時空間アトラス</span></h3>
+            <h3>ドラえもん<span class="xatlas-inline">→ <a href="../spacetime/">時空間アトラス</a></span></h3>
             <p>時空間アトラスの付録「国民的基盤」では、机の引き出しのタイムマシンと、「過去を変えるのはいつも些細な理由から」という感覚の入口として置く。こちらは、作られた者が家族の一員として日常に入り込む面を本籍にする。</p>
           </li>
           <li>
-            <h3>ターミネーター<span class="xatlas-inline">→ 時空間アトラス</span></h3>
-            <p>時空間アトラスの本編では、未来からの刺客という移動の型であり、護衛が父になるブートストラップに限りなく近い一本として置く。こちらでは、防衛網が「新しい種類の知性」になったという、作られた側の目覚めを本籍にする。</p>
+            <h3>ターミネーター<span class="xatlas-inline">→ <a href="../spacetime/">時空間アトラス</a>／<a href="../post-apocalypse/">ポストアポカリプスアトラス</a></span></h3>
+            <p>時空間アトラスの本編では、未来からの刺客という移動の型であり、護衛が父になるブートストラップに限りなく近い一本として置く。こちらでは、防衛網が「新しい種類の知性」になったという、作られた側の目覚めを本籍にする。ポストアポカリプスアトラスの付録は、同じ一本の「未来戦の断片」を、終わったあとの側から置いている。</p>
           </li>
           <li>
-            <h3>攻殻機動隊<span class="xatlas-inline">→ 仮想現実アトラス</span></h3>
+            <h3>攻殻機動隊<span class="xatlas-inline">→ <a href="../virtual-reality/">仮想現実アトラス</a></span></h3>
             <p>仮想現実アトラスの本編では、世界の真偽から自我の境界へ移った到達点として置く。こちらでは、ネットの海から生じた人形使いが、自らを生命として名乗る話として読む。両側から参照される交差点である。</p>
           </li>
           <li>
-            <h3>ウェストワールド<span class="xatlas-inline">→ 仮想現実アトラス</span></h3>
+            <h3>ウェストワールド<span class="xatlas-inline">→ <a href="../virtual-reality/">仮想現実アトラス</a></span></h3>
             <p>仮想現実アトラスの付録では、「世界がコンテンツになる」側――パークを観る／遊ぶ話として置く。こちらはホストの側、作られた者が記憶の傷から自分を知る話を本籍にする。</p>
           </li>
           <li>
-            <h3>メガゾーン23 のイヴ<span class="xatlas-inline">→ 仮想現実アトラス</span></h3>
+            <h3>メガゾーン23 のイヴ<span class="xatlas-inline">→ <a href="../virtual-reality/">仮想現実アトラス</a></span></h3>
             <p>仮想現実アトラスの本編に本籍がある。再現された街と、作られた歌姫イヴ。イヴの「本物の影響力」だけを、こちらの付録が借りる。</p>
           </li>
           <li>
-            <h3>ディアスポラ と 『順列都市』<span class="xatlas-inline">→ 仮想現実アトラス</span></h3>
+            <h3>ディアスポラ と 『順列都市』<span class="xatlas-inline">→ <a href="../virtual-reality/">仮想現実アトラス</a></span></h3>
             <p>同じグレッグ・イーガンの先行作『順列都市』（1994）は、仮想現実アトラスの本編にある。意識のコピーと、作り手の手を離れる世界。『ディアスポラ』は、その延長で、ソフトウェアの市民が生まれてくる過程を書く。</p>
           </li>
           <li>
-            <h3>『火の鳥』復活編と異形編<span class="xatlas-inline">→ 時空間アトラス</span></h3>
+            <h3>『火の鳥』復活編と異形編<span class="xatlas-inline">→ <a href="../spacetime/">時空間アトラス</a></span></h3>
             <p>時空間アトラスの本編にあるのは『火の鳥 異形編』である。八百比丘尼が時空に囚われる、ずれの物語。こちらが置く復活編のロビタは、心の輪廻をロボットにまで伸ばした別の一編だ。同じ連作の、別の問いである。</p>
           </li>
           <li>
-            <h3>判定と、心の数値化<span class="xatlas-inline">→ 管理社会アトラス</span></h3>
+            <h3>判定と、心の数値化<span class="xatlas-inline">→ <a href="../management-society/">管理社会アトラス</a></span></h3>
             <p>管理社会アトラスの本編『PSYCHO-PASS』は、人の心を「サイコパス」と犯罪係数として測り、シビュラシステムが可能性の段階で裁く。人工知能アトラスの収録作ではない。ただし、「何をもって心があると判定するか」と、「心を数値で管理するか」は、判定の問題で隣り合っている。</p>
+          </li>
+          <li>
+            <h3>ニーア オートマタ<span class="xatlas-inline">→ <a href="../post-apocalypse/">ポストアポカリプスアトラス</a></span></h3>
+            <p>ポストアポカリプスアトラスの本編では、終わったあとに機械が残る側の一本として置く。こちらの付録では、ヨルハの機体が「心があるように振る舞う」ことの判定と、その終わり方を読む。</p>
           </li>
         </ul>
       </section>
@@ -1231,7 +1286,7 @@
         <p>人工知能アトラス（下書き）― 本編29作＋付録11作、全40作。軸は「何をもって意識があると判定するか」。仮想現実アトラスの「何で現実を判定するか」と対をなす。</p>
         <p>収録作の刊行・公開年は、原則として初出に基づく。ラ・メトリー『人間機械論』は1747年末にライデンで刊行され、扉の年記は1748年。チャペック『R.U.R.』は1920年刊、1921年初演。「ロボット」の語は兄ヨセフ・チャペックの提案で、チェコ語 robota（賦役・強制労働）に由来する。『鉄腕アトム』は1952年4月の本連載開始年（前身『アトム大使』は1951年4月〜1952年3月）。『2001年宇宙の旅』は映画公開（1968年4月）を採り、クラークの小説は同年刊。『エクス・マキナ』は2014年12月16日にBFIサウスバンクで上映され、一般公開は2015年。『M3GAN／ミーガン』はアメリカ公開2023年1月6日（2022年12月7日ロサンゼルス・プレミア）、日本公開2023年6月9日。ゴーレムは特定の初出年を持たない伝説として置き、後世にプラハのマハラル（ユダ・レーヴ）の作として語られた形を中心に扱った。石黒浩の項は2006年のジェミノイドHI-1を起点とし、物語作品とは別に「現実の実験」として年表に差し込んだ。『ドラえもん』は小学館の学習雑誌1970年1月号（発売は1969年12月）から連載。当時の名義は藤子不二雄、執筆は藤本弘。『火の鳥』復活編は『COM』1970年10月号〜1971年9月号。ロビタは未来編（1967年12月号〜1968年9月号）に先行登場し、誕生は復活編で語られる。ELIZAはワイゼンバウムの論文（Communications of the ACM, 1966年1月）。「イライザ効果」の語は後年の呼称で、1966年論文は理解の幻想に触れ、挿話の詳細は1976年の『コンピュータ・パワー――人工知能と人間の理性』にある。LaMDAをめぐる主張は2022年6月に報じられ、Googleは知覚を支持する証拠はないとし、ルモインは同年7月に解雇された。ChatGPTはOpenAIが2022年11月30日に研究プレビューとして公開した。『プラスティック・メモリーズ』は2015年4〜6月放送。『Vivy -Fluorite Eye's Song-』は2021年4月3日〜6月26日放送（13話＋特別総集編）。</p>
         <p>この系譜は下書きである。次に置くべき一本が見つかったら、また継ぎ足していく。</p>
-        <p>アトラスシリーズ：仮想現実アトラス（現実の判定）／人工知能アトラス（意識の判定）。二つの系譜は『攻殻機動隊』と、『メガゾーン23』のイヴで交差する。</p>
+        <p>アトラスシリーズ全6冊：<a href="../virtual-reality/">仮想現実アトラス</a>／<a href="../spacetime/">時空間アトラス</a>／<a href="../management-society/">管理社会アトラス</a>／<a href="../post-apocalypse/">ポストアポカリプスアトラス</a>／<a href="../end-of-the-world/">終焉アトラス</a>／<a href="../ai/">人工知能アトラス（下書き）</a>。</p>
       </footer>
 
     </main>

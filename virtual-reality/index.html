@@ -203,13 +203,63 @@
         .questions li { grid-template-columns: 40px 1fr; }
         .wrap { padding: 0 16px 56px; }
       }
+    
+      /* ---------- series nav ---------- */
+      .series-nav {
+        border-bottom: 1px solid var(--line);
+        background: var(--bg);
+        font-size: 13px;
+      }
+      .series-nav .inner {
+        max-width: 1020px;
+        margin: 0 auto;
+        padding: 10px 20px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px 0;
+        align-items: baseline;
+      }
+      .series-nav a {
+        color: var(--ink-2);
+        text-decoration: none;
+        font-weight: 500;
+      }
+      .series-nav a:hover,
+      .series-nav a:focus-visible { color: var(--accent-ink); }
+      .series-nav a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+      .series-nav .home {
+        font-weight: 700;
+        color: var(--accent-ink);
+        margin-right: 14px;
+        letter-spacing: .06em;
+      }
+      .series-nav .home.here { color: var(--ink); }
+      .series-nav .vols {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px 0;
+        align-items: baseline;
+      }
+      .series-nav .vols a,
+      .series-nav .vols .here { padding: 0 8px; }
+      .series-nav .vols .here { font-weight: 700; color: var(--ink); }
+      .series-nav .sep { color: var(--muted); opacity: .55; user-select: none; }
+      footer a { color: var(--accent-ink); text-decoration: none; border-bottom: 1px solid currentColor; }
+      footer a:hover, footer a:focus-visible { color: var(--accent); }
+
     </style>
   </head>
   <body>
+    <nav class="series-nav" aria-label="アトラスシリーズ">
+      <div class="inner">
+        <a class="home" href="../">アトラス大全</a>
+        <div class="vols"><span class="here" aria-current="page">仮想現実</span><span class="sep" aria-hidden="true">/</span><a href="../spacetime/">時空間</a><span class="sep" aria-hidden="true">/</span><a href="../management-society/">管理社会</a><span class="sep" aria-hidden="true">/</span><a href="../post-apocalypse/">ポストアポカリプス</a><span class="sep" aria-hidden="true">/</span><a href="../end-of-the-world/">終焉</a><span class="sep" aria-hidden="true">/</span><a href="../ai/">人工知能</a></div>
+      </div>
+    </nav>
     <main class="wrap">
 
       <div class="intro">
-        <p class="kicker">系譜図 ― 増補・深化版</p>
+        <p class="kicker">アトラスシリーズ ― 根源的な問い／世界の真偽（増補・深化版）</p>
         <h1>仮想現実アトラス<span class="thin">― マトリックス以前、現実に戻れる保証はなかった ―</span></h1>
         <p class="lead">『マトリックス』（1999）は発明ではない。<strong>収束</strong>だ。コンピュータの中に街ごと世界を作る『模造世界』、死者の意識が半生状態で漂う『ユービック』、自分が設計した世界に囚われる『仮想空間計画』――その骨格は1999年よりずっと前に、ほぼ全部そろっていた。</p>
         <p class="lead">しかもマトリックス以前の作品ほど結末が冷たい。階層がどこまで続くのか、戻った先が本物なのか、誰にも保証できないまま物語が閉じる。このリストは、その「保証のなさ」を軸に、哲学の原点から現代の末裔までを一本に並べ直した深化版である。</p>
@@ -245,7 +295,7 @@
       </section>
 
       <section class="block" aria-labelledby="h-list">
-        <div class="block-head"><span class="no">其二</span><h2 id="h-list">年表 ― 全23作</h2></div>
+        <div class="block-head"><span class="no">其二</span><h2 id="h-list">年表 ― 本編23作</h2></div>
         <div class="filters" role="group" aria-label="絞り込み">
           <button type="button" data-filter="all" aria-pressed="true">すべて</button>
           <button type="button" data-filter="philosophy" aria-pressed="false">哲学・思想</button>
@@ -318,7 +368,7 @@
             <div>
               <h3>虚影の街<span class="orig">The Tunnel Under the World</span></h3>
               <p class="byline">フレデリック・ポール ― 短編（のちの改題『幻影の街』）</p>
-              <ul class="tags"><li class="phase">第1層：模造世界前史</li><li>繰り返す一日</li><li>広告実験</li><li class="buy">今回購入</li></ul>
+              <ul class="tags"><li class="phase">第1層：模造世界前史</li><li>繰り返す一日</li><li>広告実験</li></ul>
               <p class="desc">男は同じ6月15日を繰り返し生きている。やがて分かる真相は、町ごとミニチュア化され、広告実験の被験体として卓上の世界で回されていたというもの。邦訳は河出文庫『20世紀SF2 1950年代 初めの終わり』や、ハヤカワ文庫のポール短編集『ボロゴーヴはミムジイ』に収録。</p>
               <dl class="points">
                 <div><dt>何が新しいか</dt><dd>世界が「市場調査と広告のため」に作られているという発想が、1955年の時点で既にある。</dd></div>
@@ -372,7 +422,7 @@
             <div>
               <h3>泰平ヨンの未来学会議<span class="orig">The Futurological Congress</span></h3>
               <p class="byline">スタニスワフ・レム ― 長編小説</p>
-              <ul class="tags"><li class="phase">第2層：幻覚の階層</li><li>薬物の層</li><li>保証のなさ</li><li class="buy">今回購入</li></ul>
+              <ul class="tags"><li class="phase">第2層：幻覚の階層</li><li>薬物の層</li><li>保証のなさ</li></ul>
               <p class="desc">『ソラリス』のレムが、ディック寄りの一面を全開にした長編。薬物によって階層化された幻覚世界を何層も潜っていくが、覚醒したと思った層が次の幻覚である保証はどこにもない。1984年に集英社から邦訳が出て、2015年にハヤカワ文庫SFで改訳版が出た。</p>
               <dl class="points">
                 <div><dt>何が新しいか</dt><dd>シミュレーションの基盤をコンピュータから化学へ移した。「層を抜けた」という感覚そのものが偽造されうる、という最深部の不信。</dd></div>
@@ -782,6 +832,8 @@
       <footer>
         <p>収録作の刊行・公開年は原著の初出に基づく。『虚影の街』はのち『幻影の街』と改題。『泰平ヨンの未来学会議』はハヤカワ文庫SFの改訳版（2015）が入手しやすい。付録の年は映画公開・放送・サービス開始・ゲーム発売年を基準とし、SAOはアニメ放送年（原作小説は2009年開始）、レディ・プレイヤー1は映画公開年（原作小説は2011年）で置いた。本編の『メガゾーン23』はOVA第1作の発売年（1985）で置いた。</p>
         <p>この系譜に終わりはない。次に潜るべき層が見つかったら、また一作ずつ継ぎ足していく。</p>
+        <p>アトラスシリーズ全6冊：<a href="../virtual-reality/">仮想現実アトラス</a>／<a href="../spacetime/">時空間アトラス</a>／<a href="../management-society/">管理社会アトラス</a>／<a href="../post-apocalypse/">ポストアポカリプスアトラス</a>／<a href="../end-of-the-world/">終焉アトラス</a>／<a href="../ai/">人工知能アトラス（下書き）</a>。</p>
+        <p>他巻との交差 ― 本編の『攻殻機動隊』『メガゾーン23』、付録の『ウェストワールド』『順列都市』は<a href="../ai/">人工知能アトラス</a>と重なる。付録の『シュタインズ・ゲート』は<a href="../spacetime/">時空間アトラス</a>の本編にもある。</p>
       </footer>
 
     </main>
