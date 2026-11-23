@@ -1,0 +1,483 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="color-scheme" content="light dark" />
+    <link rel="icon" href="data:," />
+    <title>終焉アトラス ― 世界が終わる直前、人は何をするか</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho+B1:wght@500;700;800&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet" />
+    <style>
+      button, [role="button"], select, summary, input:not([type="checkbox"], [type="radio"]) { min-height: 2.25rem; }
+      * { box-sizing: border-box; }
+      :root {
+        --bg: #fbfaf6; --surface: #ffffff; --ink: #1a1714; --ink-2: #4a4440; --muted: #7a736c;
+        --line: #d8cfc4; --line-soft: #eae3d8; --accent: #9c2b0e; --accent-ink: #86250c;
+        --teal: #6b4e12; --gold: #8a6d1f; --gold-bg: #f5ecd2; --chip-bg: #f0ebe2; --deep-bg: #f3efe6;
+      }
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --bg: #121110; --surface: #1a1816; --ink: #ede6da; --ink-2: #c9c2b6; --muted: #9a948a;
+          --line: #38322c; --line-soft: #26221e; --accent: #e67a52; --accent-ink: #efa080;
+          --teal: #d9b95c; --gold: #d9b95c; --gold-bg: #38300f; --chip-bg: #24211e; --deep-bg: #1c1916;
+        }
+      }
+      html { scroll-behavior: smooth; }
+      @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+      body { margin: 0; background: var(--bg); color: var(--ink); font-family: "Zen Kaku Gothic New", "Hiragino Kaku Gothic ProN", sans-serif; font-size: 16px; line-height: 1.85; -webkit-font-smoothing: antialiased; }
+      .wrap { max-width: 1020px; margin: 0 auto; padding: 0 20px 72px; }
+      .intro { padding: 44px 0 8px; }
+      .intro .kicker { color: var(--accent-ink); font-weight: 700; font-size: 13px; letter-spacing: .14em; margin: 0 0 14px; }
+      .intro h1 { font-family: "Shippori Mincho B1", serif; font-weight: 800; font-size: clamp(32px, 6vw, 48px); line-height: 1.3; margin: 0 0 18px; letter-spacing: .02em; }
+      .intro h1 .thin { display: block; font-size: .5em; font-weight: 500; color: var(--ink-2); margin-top: 8px; letter-spacing: .06em; }
+      .intro .lead { font-size: 17px; max-width: 44em; margin: 0 0 10px; }
+      .intro .lead strong { color: var(--accent-ink); font-weight: 700; }
+      section.block { margin-top: 52px; }
+      .block-head { display: flex; align-items: baseline; gap: 14px; border-bottom: 2px solid var(--ink); padding-bottom: 8px; margin-bottom: 20px; }
+      .block-head h2 { font-family: "Shippori Mincho B1", serif; font-size: clamp(21px, 4vw, 27px); font-weight: 800; margin: 0; }
+      .block-head .no { color: var(--accent-ink); font-family: "Shippori Mincho B1", serif; font-weight: 700; }
+      .questions { list-style: none; margin: 0; padding: 0; }
+      .questions li { display: grid; grid-template-columns: 52px 1fr; gap: 6px 14px; padding: 14px 0; border-bottom: 1px solid var(--line-soft); }
+      .questions .qno { font-family: "Shippori Mincho B1", serif; font-size: 26px; font-weight: 800; color: var(--accent-ink); line-height: 1.2; grid-row: span 2; }
+      .questions h3 { margin: 0; font-size: 17px; font-weight: 700; }
+      .questions p { margin: 2px 0 0; color: var(--ink-2); font-size: 15px; grid-column: 2; }
+      .flow { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 8px; margin: 18px 0 0; padding: 16px 18px; background: var(--deep-bg); border: 1px solid var(--line-soft); border-radius: 6px; font-size: 14px; }
+      .flow b { font-family: "Shippori Mincho B1", serif; }
+      .flow .arr { color: var(--accent-ink); font-weight: 700; }
+      .matrix { display: grid; grid-template-columns: 1fr 1fr; gap: 0; border: 1px solid var(--line); border-radius: 6px; overflow: hidden; margin-top: 18px; }
+      .matrix div { padding: 16px 18px; background: var(--surface); }
+      .matrix div:nth-child(odd) { border-right: 1px solid var(--line-soft); }
+      .matrix div:nth-child(1), .matrix div:nth-child(2) { border-bottom: 1px solid var(--line-soft); }
+      .matrix h4 { margin: 0 0 4px; font-size: 14px; letter-spacing: .06em; color: var(--accent-ink); }
+      .matrix p { margin: 0; font-size: 14.5px; color: var(--ink-2); }
+      .matrix p b { color: var(--ink); }
+      .types { display: grid; gap: 0; }
+      .type-row { display: grid; grid-template-columns: 92px 1fr; gap: 4px 18px; padding: 18px 0; border-bottom: 1px solid var(--line-soft); }
+      .type-row:last-child { border-bottom: none; }
+      .type-mark { font-family: "Shippori Mincho B1", serif; font-size: 30px; font-weight: 800; color: var(--accent-ink); line-height: 1.2; }
+      .type-mark small { display: block; font-family: "Zen Kaku Gothic New", sans-serif; font-size: 11px; font-weight: 700; letter-spacing: .08em; color: var(--muted); margin-top: 4px; }
+      .type-row h3 { margin: 0; font-size: 18px; font-weight: 700; }
+      .type-row p { margin: 4px 0 0; color: var(--ink-2); font-size: 15px; max-width: 44em; }
+      .type-row .works { margin: 6px 0 0; font-size: 13.5px; color: var(--muted); }
+      .type-row .works b { color: var(--ink-2); font-weight: 700; }
+      .filters { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 6px; }
+      .filters button { font: inherit; font-size: 14px; font-weight: 500; padding: 6px 16px; min-height: 40px; border: 1px solid var(--line); border-radius: 999px; background: var(--surface); color: var(--ink-2); cursor: pointer; }
+      .filters button[aria-pressed="true"] { background: var(--ink); color: var(--bg); border-color: var(--ink); font-weight: 700; }
+      .count { font-size: 13px; color: var(--muted); margin: 8px 0 0; }
+      .timeline { position: relative; margin-top: 10px; }
+      .timeline::before { content: ""; position: absolute; left: 118px; top: 6px; bottom: 6px; width: 1px; background: var(--line); }
+      .entry { position: relative; display: grid; grid-template-columns: 96px 1fr; gap: 0 44px; padding: 30px 0; border-bottom: 1px solid var(--line-soft); }
+      .entry::before { content: ""; position: absolute; left: 113px; top: 44px; width: 11px; height: 11px; border-radius: 50%; background: var(--bg); border: 2px solid var(--accent); }
+      .entry.core::before { background: var(--accent); }
+      .year { font-family: "Shippori Mincho B1", serif; font-weight: 800; font-size: 21px; line-height: 1.35; text-align: right; padding-top: 4px; }
+      .year small { display: block; font-size: 12px; font-weight: 500; color: var(--muted); font-family: "Zen Kaku Gothic New", sans-serif; margin-top: 4px; letter-spacing: .05em; }
+      .entry h3 { font-family: "Shippori Mincho B1", serif; font-size: clamp(20px, 4.4vw, 25px); font-weight: 800; margin: 0; line-height: 1.45; }
+      .entry h3 .orig { font-size: .58em; font-weight: 500; color: var(--muted); margin-left: 10px; letter-spacing: .04em; white-space: nowrap; }
+      .byline { font-size: 14px; color: var(--ink-2); margin: 3px 0 0; }
+      .tags { display: flex; flex-wrap: wrap; gap: 6px; margin: 10px 0 0; padding: 0; list-style: none; }
+      .tags li { font-size: 12px; font-weight: 500; padding: 2px 10px; border-radius: 999px; background: var(--chip-bg); color: var(--ink-2); line-height: 1.9; }
+      .tags li.phase { background: transparent; border: 1px solid var(--line); color: var(--teal); font-weight: 700; }
+      .tags li.buy { background: var(--gold-bg); color: var(--gold); font-weight: 700; }
+      .entry .desc { margin: 12px 0 0; max-width: 42em; }
+      .points { margin: 14px 0 0; display: grid; gap: 8px; }
+      .points div { display: grid; grid-template-columns: 118px 1fr; gap: 4px 12px; font-size: 14.5px; }
+      .points dt { font-weight: 700; color: var(--teal); white-space: nowrap; }
+      .points dd { margin: 0; color: var(--ink-2); }
+      details.deep { margin-top: 12px; border: 1px solid var(--line-soft); border-radius: 6px; background: var(--surface); }
+      details.deep summary { cursor: pointer; padding: 8px 16px; font-weight: 700; font-size: 14px; color: var(--accent-ink); list-style: none; display: flex; align-items: center; min-height: 44px; }
+      details.deep summary::-webkit-details-marker { display: none; }
+      details.deep summary::after { content: "＋"; margin-left: auto; font-weight: 400; }
+      details.deep[open] summary::after { content: "−"; }
+      details.deep .body { padding: 2px 16px 14px; font-size: 14.5px; color: var(--ink-2); }
+      details.deep .body p { margin: 6px 0; }
+      .hidden { display: none !important; }
+      .essay { padding: 22px 0; border-bottom: 1px solid var(--line-soft); }
+      .essay:last-child { border-bottom: none; }
+      .essay h3 { font-family: "Shippori Mincho B1", serif; font-size: 20px; font-weight: 800; margin: 0 0 4px; }
+      .essay h3 .vs { color: var(--accent-ink); }
+      .essay .sub { font-size: 13px; color: var(--muted); margin: 0 0 10px; }
+      .essay p { margin: 8px 0; max-width: 44em; color: var(--ink-2); }
+      .essay p strong, .essay p b { color: var(--ink); }
+      .routes { display: grid; gap: 0; }
+      .route { padding: 18px 0; border-bottom: 1px solid var(--line-soft); }
+      .route:last-child { border-bottom: none; }
+      .route h3 { margin: 0 0 4px; font-size: 17px; font-weight: 700; }
+      .route h3 .time { font-size: 13px; color: var(--muted); font-weight: 500; margin-left: 8px; }
+      .route p { margin: 4px 0 8px; color: var(--ink-2); font-size: 15px; max-width: 44em; }
+      .route .steps { font-family: "Shippori Mincho B1", serif; font-weight: 700; font-size: 15.5px; }
+      .route .steps .arr { color: var(--accent-ink); margin: 0 4px; }
+      .app-lead { max-width: 44em; color: var(--ink-2); margin: 0 0 8px; }
+      .app-lead strong { color: var(--ink); }
+      .app-note { background: var(--deep-bg); border: 1px solid var(--line-soft); border-radius: 6px; padding: 16px 18px; font-size: 14.5px; color: var(--ink-2); margin: 18px 0 6px; }
+      .app-note b { color: var(--ink); }
+      .strand { margin-top: 34px; }
+      .strand-head h3 { font-family: "Shippori Mincho B1", serif; font-size: 20px; font-weight: 800; margin: 0; line-height: 1.5; }
+      .strand-head h3 .strand-no { color: var(--accent-ink); margin-right: 8px; }
+      .strand-head p { margin: 4px 0 0; font-size: 14.5px; color: var(--ink-2); max-width: 44em; }
+      .app-list { list-style: none; margin: 10px 0 0; padding: 0; }
+      .app-item { display: grid; grid-template-columns: 76px 1fr; gap: 2px 18px; padding: 16px 0; border-bottom: 1px solid var(--line-soft); }
+      .app-item:last-child { border-bottom: none; }
+      .app-year { font-family: "Shippori Mincho B1", serif; font-weight: 800; font-size: 17px; text-align: right; padding-top: 2px; white-space: nowrap; }
+      .app-year small { display: block; font-family: "Zen Kaku Gothic New", sans-serif; font-size: 11px; font-weight: 500; color: var(--muted); margin-top: 2px; }
+      .app-item h4 { font-family: "Shippori Mincho B1", serif; font-size: 18px; font-weight: 800; margin: 0; line-height: 1.5; }
+      .app-item h4 .orig { font-size: .62em; font-weight: 500; color: var(--muted); margin-left: 8px; white-space: nowrap; }
+      .app-item .byline { font-size: 13px; color: var(--muted); margin: 1px 0 0; }
+      .app-item .text { grid-column: 2; margin: 6px 0 0; font-size: 14.5px; color: var(--ink-2); max-width: 44em; }
+      .app-item .text strong { color: var(--ink); }
+      .app-item .link-line { grid-column: 2; margin: 6px 0 0; font-size: 13.5px; color: var(--teal); font-weight: 700; }
+      .toc-link { display: inline-block; margin-top: 10px; font-weight: 700; color: var(--accent-ink); text-decoration: none; border-bottom: 1px solid currentColor; padding-bottom: 1px; }
+      footer { margin-top: 56px; padding-top: 18px; border-top: 1px solid var(--line); font-size: 13px; color: var(--muted); }
+      footer p { margin: 4px 0; }
+      @media (max-width: 640px) {
+        .timeline::before { left: 5px; }
+        .entry { grid-template-columns: 1fr; gap: 2px; padding: 26px 0 26px 26px; }
+        .entry::before { left: 0; top: 36px; }
+        .year { text-align: left; font-size: 18px; padding-top: 0; }
+        .year small { display: inline; margin-left: 8px; }
+        .points div { grid-template-columns: 1fr; gap: 0; }
+        .points dt { margin-top: 4px; }
+        .questions li { grid-template-columns: 40px 1fr; }
+        .type-row { grid-template-columns: 1fr; gap: 0; }
+        .type-mark small { display: inline; margin-left: 10px; }
+        .app-item { grid-template-columns: 1fr; }
+        .app-year { text-align: left; }
+        .app-year small { display: inline; margin-left: 8px; }
+        .app-item .text, .app-item .link-line { grid-column: 1; }
+        .matrix { grid-template-columns: 1fr; }
+        .matrix div:nth-child(odd) { border-right: none; }
+        .matrix div { border-bottom: 1px solid var(--line-soft); }
+        .matrix div:last-child { border-bottom: none; }
+        .wrap { padding: 0 16px 56px; }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="wrap">
+
+      <div class="intro">
+        <p class="kicker">アトラスシリーズ ― 終焉編／ディストピア・ポストアポカリプスと対になる「直前」の系譜</p>
+        <h1>終焉アトラス<span class="thin">― 世界が終わる直前、人は残り時間をどう生きるか ―</span></h1>
+        <p class="lead">ポストアポカリプスが「終わった後」を描くのに対して、このアトラスが扱うのは<strong>終わる直前</strong>だ。社会はまだある。電車は走り、ニュースは流れ、学校も会社もある。その上で、誰もが知っている――あと何日、何ヶ月で、来るものが来る、と。</p>
+        <p class="lead">だからこのジャンルの本体は、隕石でもウイルスでも気候でもない。<strong>カウントダウンの中で、何を諦め、何を守り、何を最後まで日常として続けるか</strong>という、人間の側の設計だ。迎撃する者、逃げる者、受け入れる者、見ないふりをする者。同じ彗星が来ても、物語は四つに割れる。本編15作＋付録4作、全19作。「何が来るか」×「どう迎えるか」の二層で切る。</p>
+        <p><a class="toc-link" href="#appendix">付録「終わりが日常に溶けている作品」へ ↓</a>　エヴァンゲリオンの常態化した終末、AKIRAの崩壊前夜、回避されるハルマゲドンのコメディ、そしてポストアポカリプス側へ渡る橋としての『ドラゴンヘッド』を置いた。</p>
+        <div class="flow" aria-label="このアトラスの位置づけ">
+          <b>ディストピア</b> ― 壊れたまま機能する社会<span class="arr">／</span><b>終焉（本書）</b> ― まだある社会＋決まった終わり<span class="arr">／</span><b>ポストアポカリプス</b> ― 終わった後の世界
+        </div>
+      </div>
+
+      <section class="block" id="how">
+        <div class="block-head"><span class="no">01</span><h2>読み方 ― 四つの問い</h2></div>
+        <ol class="questions">
+          <li><span class="qno">Q1</span><h3>何が来るか ― 終わりの正体と確実さ</h3><p>彗星か、気候か、太陽か、ウイルスか、感覚の喪失か。そしてそれは「確定」か「可能性」か。確定した終わりは受容の物語を生み、不確かな予感は『テイク・シェルター』のような疑いの物語を生む。正体の科学的な具体性が、そのまま物語の現実感を決める。</p></li>
+          <li><span class="qno">Q2</span><h3>残り時間はどれくらいか ― カウントダウンの長さ</h3><p>18日（『アルマゲドン』）か、6ヶ月（『ドント・ルック・アップ』）か、1年（『日本沈没』）か、数ヶ月かけて忍び寄る放射能の雲（『渚にて』）か。残り時間の長さが、パニックになるか、計画になるか、日常が続くかを決める。短すぎれば逃避行、長すぎれば政治とメディアの話になる。</p></li>
+          <li><span class="qno">Q3</span><h3>誰が知っているか ― 情報の非対称</h3><p>政府だけが知っているのか、科学者だけが信じているのか、全人類がテレビで見ているのか。知る範囲の広さで物語は変わる。秘匿は陰謀と英雄を生み、公開は否認と風刺を生み、一人だけが知っている設定は孤独と狂気の境界を生む。</p></li>
+          <li><span class="qno">Q4</span><h3>どう迎えるか ― 迎撃／逃避／受容／否認</h3><p>このアトラスの主軸。同じ脅威でも、迎撃する（『アルマゲドン』）、逃げる（『グリーンランド』）、受け入れて静かに待つ（『渚にて』『メランコリア』）、見ない（『ドント・ルック・アップ』）で、ジャンルそのものが変わる。結末の格は、だいたいこの選択の描き方で決まる。</p></li>
+        </ol>
+        <div class="matrix" aria-label="何が来るかとどう迎えるかの二層構造">
+          <div><h4>層1 ― 何が来るか（本編の軸）</h4><p><b>A 隕石・彗星</b>／<b>B 地球が壊れる</b>（沈没・気候・地殻）／<b>C 太陽と惑星</b>／<b>D 感染</b>／<b>E 感覚と日常</b>。脅威の種類が、科学・国家・宇宙開発など、動員されるものの規模を決める。</p></div>
+          <div><h4>層2 ― どう迎えるか（各作品の立場）</h4><p><b>迎撃</b> ― 止めに行く／<b>逃避・存続</b> ― 方舟とシェルター／<b>受容</b> ― 最後の日常を生きる／<b>否認・風刺</b> ― 終わりを認めない社会を描く。同じ軸の中でも立場は正反対になりうる。</p></div>
+          <div><h4>例1 ― 同じ彗星、違う映画</h4><p>1998年、彗星ものの2作が同年公開された。<b>『ディープインパクト』は受容と犠牲</b>、<b>『アルマゲドン』は迎撃の英雄譚</b>。素材が同じでも「どう迎えるか」で全く別の映画になることの証明。</p></div>
+          <div><h4>例2 ― 同じ衝突、違う視点</h4><p>惑星衝突を前に、<b>『メランコリア』</b>では鬱の主人公だけが落ち着いている。終わりの受け止め方は、脅威の大きさではなく、迎える者の内面で決まる。</p></div>
+        </div>
+      </section>
+
+      <section class="block" id="types">
+        <div class="block-head"><span class="no">02</span><h2>型の系譜 ― 何が来るかで切る五つの軸</h2></div>
+        <div class="types">
+          <div class="type-row"><div class="type-mark">序<small>源流</small></div><div><h3>序 源流 ― 静かに待つという発明</h3><p>爆発も迎撃もない。放射能の雲が南下してくるのを、残された人々が日常の作法を保ったまま待つ。終焉ものの文法のほとんどは、ここで一度完成している。</p><p class="works"><b>収録：</b>『渚にて』</p></div></div>
+          <div class="type-row"><div class="type-mark">A<small>隕石・彗星</small></div><div><h3>A 隕石・彗星が来る ― 最も古典的なカウントダウン</h3><p>軌道は計算でき、期限は正確で、責任の所在は誰にもない。天災の純粋形である分、「どう迎えるか」の違いが最も露骨に出る軸。受容、英雄譚、逃避行、風刺が一つの軸に揃う。</p><p class="works"><b>収録：</b>『ディープインパクト』／『アルマゲドン』／『グリーンランド』／『ドント・ルック・アップ』</p></div></div>
+          <div class="type-row"><div class="type-mark">B<small>地球が壊れる</small></div><div><h3>B 地球が壊れる ― 足元と気候の反乱</h3><p>敵は空からではなく、足元と大気から来る。国土が沈む、気候が暴走する、地殻が割れる。逃げ場が「地球の別の場所」しかないため、方舟と国家の存続計画が物語の中心になる軸。</p><p class="works"><b>収録：</b>『日本沈没』／『デイ・アフター・トゥモロー』／『2012』／『ノウイング』</p></div></div>
+          <div class="type-row"><div class="type-mark">C<small>太陽と惑星</small></div><div><h3>C 太陽と惑星 ― 天体規模の死と衝突</h3><p>太陽が死ぬ、別の惑星がぶつかる。人類の時間感覚を超えたスケールの終わりを、ミッションの遂行と、一人の人間の内面という両極から描く軸。</p><p class="works"><b>収録：</b>『サンシャイン2057』／『メランコリア』</p></div></div>
+          <div class="type-row"><div class="type-mark">D<small>感染の前夜</small></div><div><h3>D 感染の前夜 ― 見えない終わりの広がり方</h3><p>終わりは爆発ではなく、接触と移動で広がる。カウントダウンは日数ではなく感染曲線で進む。最も現実に近く、最も地味で、最も怖い軸。2020年以降、この軸の作品は「予言」として読み直されることになった。</p><p class="works"><b>収録：</b>『復活の日』／『コンテイジョン』</p></div></div>
+          <div class="type-row"><div class="type-mark">E<small>感覚と日常</small></div><div><h3>E 感覚と日常の終わり ― 世界ではなく「世界の感じ方」が終わる</h3><p>都市は壊れない。だが嗅覚が、味覚が、聴覚がひとつずつ失われていく。あるいは、終わりは本当に来るのか自分にしか分からない。スペクタクルを排した先にある、最も内面的な終焉の軸。</p><p class="works"><b>収録：</b>『パーフェクト・センス』／『テイク・シェルター』</p></div></div>
+        </div>
+      </section>
+
+      <section class="block" id="timeline">
+        <div class="block-head"><span class="no">03</span><h2>年表 ― 本編15作</h2></div>
+        <div class="filters" role="group" aria-label="軸で絞り込み">
+          <button type="button" data-filter="all" aria-pressed="true">すべて</button>
+          <button type="button" data-filter="pro" aria-pressed="false">序 源流</button>
+          <button type="button" data-filter="a" aria-pressed="false">A 隕石・彗星</button>
+          <button type="button" data-filter="b" aria-pressed="false">B 地球が壊れる</button>
+          <button type="button" data-filter="c" aria-pressed="false">C 太陽と惑星</button>
+          <button type="button" data-filter="d" aria-pressed="false">D 感染の前夜</button>
+          <button type="button" data-filter="e" aria-pressed="false">E 感覚と日常</button>
+        </div>
+        <p class="count" id="count"></p>
+        <div class="timeline" id="tl">
+
+<article class="entry core" data-type="pro">
+  <div class="year">1957<small>小説／映画1959</small></div>
+  <div><h3>渚にて<span class="orig">On the Beach</span></h3><p class="byline">ネビル・シュート（小説1957）／映画 監督 スタンリー・クレイマー（1959）</p>
+  <ul class="tags"><li class="phase">序 源流</li><li>放射能の雲</li><li class="buy">静かな終焉の古典</li></ul>
+  <p class="desc">北半球は核戦争で滅びた。放射能の雲は風に乗って、ゆっくりと南下している。まだ無事なオーストラリア・メルボルンの人々に残されたのは数ヶ月。アメリカ海軍の潜水艦スコーピオンの乗員、農場の娘モイラ、人々はパーティを開き、車を走らせ、恋をし、政府が配る服薬用の薬を手元に置きながら、最後の日を「普通に」過ごそうとする。爆発は一度も映らない。終わりは、天気のように近づいてくる。</p>
+  <dl class="points"><div><dt>何が新しいか</dt><dd>終焉をスペクタクルではなく「待つ時間」として描いたこと。迎撃も逃避も成立しないと最初から分かっている世界で、物語の緊張は「どう死ぬか」ではなく「残りの日々をどう作法よく、どう人間らしく過ごすか」に置かれる。この静けさが、以後のすべての「受容型」終焉ものの物差しになった。</dd></div>
+  <div><dt>後の作品へ</dt><dd>『メランコリア』の静かな受容、『パーフェクト・センス』の日常の継続は、この作品の直系。逆に『アルマゲドン』以降の迎撃型は、「待つしかない」という本作の前提への反動として読むと分かりやすい。終焉アトラス全体の起点。</dd></div></dl>
+  <details class="deep"><summary>深掘り ― なぜ今も効くのか</summary><div class="body"><p>本作の残酷さは、誰も悪くないことにある。雲は誰のせいでもなく近づき、登場人物は最後まで礼儀正しい。グランプリレースに興じる男、来年用のワインを買い込む男、植えた庭の成長を見られないと知りながら種を蒔く人々。「意味がないと分かっている行為を、最後まで丁寧に続ける」姿が、終焉ものの最も古く、最も強い感情の設計である。ラストの無人の街に翻る救世軍の旗――「まだ時間はある、兄弟」という文句の空虚さと切実さが、このジャンルの原点の風景だ。</p></div></details></div>
+</article>
+
+<article class="entry core" data-type="b">
+  <div class="year">1973<small>小説</small></div>
+  <div><h3>日本沈没</h3><p class="byline">小松左京（映画1973／リメイク2006ほか）</p>
+  <ul class="tags"><li class="phase">B 地球が壊れる</li><li>国土の沈没</li><li class="buy">日本の終焉ものの原点</li></ul>
+  <p class="desc">日本列島の地下で異常な地殻変動が始まる。地球物理学者・田所雄介の結論は「日本は1年以内に沈む」。政府は極秘にD計画を進め、国民の国外脱出と、国家の存続の形を模索する。問いは最後、「国土を失った日本人は、日本人であり続けられるのか」に行き着く。災害小説であると同時に、国家とアイデンティティの思考実験。</p>
+  <dl class="points"><div><dt>何が新しいか</dt><dd>終わる対象を「人類」ではなく「一つの国」に絞ったこと。カウントダウンが、そのまま政治決断と外交と国民感情の話になる。科学者の警告が官僚機構の中でどう処理されるかという描写は、後の『ドント・ルック・アップ』の否認の風刺と、50年越しに対をなす。</dd></div>
+  <div><dt>後の作品へ</dt><dd>日本の災害・終焉もののすべての前提。『復活の日』と同じ小松左京が、B軸とD軸の両方の源流にいる。2020年のアニメ『日本沈没2020』は、国家の話だった原作を一家族の逃避行に縮小し、時代による「どう迎えるか」の変化そのものを見せた。</dd></div></dl>
+  <details class="deep"><summary>深掘り ― 1973年という年</summary><div class="body"><p>刊行はオイルショックの年。高度成長の頂点で「国が沈む」という物語がベストセラーになったこと自体が、時代の無意識を示している。本作の終焉は天災の顔をしているが、実質は「繁栄の前提（国土・資源・安定）が消えたら何が残るか」という問いであり、その問いの立て方が後の日本SFの財産になった。</p></div></details></div>
+</article>
+
+<article class="entry core" data-type="d">
+  <div class="year">1980<small>映画</small></div>
+  <div><h3>復活の日</h3><p class="byline">監督 深作欣二（原作 小松左京）</p>
+  <ul class="tags"><li class="phase">D 感染の前夜</li><li>ウイルス MM-88</li><li>南極の863人</li></ul>
+  <p class="desc">盗まれた生物兵器ウイルスMM-88が飛行機事故で拡散し、人類はほぼ死滅する。残ったのは、ウイルスが活動できない南極の観測隊員863人だけだった。だが終わりは二重になっている。自動報復システムを止めなければ、地震を誤認した核ミサイルが南極をも消す。感染の終焉の上に、冷戦の終焉装置が重なる二層構造の大作。</p>
+  <dl class="points"><div><dt>何が新しいか</dt><dd>日本映画として、終焉を「世界の終わり方の手順」として本格的に描いたこと。感染の広がり方、各国の崩れ方、南極での新しい政治（誰が人類を再建するのか）の議論まで、カウントダウンの先にある「存続の設計」を描いた点が早い。</dd></div>
+  <div><dt>後の作品へ</dt><dd>小松左京は『日本沈没』（B軸）と本作で、日本の終焉ものの両輪を作った。南極を方舟にする発想は『グリーンランド』の基地、『2012』の方舟計画へと繋がる「選ばれた存続」の系譜の先行例でもある。</dd></div></dl>
+  <details class="deep"><summary>深掘り</summary><div class="body"><p>タイトルの「復活」は、滅びの先の再建を指す。だが映画が最も力を入れるのは滅びの過程の国際性で、イタリア、ソ連、アメリカ、日本を跨ぐ群像劇として終焉を描いた。当時の日本映画最大級のスケールであり、「終焉は一国の話ではない」ことを最初から示していた。</p></div></details></div>
+</article>
+
+<article class="entry core" data-type="a">
+  <div class="year">1998<small>映画</small></div>
+  <div><h3>ディープインパクト<span class="orig">Deep Impact</span></h3><p class="byline">監督 ミミ・レダー</p>
+  <ul class="tags"><li class="phase">A 隕石・彗星</li><li>受容と犠牲</li><li>方舟計画</li></ul>
+  <p class="desc">彗星ウルフ＝ビーダーマンが地球へ向かう。発見した少年、真相を追う記者ジェニー・ラーナー、大統領ベック。政府は宇宙船メシアによる迎撃と、ミズーリの洞窟の方舟（選ばれた100万人）を並行して進める。迎撃は部分的にしか成功せず、小さい方の破片は落ちる。人々が家族と最後の時間をどう過ごすか、乗組員がどう犠牲になるかを、群像劇で丁寧に描く。</p>
+  <dl class="points"><div><dt>何が新しいか</dt><dd>大作災害映画でありながら、重心を破壊描写ではなく「告知を受けた人々の振る舞い」に置いたこと。大統領の演説、親子の和解、記者の選択、特攻する乗組員と地球の家族の交信。受容のドラマとして『渚にて』の系譜を、ハリウッド大作の規模で更新した。</dd></div>
+  <div><dt>後の作品へ</dt><dd>同年の『アルマゲドン』と対で語られ続ける。「同じ彗星／小惑星で、受容型と迎撃型に割れる」という構図は、このアトラスの二層構造そのもの。方舟の抽選と選別というモチーフは『2012』『グリーンランド』へ直通する。</dd></div></dl>
+  <details class="deep"><summary>深掘り ― 1998年の二本</summary><div class="body"><p>公開は『アルマゲドン』の約2ヶ月前。興行的には迎撃型が勝ったが、批評的な評価と「最後に残る場面」の多さでは本作が勝ると言われることが多い。メシアの乗組員が家族に別れを告げる交信の場面は、技術の話ではなく、距離と時間差の中で人はどう別れるかという、『ほしのこえ』や『インターステラー』にも通じる通信の切なさの先行例である。</p></div></details></div>
+</article>
+
+<article class="entry core" data-type="a">
+  <div class="year">1998<small>映画</small></div>
+  <div><h3>アルマゲドン<span class="orig">Armageddon</span></h3><p class="byline">監督 マイケル・ベイ</p>
+  <ul class="tags"><li class="phase">A 隕石・彗星</li><li>迎撃の英雄譚</li><li>残り18日</li></ul>
+  <p class="desc">テキサス州の大きさの小惑星が、18日後に地球へ衝突する。NASAの作戦は、小惑星に穴を掘って核爆弾を埋めること。そのために呼ばれたのは、宇宙飛行士ではなく石油採掘のプロ、ハリー・スタンパーとその仲間たち。訓練、打ち上げ、掘削、故障、そして自己犠牲。エアロスミスの主題歌とともに、90年代ハリウッドの「泣ける迎撃譚」の完成形になった。</p>
+  <dl class="points"><div><dt>何が新しいか</dt><dd>終焉への回答を「専門家エリート」ではなく「現場の職人」に託したこと。科学的な正確さよりも、父と娘、仲間、約束という感情の設計を優先し、迎撃型を国民的エンタメに押し上げた。終焉ものが「待つ話」から「止めに行く話」へ大衆的に反転した転換点。</dd></div>
+  <div><dt>後の作品へ</dt><dd>以後の迎撃型・ミッション型（『サンシャイン2057』の遂行の熱も含む）の文法を作った。同時に、科学的には突っ込みどころの多さでも有名で、「正確さの『コンテイジョン』／感情の『アルマゲドン』」という対比軸の片側を担い続ける。</dd></div></dl>
+  <details class="deep"><summary>深掘り</summary><div class="body"><p>ハリーの犠牲は、娘の恋人であるA・Jを生かすためのものでもある。世界を救う行為と、父親としての最後の仕事が一つのボタンに重なる。この「世界規模の救済を、家族の物語に落とし込む」縮小の技術こそ、マイケル・ベイ作品の本質であり、終焉ものの大衆化の鍵だった。</p></div></details></div>
+</article>
+
+<article class="entry" data-type="b">
+  <div class="year">2004<small>映画</small></div>
+  <div><h3>デイ・アフター・トゥモロー<span class="orig">The Day After Tomorrow</span></h3><p class="byline">監督 ローランド・エメリッヒ</p>
+  <ul class="tags"><li class="phase">B 地球が壊れる</li><li>気候の暴走</li><li>氷河期の急襲</li></ul>
+  <p class="desc">北大西洋の海流が止まり、巨大なスーパーストームが北半球を数日で凍らせる。気候学者ジャック・ホールは警告を無視され続け、ニューヨーク公共図書館に籠城する息子を救いに、凍った大地を南から北へ歩く。気候変動という「本来はゆっくりした終わり」を、カウントダウンの速度まで加速して見せた作品。</p>
+  <dl class="points"><div><dt>何が新しいか</dt><dd>気候を終焉の主役に据え、大衆映画の中心に置いたこと。科学者の警告→政治の無視→破局という流れは『日本沈没』『ドント・ルック・アップ』と同型だが、本作はそれを家族の救出行に接続し、環境問題を「我が子のいる都市が凍る」絵で届けた。</dd></div>
+  <div><dt>後の作品へ</dt><dd>エメリッヒは次作『2012』でB軸のスペクタクルを極限まで拡大する。本作の「図書館で本を燃やして暖を取る」場面――知識の保管庫が燃料になる逆説――は、文明の終わり方の象徴として残った。</dd></div></dl>
+  <details class="deep"><summary>深掘り</summary><div class="body"><p>アメリカ人が難民としてメキシコへ南下し、国境が逆転する描写は、当時としては意図的な皮肉だった。気候の終焉は、被害の分布を反転させる。誰が「逃げる側」で誰が「受け入れる側」かは、永遠に固定ではないという示唆が、B軸の政治性の核にある。</p></div></details></div>
+</article>
+
+<article class="entry" data-type="c">
+  <div class="year">2007<small>映画</small></div>
+  <div><h3>サンシャイン2057<span class="orig">Sunshine</span></h3><p class="byline">監督 ダニー・ボイル</p>
+  <ul class="tags"><li class="phase">C 太陽と惑星</li><li>死にゆく太陽</li><li>ミッション</li></ul>
+  <p class="desc">太陽は死につつある。地球は凍りゆく。人類最後の希望は、恒星爆弾を太陽に届けて再点火する宇宙船イカロスII号と、8人の乗組員。前任のイカロスI号は消息を絶った。太陽に近づくほど、光は祝福ではなく恐怖と崇高の対象になっていく。ミッション映画の骨格に、太陽への宗教的な畏怖が侵食してくる異色作。</p>
+  <dl class="points"><div><dt>何が新しいか</dt><dd>終わりの原因を「来るもの」ではなく「消えゆくもの」に置いたこと。敵は衝突ではなく減衰であり、迎撃は「太陽を直しに行く」という前向きの絶望になる。太陽光を浴びることを渇望する船長の描写など、光そのものを麻薬のように描いた点も新しい。</dd></div>
+  <div><dt>後の作品へ</dt><dd>『アルマゲドン』の迎撃ミッションの系譜を、静かで哲学的な側へ引き戻した作品。『インターステラー』の「人類の存続を宇宙に託す」設計とも響き合う。</dd></div></dl>
+  <details class="deep"><summary>深掘り</summary><div class="body"><p>後半、前任船の生存者ピンバッカーの登場で映画はホラーへ傾く。「神が人類の死を望んでいる」という彼の確信は、科学的ミッションの中に宗教を持ち込む。終焉ものにおいて、終わりを「望む者」が現れるのは必然で、その最初の本格的な形のひとつがここにある。</p></div></details></div>
+</article>
+
+<article class="entry" data-type="b">
+  <div class="year">2009<small>映画</small></div>
+  <div><h3>2012<span class="orig">2012</span></h3><p class="byline">監督 ローランド・エメリッヒ</p>
+  <ul class="tags"><li class="phase">B 地球が壊れる</li><li>地殻変動</li><li>方舟と選別</li></ul>
+  <p class="desc">太陽ニュートリノの影響で地球のコアが加熱され、地殻が崩壊する。各国政府はヒマラヤに巨大方舟を極秘建造し、10億ユーロのチケットと選別で「残す人類」を決めていた。売れない作家ジャクソン・カーティスは、家族を連れて方舟を目指す。都市が割れ、海が陸を飲み、大陸が沈む――B軸のスペクタクルが到達した最大値。</p>
+  <dl class="points"><div><dt>何が新しいか</dt><dd>新しさは発明よりも「徹底」にある。破壊の物量、方舟計画の国家規模、選別の露骨な金額提示。『ディープインパクト』の方舟の抽選を、露骨な資本の論理にまで推し進め、「誰が残るに値するのか」という終焉ものの倫理の問いを、エンタメの真ん中で可視化した。</dd></div>
+  <div><dt>後の作品へ</dt><dd>破壊スペクタクルの頂点として、以後の災害映画は「これ以上大きくできない」前提で作られることになった。対極の『グリーンランド』（2020）の地味な家族目線は、本作への反動としても読める。</dd></div></dl>
+  <details class="deep"><summary>深掘り</summary><div class="body"><p>方舟に美術品（モナリザの複製とすり替えられた本物）が積まれる場面が象徴的だ。人類が残そうとするのは命だけではなく「文明の証拠」である。何を積むかの選別は、そのまま「文明とは何か」の選別になる。</p></div></details></div>
+</article>
+
+<article class="entry core" data-type="b">
+  <div class="year">2009<small>映画</small></div>
+  <div><h3>ノウイング<span class="orig">Knowing</span></h3><p class="byline">監督 アレックス・プロヤス</p>
+  <ul class="tags"><li class="phase">B 地球が壊れる</li><li>太陽フレア</li><li>予言の数字</li></ul>
+  <p class="desc">50年前のタイムカプセルから出てきた数字の羅列は、すべての大災害の日付と死者数を正確に言い当てていた。最後に残る数字が指すのは、太陽フレアによる地球の終わり。物理学者の主人公は「偶然か、決定か」を問いながら、回避不能の結末へ進んでいく。終焉ものの中で最も救いがなく、最も宗教的な一本。</p>
+  <dl class="points"><div><dt>何が新しいか</dt><dd>「予言」をオカルトではなく数字のパターンとして提示し、科学者の主人公に決定論と向き合わせたこと。そして大作映画でありながら、回避も迎撃も成功しない結末を選んだこと。残されるのは選ばれた子供たちだけで、大人は世界とともに終わる。</dd></div>
+  <div><dt>後の作品へ</dt><dd>『ドント・ルック・アップ』が「科学が正しいのに社会が動かない」話なら、本作は「科学が正しく、どうにもならない」話。『テイク・シェルター』の予感の正しさとも通じる、「知ってしまった者」の孤独の系譜にある。</dd></div></dl>
+  <details class="deep"><summary>深掘り</summary><div class="body"><p>「囁く人々」の正体と、子供たちだけが新しい世界へ連れて行かれる結末は、ノアの方舟の露骨な再話である。B軸の方舟モチーフが、国家計画（『2012』）から神話的選別へ戻っていく地点として位置づけられる。賛否が割れるのは、この露骨さゆえである。</p></div></details></div>
+</article>
+
+<article class="entry core" data-type="d">
+  <div class="year">2011<small>映画</small></div>
+  <div><h3>コンテイジョン<span class="orig">Contagion</span></h3><p class="byline">監督 スティーヴン・ソダーバーグ</p>
+  <ul class="tags"><li class="phase">D 感染の前夜</li><li>最もリアルな終焉</li><li class="buy">R0と媒介物</li></ul>
+  <p class="desc">香港出張から帰った女性が急死する。新型ウイルスMEV-1は接触と飛沫で広がり、潜伏期間は短く、致死率は高い。CDCの疫学者、WHOの調査員、陰謀論を拡散するブロガー、家族を失う夫。英雄も悪役もほぼいない。あるのは再生産数（R0）、媒介物（フォマイト）、ワクチン開発の時間、そしてパニックとデマの広がり方の、冷静すぎるシミュレーションだけだ。</p>
+  <dl class="points"><div><dt>何が新しいか</dt><dd>終焉を「手順の正確さ」で描いたこと。ドアノブに触れる手のクローズアップの反復が、どんな怪物よりも怖い。ワクチンの配布を誕生日の抽選にする描写、デマがウイルスより速く広がる描写は、2020年の現実によって「予言」として再発見された。</dd></div>
+  <div><dt>後の作品へ</dt><dd>D軸の基準作。以後の感染ものは、本作の現実感と比較される。『復活の日』のスペクタクル型感染との対比で、日本とハリウッド、1980年と2011年の「終わりの描き方」の変化が見える。</dd></div></dl>
+  <details class="deep"><summary>深掘り ― 最後のカット</summary><div class="body"><p>映画は「1日目」に戻り、ウイルスの起源――ブルドーザーが切り開いた森、追われたコウモリ、豚、バナナ、そしてカジノのテーブル――を静かに連鎖で見せる。終わりの原因は陰謀でも天罰でもなく、開発と接触の偶然の積み重なりだった。この冷たさが、本作を風刺でも英雄譚でもない「記録」にしている。</p></div></details></div>
+</article>
+
+<article class="entry core" data-type="c">
+  <div class="year">2011<small>映画</small></div>
+  <div><h3>メランコリア<span class="orig">Melancholia</span></h3><p class="byline">監督 ラース・フォン・トリアー</p>
+  <ul class="tags"><li class="phase">C 太陽と惑星</li><li>惑星衝突</li><li class="buy">鬱の視点</li></ul>
+  <p class="desc">放浪惑星メランコリアが、地球に衝突する。前半は、豪華な結婚式の夜に崩れていく花嫁ジュスティーヌの鬱。後半は、姉クレアの邸宅で、衝突を待つ数日。パニックに陥るのは「普通だった」人々で、最初から世界の終わりに親しんでいたジュスティーヌだけが、最後に落ち着いて子供と「魔法の小屋」を作り、終わりを迎える。</p>
+  <dl class="points"><div><dt>何が新しいか</dt><dd>惑星衝突という最大級のスペクタクルを、結末を冒頭で見せた上で、内面の映画に変換したこと。「鬱の人間は、世界が本当に終わるときにだけ正しく機能する」という逆説が、この作品の核であり、C軸を受容の極北に置く理由である。</dd></div>
+  <div><dt>後の作品へ</dt><dd>『渚にて』の静かな受容の、21世紀の到達点。『ドント・ルック・アップ』が同じ「惑星級の終わり」を社会の否認として描いたのと対照的に、本作は社会をほぼ捨て、一人の知覚だけに絞った。同じ素材の両極が2010年代に揃った。</dd></div></dl>
+  <details class="deep"><summary>深掘り</summary><div class="body"><p>フォン・トリアー自身の鬱体験が出発点とされる。ジュスティーヌの「地球は悪いの。誰も惜しまない」という台詞は挑発だが、映画の本心はそこではない。終わりを前にして、儀式（結婚式、避難計画、科学的予測）が次々に剥がれ落ち、残るのは「一緒に座って待つ」という最小の作法だけになる。『渚にて』の作法の系譜が、ここで最も削ぎ落とされた形になる。</p></div></details></div>
+</article>
+
+<article class="entry core" data-type="e">
+  <div class="year">2011<small>映画</small></div>
+  <div><h3>パーフェクト・センス<span class="orig">Perfect Sense</span></h3><p class="byline">監督 デヴィッド・マッケンジー</p>
+  <ul class="tags"><li class="phase">E 感覚と日常</li><li>感覚の喪失</li><li>適応する日常</li></ul>
+  <p class="desc">世界中で、人類の感覚がひとつずつ失われていく。嗅覚、味覚、聴覚、そして視覚。喪失の直前には必ず強い感情の爆発（悲しみ、飢え、怒り、喜び）が伴う。シェフのマイケルと疫学者のスーザンは、その中で恋に落ちる。レストランは味が消えた世界で「食感と音」で料理を再設計し、人々は失うたびに適応し、日常を作り直していく。</p>
+  <dl class="points"><div><dt>何が新しいか</dt><dd>終わる対象を世界ではなく「世界の感じ方」に置いたこと。都市も文明も残るのに、人生の質感だけが剥がれていく。そして本作の発見は、人間は喪失のたびに必ず適応し、喜びの形を再発明するという点にある。終焉ものの中で最も「適応」に焦点を当てた作品。</dd></div>
+  <div><dt>後の作品へ</dt><dd>感染の専門家が主人公の一人である点でD軸と隣接しながら、描くのはウイルスの広がりではなく感覚の編集としての人生。『メランコリア』と同年の「静かな終焉」の双子として、E軸の代表作になる。</dd></div></dl>
+  <details class="deep"><summary>深掘り</summary><div class="body"><p>各感覚の喪失前に感情の爆発があるという設定は、「人は失う直前に、その感覚の意味を最大限に感じる」という残酷で美しい設計だ。最後に視覚が消える直前の「喜び」の爆発と抱擁で映画は終わる。何も解決していないのに、奇妙に肯定で終わる。この肯定の形は『渚にて』の種蒔きと確かに地続きである。</p></div></details></div>
+</article>
+
+<article class="entry core" data-type="e">
+  <div class="year">2011<small>映画</small></div>
+  <div><h3>テイク・シェルター<span class="orig">Take Shelter</span></h3><p class="byline">監督 ジェフ・ニコルズ</p>
+  <ul class="tags"><li class="phase">E 感覚と日常</li><li>来るかもしれない嵐</li><li>予感か病か</li></ul>
+  <p class="desc">オハイオの田舎町。建設作業員カーティスは、油のような雨と、巨大な竜巻の悪夢を見始める。母は統合失調症だった。彼は借金をして裏庭に暴風シェルターを掘り始めるが、それが家族と仕事と信用を壊していく。予言者なのか、病が始まったのか。映画は最後の瞬間まで、その判定を観客に委ねる。</p>
+  <dl class="points"><div><dt>何が新しいか</dt><dd>カウントダウンの存在そのものを曖昧にしたこと。他のすべての終焉ものは「終わりは本当に来る」を前提にするが、本作は「来るかどうか分からない終わりに、人生を賭けること」の物語である。Q1（確実さ）をゼロに振ったとき、終焉ものは家族と精神のドラマになることの証明。</dd></div>
+  <div><dt>後の作品へ</dt><dd>『ノウイング』の「正しかった予言」と対をなす、「正しいかもしれない予感」。気候不安の時代の無意識を最も早く捉えた作品として、2010年代以降の不安映画の先駆に位置づけられる。</dd></div></dl>
+  <details class="deep"><summary>深掘り ― ラストの解釈</summary><div class="body"><p>家族旅行先の海岸で、妻が空を見上げるラストカットは、今も解釈が割れる。重要なのは判定そのものより、妻がついに「カーティスの見ている空を、一緒に見た」という点だ。信じてもらえない予感の孤独が解ける瞬間として置かれており、終焉ものの「誰が知っているか」（Q3）を、家族という最小単位で描いた到達点である。</p></div></details></div>
+</article>
+
+<article class="entry core" data-type="a">
+  <div class="year">2020<small>映画</small></div>
+  <div><h3>グリーンランド ―地球最後の2日間―<span class="orig">Greenland</span></h3><p class="byline">監督 リック・ローマン・ウォー</p>
+  <ul class="tags"><li class="phase">A 隕石・彗星</li><li>家族の逃避行</li><li>選別される側</li></ul>
+  <p class="desc">彗星クラークの破片が地球に落下し始める。構造エンジニアのジョン・ギャリティは、政府から「選別された家族」としてグリーンランドのチューレ空軍基地への避難を知らされる。だが息子の糖尿病と薬、空港での混乱、略奪、家族の離散が次々に襲う。大都市が燃える映像は最小限で、カメラは終始、一家族の目線の高さにある。</p>
+  <dl class="points"><div><dt>何が新しいか</dt><dd>『2012』型のスペクタクルの後に、「選別の論理を、選ばれる側の家族の当事者として」描き直したこと。なぜ自分たちが選ばれたのか（職業技能）、なぜ隣人は選ばれないのか。その居心地の悪さを抱えたまま逃げる設計が、2020年代の終焉ものの倫理感覚を示す。</dd></div>
+  <div><dt>後の作品へ</dt><dd>A軸の現在の到達点。『ディープインパクト』の方舟のテーマを、国家の群像劇ではなく一家族のロードムービーに縮小した形であり、『日本沈没2020』の家族化とも同時代的に呼応する。</dd></div></dl>
+  <details class="deep"><summary>深掘り</summary><div class="body"><p>インスリンをめぐるエピソードが本作の縮図だ。文明の存続は、巨大な方舟よりも「薬を切らさない」「子供を離さない」という最小単位の維持で決まる。終焉が大きくなればなるほど、物語は小さいものに帰っていくという、このジャンルの法則の最新例である。</p></div></details></div>
+</article>
+
+<article class="entry core" data-type="a">
+  <div class="year">2021<small>映画</small></div>
+  <div><h3>ドント・ルック・アップ<span class="orig">Don't Look Up</span></h3><p class="byline">監督 アダム・マッケイ</p>
+  <ul class="tags"><li class="phase">A 隕石・彗星</li><li>否認する社会</li><li class="buy">風刺としての終焉</li></ul>
+  <p class="desc">天文学者ミンディと大学院生ディビアスキーは、半年後に地球へ衝突する直径10kmの彗星を発見する。だが大統領は選挙を優先し、メディアは話題を軽く消費し、巨大テック企業は彗星のレアメタルに目を付けて迎撃を横取りする。「上を見ろ／見るな」のスローガン合戦の末に、彗星は普通に見える大きさになる。気候変動への寓話として作られた、終焉ものの風刺の到達点。</p>
+  <dl class="points"><div><dt>何が新しいか</dt><dd>終わりの原因を彗星ではなく「社会の情報処理の失敗」に置いたこと。科学者は正しく、大統領もメディアもSNSも、それぞれの合理性で動いた結果として滅ぶ。『日本沈没』の「警告は届くか」という1973年の問いが、情報過多の時代に「届いても消費される」という形で更新された。</dd></div>
+  <div><dt>後の作品へ</dt><dd>A軸の最新形であり、終焉ものの中心が「脅威の描写」から「社会の描写」へ移ったことの宣言。以後の終焉ものは、脅威そのものより、それを受け取る社会の設計で評価される時代に入った。</dd></div></dl>
+  <details class="deep"><summary>深掘り ― 最後の晩餐</summary><div class="body"><p>映画の白眉は風刺の部分ではなく、最後にミンディの家で開かれる静かな食卓だ。滅びが確定した後、人々は結局『渚にて』と同じ場所――家族と、食事と、祈り――に帰ってくる。風刺として始まった映画が、受容の古典の形で終わること。この回帰こそ、終焉アトラス全体を貫く線である。</p></div></details></div>
+</article>
+
+        </div>
+      </section>
+
+      <section class="block" id="themes">
+        <div class="block-head"><span class="no">04</span><h2>横断テーマ ― 軸を越えて流れるもの</h2></div>
+
+        <div class="essay">
+          <h3>否認から受容へ <span class="vs">― キューブラー＝ロスの地図</span></h3>
+          <p class="sub">ドント・ルック・アップ（否認）／日本沈没（交渉と政治）／ディープインパクト（受容）／渚にて・メランコリア（受容の先）</p>
+          <p>終焉ものの登場人物と社会は、死の受容の段階――否認、怒り、交渉、抑うつ、受容――をなぞることが多い。<strong>『ドント・ルック・アップ』は否認で止まった社会</strong>の話であり、<strong>『日本沈没』は交渉（脱出計画）</strong>の話、<strong>『ディープインパクト』は受容に辿り着いた人々</strong>の話だ。</p>
+          <p>面白いのは、受容に最も早く着くのが、必ずしも賢い者ではないことだ。『メランコリア』のジュスティーヌは鬱ゆえに最初から受容側にいて、『渚にて』の人々は作法によって受容を支える。受容は情報の問題ではなく、気質と作法の問題として描かれる。</p>
+        </div>
+
+        <div class="essay">
+          <h3>スペクタクル <span class="vs">vs</span> 静けさ</h3>
+          <p class="sub">2012・アルマゲドン（最大値）／渚にて・メランコリア・パーフェクト・センス（最小値）</p>
+          <p>このジャンルは両極に引き裂かれている。一方には都市を割る『2012』と、掘削で世界を救う『アルマゲドン』。他方には、爆発を一度も映さない『渚にて』と、衝突を内面で処理する『メランコリア』がある。<strong>どちらが「本当の終焉」かは、実は観客の時代の不安の形で決まる。</strong></p>
+          <p>冷戦期は静かな放射能の恐怖が、90年代は迎撃のカタルシスが、2010年代以降は再び静かな適応と否認の風刺が前に出た。スペクタクルの量は、脅威の大きさではなく、「社会が終わりをどう処理したいか」の願望の量を映している。</p>
+        </div>
+
+        <div class="essay">
+          <h3>家族に帰る終末 <span class="vs">― 縮小の法則</span></h3>
+          <p class="sub">アルマゲドン（父のボタン）／グリーンランド（インスリン）／ドント・ルック・アップ（最後の食卓）／デイ・アフター・トゥモロー（息子への徒歩）</p>
+          <p>終焉のスケールが大きくなればなるほど、物語の最後の重心は<strong>家族という最小単位</strong>に帰っていく。世界を救うボタンは父の手にあり、文明の存続は子供の薬で決まり、滅亡の夜に開かれるのは食卓だ。</p>
+          <p>これは感傷ではなく、構造だ。「人類」という単位では感情が動かない。観客が自分のこととして受け取れるのは、常に「自分の家族ならどうするか」という縮小を通したときだけである。終焉ものの名場面がほぼ例外なく家族の場面なのは、そのためだ。</p>
+        </div>
+
+        <div class="essay">
+          <h3>国家・メディア・科学 <span class="vs">― 警告は届くか</span></h3>
+          <p class="sub">日本沈没（1973）→ ディープインパクト（1998）→ コンテイジョン（2011）→ ドント・ルック・アップ（2021）</p>
+          <p>半世紀の系譜で最も変わったのは、脅威ではなく<strong>警告の届き方</strong>だ。1973年には、科学者の警告は官僚機構の中で真剣に処理された。1998年には、大統領は国民に正直に告げ、演説で結束した。2011年の『コンテイジョン』では、機関は機能するがデマがそれを追い越す。2021年には、警告は届いた上で、エンタメとして消費され尽くす。</p>
+          <p>つまり終焉ものは、時代ごとに「社会の情報処理能力」への信頼度を測る計器でもある。この信頼が下がるほど、物語の希望は国家から家族へ、家族から個人の作法へと、小さな単位に移っていく。横断テーマ「家族に帰る終末」と、この流れは同じことの裏表だ。</p>
+        </div>
+      </section>
+
+      <section class="block" id="routes">
+        <div class="block-head"><span class="no">05</span><h2>入口コース ― どこから入るか</h2></div>
+        <div class="routes">
+          <div class="route">
+            <h3>まずはこの3作<span class="time">迷ったらここから</span></h3>
+            <p>受容、迎撃、否認。同じ「来るもの」への三つの回答を、代表作で一気に掴む。</p>
+            <p class="steps">ディープインパクト<span class="arr">→</span>アルマゲドン<span class="arr">→</span>ドント・ルック・アップ</p>
+          </div>
+          <div class="route">
+            <h3>静かに迎えるコース<span class="time">スペクタクルなしの終焉</span></h3>
+            <p>爆発のない終わりだけを集めた、最もこのジャンルの核に近い道。</p>
+            <p class="steps">渚にて<span class="arr">→</span>メランコリア<span class="arr">→</span>パーフェクト・センス<span class="arr">→</span>テイク・シェルター</p>
+          </div>
+          <div class="route">
+            <h3>日本から入るコース<span class="time">小松左京を軸に</span></h3>
+            <p>一人の作家が作った二つの源流から、日本の終焉感覚を辿る。</p>
+            <p class="steps">日本沈没<span class="arr">→</span>復活の日<span class="arr">→</span>グリーンランド<span class="arr">→</span>付録：新世紀エヴァンゲリオン</p>
+          </div>
+          <div class="route">
+            <h3>リアル志向コース<span class="time">最も現実に近い順</span></h3>
+            <p>科学と手順の正確さで選んだ、フィクションの顔をしたシミュレーション。</p>
+            <p class="steps">コンテイジョン<span class="arr">→</span>デイ・アフター・トゥモロー<span class="arr">→</span>ノウイング<span class="arr">→</span>ドント・ルック・アップ</p>
+          </div>
+          <div class="route">
+            <h3>スペクタクル全開コース<span class="time">大きく壊れる順</span></h3>
+            <p>迎撃と破壊と方舟。90年代から2000年代の大作の熱をまとめて浴びる。</p>
+            <p class="steps">アルマゲドン<span class="arr">→</span>デイ・アフター・トゥモロー<span class="arr">→</span>2012<span class="arr">→</span>サンシャイン2057</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="block" id="appendix">
+        <div class="block-head"><span class="no">付録</span><h2>終わりが日常に溶けている作品</h2></div>
+        <p class="app-lead">本編は「終わりが告知され、カウントダウンが始まる」作品に絞った。付録には、終わりが<strong>すでに日常の背景になっている</strong>作品、<strong>来る前夜の空気</strong>そのものが作品の本籍であるもの、そして終わりが<strong>回避される</strong>ことで逆に終焉を描いたものを置く。格落ちではない。本編のカウントダウンが成立するのは、この「常態化した終末感」の土壌が文化の中にあるからだ。</p>
+
+        <div class="strand">
+          <div class="strand-head"><h3><span class="strand-no">付1</span>常態化した終焉と、前夜の空気</h3><p>終わりが事件ではなく、天気のようにそこにある世界。</p></div>
+          <ul class="app-list">
+            <li class="app-item"><div class="app-year">1995<small>アニメ</small></div><h4>新世紀エヴァンゲリオン</h4><p class="byline">監督 庵野秀明／GAINAX</p><p class="text">西暦2000年のセカンドインパクトで人類の半分はすでに死んでいる。物語の舞台である2015年の第3新東京市は、その「後」でありながら、サードインパクトという次の終わりを常に待つ<strong>終焉間際の常態</strong>の中にある。要塞都市で学校生活が営まれ、警報のたびに都市が沈む。この「終わりかけのまま続く日常」こそ、本編E軸の感覚を日本のアニメの標準装備にした作品である。</p><p class="link-line">→ 本編との接続：ポストアポカリプス（インパクト後）であると同時に終焉（次のインパクト前）でもある、二つのアトラスの境界に立つ作品。</p></li>
+            <li class="app-item"><div class="app-year">1982<small>漫画／映画1988</small></div><h4>AKIRA</h4><p class="byline">大友克洋</p><p class="text">1988年、新型爆弾で東京は消えた。31年後のネオ東京は、復興の看板の下で腐っていく。軍、暴走族、カルト宗教、実験体の子供たち。誰もが「アキラ」の覚醒という次の崩壊を薄々感じながら、退廃の中で生きている。<strong>崩壊そのものではなく、崩壊前夜の空気</strong>――次に壊れることが分かっている都市の湿度――を描いた、日本の終焉感覚のもう一つの原点。</p><p class="link-line">→ 本編との接続：『日本沈没』の「国が壊れる予感」を、若者文化と都市の退廃の側から描いた系譜。</p></li>
+          </ul>
+        </div>
+
+        <div class="strand">
+          <div class="strand-head"><h3><span class="strand-no">付2</span>回避される終末</h3><p>終わりが来ないことで、終わりについて語る作品。</p></div>
+          <ul class="app-list">
+            <li class="app-item"><div class="app-year">1990<small>小説／ドラマ2019</small></div><h4>グッド・オーメンズ<span class="orig">Good Omens</span></h4><p class="byline">テリー・プラチェット＆ニール・ゲイマン</p><p class="text">ハルマゲドンは予定通り行われる。だが、地球での暮らしを気に入ってしまった天使アジラフェルと悪魔クロウリーは、それを止めようとする。反キリストは取り違えで普通の少年に育ち、天国と地獄の官僚機構は手続きに忙しい。<strong>終末を「世界の終わり」ではなく「予定されたイベントと、それを嫌がる現場の担当者」</strong>として描くコメディは、終焉もののすべての作法を裏返しにして見せる鏡である。</p><p class="link-line">→ 本編との接続：迎撃でも受容でもなく「回避とサボタージュ」。終わりを愛着で止めるという、家族に帰る終末の宇宙規模版。</p></li>
+          </ul>
+        </div>
+
+        <div class="strand">
+          <div class="strand-head"><h3><span class="strand-no">付3</span>ポストアポカリプス側への橋</h3><p>「直前」と「後」の境界が溶ける作品を、相互参照として置く。</p></div>
+          <ul class="app-list">
+            <li class="app-item"><div class="app-year">1994<small>漫画</small></div><h4>ドラゴンヘッド</h4><p class="byline">望月峯太郎</p><p class="text">修学旅行の帰りの新幹線が、トンネルの中で脱線する。外に出たテルたちが見るのは、灰に覆われ、熱く、誰もいない日本列島。何が起きたのか――地震か、戦争か、富士山の噴火か――は最後まで確定しない。<strong>「何が来たか分からないまま、直前から後へ放り出される」</strong>体験そのものが作品であり、終焉アトラス（分からないカウントダウン）とポストアポカリプスアトラス（終わった後の彷徨）の、ちょうど継ぎ目に立つ。</p><p class="link-line">→ 相互参照：本作の本籍はポストアポカリプスアトラス側に置く。ここでは「情報のない終焉」という、本編Q3の極端な形として参照する。</p></li>
+          </ul>
+        </div>
+
+        <div class="app-note"><b>三つのアトラスで読む。</b>ディストピアは「壊れたまま続く社会」、本書（終焉）は「終わりが決まった社会」、ポストアポカリプスは「終わった後の世界」を扱う。エヴァンゲリオンとドラゴンヘッドが示すように、現実の名作はしばしば境界の上に立つ。三冊を並べると、社会の終わり方の全体地図になる。</div>
+      </section>
+
+      <footer>
+        <p>終焉アトラス ― 本編15作＋付録4作、全19作。分類は「何が来るか」（軸）と「どう迎えるか」（各作品の立場）の二層による。</p>
+        <p>アトラスシリーズ：仮想現実アトラス／時空間アトラス／管理社会アトラス／終焉アトラス／ポストアポカリプスアトラス。終焉は「直前」を、ポストアポカリプスは「後」を担う対の巻である。</p>
+      </footer>
+
+    </main>
+    <script>
+      (function () {
+        var buttons = Array.prototype.slice.call(document.querySelectorAll('.filters button'));
+        var entries = Array.prototype.slice.call(document.querySelectorAll('#tl .entry'));
+        var count = document.getElementById('count');
+        function apply(filter) {
+          var shown = 0;
+          entries.forEach(function (e) {
+            var ok = filter === 'all' || e.getAttribute('data-type') === filter;
+            e.classList.toggle('hidden', !ok);
+            if (ok) shown++;
+          });
+          count.textContent = '表示中：' + shown + '作 ／ 本編' + entries.length + '作';
+          buttons.forEach(function (b) { b.setAttribute('aria-pressed', b.getAttribute('data-filter') === filter ? 'true' : 'false'); });
+        }
+        buttons.forEach(function (b) { b.addEventListener('click', function () { apply(b.getAttribute('data-filter')); }); });
+        apply('all');
+      })();
+    </script>
+  </body>
+</html>
