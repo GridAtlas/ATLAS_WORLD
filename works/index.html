@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <meta name="color-scheme" content="light dark" />
     <title>作品一覧 ― アトラス大全</title>
-    <meta name="description" content="アトラスシリーズ全6冊・全224作を横断して探す索引。検索と共通タグで絞り込み、同一作は1枚にまとめて表示します。" />
+    <meta name="description" content="アトラスシリーズ全6冊・全243作を横断して探す索引。検索と共通タグで絞り込み、同一作は1枚にまとめて表示します。" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho+B1:wght@500;700;800&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet" />
@@ -111,6 +111,7 @@
         color: var(--accent-ink);
       }
       .series-nav .index-link.here { color: var(--ink); }
+      .series-nav .index-link + .index-link { margin-left: 0; padding-left: 14px; }
 
       .intro { padding: 36px 0 8px; }
       .intro .kicker {
@@ -353,6 +354,7 @@
       <div class="inner">
         <a class="home" href="../">アトラス大全</a>
         <div class="vols"><a href="../virtual-reality/">仮想現実</a><span class="sep" aria-hidden="true">/</span><a href="../spacetime/">時空間</a><span class="sep" aria-hidden="true">/</span><a href="../management-society/">管理社会</a><span class="sep" aria-hidden="true">/</span><a href="../post-apocalypse/">ポストアポカリプス</a><span class="sep" aria-hidden="true">/</span><a href="../end-of-the-world/">終焉</a><span class="sep" aria-hidden="true">/</span><a href="../ai/">人工知能</a></div>
+        <a class="index-link" href="../judgment/">判定</a>
         <span class="index-link here" aria-current="page">作品一覧</span>
       </div>
     </nav>
@@ -361,7 +363,7 @@
       <div class="intro">
         <p class="kicker">アトラスシリーズ ― 横断索引</p>
         <h1>作品一覧</h1>
-        <p class="lead">全6冊・全<strong>224</strong>作を、検索と共通のタグで横断します。同一の作品が複数のアトラスに載っている場合は、1枚にまとめて表示します（公式213作）。初期表示は本編と付録で、管理社会アトラスの読み物（9作）は「読み物」から足せます。</p>
+        <p class="lead">全6冊・全<strong>243</strong>作を、検索と共通のタグで横断します。同一の作品が複数のアトラスに載っている場合は、1枚にまとめて表示します（公式232作）。初期表示は本編と付録で、管理社会アトラスの読み物（9作）は「読み物」から足せます。</p>
         <p class="note">グループが違う条件はすべて同時に満たす必要があります。同じグループの中（テーマ以外）はどれか一つに当てはまれば足ります。テーマは選んだものをすべて含む作品に絞ります。</p>
       </div>
 
@@ -419,7 +421,7 @@
       <div id="work-list"></div>
 
       <footer class="colophon">
-        <p class="fin">作品一覧 ― アトラスシリーズ全6冊・全224作（本編157＋付録67）</p>
+        <p class="fin">作品一覧 ― アトラスシリーズ全6冊・全243作（本編171＋付録72）</p>
         <p>収録の本文は各アトラスにあります。このページは索引であり、データは <code>works/works.json</code>（生成：<code>tools/build-works.py</code>）です。</p>
         <p>アトラスシリーズ全6冊：<a href="../virtual-reality/">仮想現実アトラス</a>／<a href="../spacetime/">時空間アトラス</a>／<a href="../management-society/">管理社会アトラス</a>／<a href="../post-apocalypse/">ポストアポカリプスアトラス</a>／<a href="../end-of-the-world/">終焉アトラス</a>／<a href="../ai/">人工知能アトラス（下書き）</a>。玄関は<a href="../">アトラス大全</a>。</p>
       </footer>

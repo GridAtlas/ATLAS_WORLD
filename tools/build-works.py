@@ -50,6 +50,31 @@ THEME_OVERRIDES = {
     "mahotsukai-no-deshitachi": ["終わる直前", "感染", "時間の操作"],
 }
 
+# Authoritative regions for works whose names would otherwise be
+# mis-tagged (CJK personal names as 日本, Netflix as アメリカ, etc.).
+REGION_OVERRIDES = {
+    "invention-of-morel": ["アルゼンチン"],
+    "lathe-of-heaven": ["アメリカ"],
+    "memories-of-the-alhambra": ["韓国"],
+    "solaris": ["ポーランド"],
+    "pluto": ["日本"],
+    "innocence": ["日本"],
+    "never-let-me-go": ["イギリス"],
+    "ship-of-theseus": ["インド"],
+    "frankenstein-in-baghdad": ["イラク"],
+    "millennium-actress": ["日本"],
+    "dark": ["ドイツ"],
+    "if-we-cannot-go-at-the-speed-of-light": ["韓国"],
+    "district-9": ["南アフリカ"],
+    "folding-beijing": ["中国"],
+    "stalker": ["ロシア"],
+    "station-eleven": ["カナダ"],
+    "pumzi": ["ケニア"],
+    "three-body": ["中国"],
+    "the-leftovers": ["アメリカ"],
+}
+
+
 # Manual aliases: normalized key -> canonical id.
 # Keys are produced by alias_key() (NFKC, lower, kana, no punctuation).
 MERGE_ALIASES = {
@@ -77,6 +102,41 @@ MERGE_ALIASES = {
     "クラインの壺": "klein-bottle",
     "ダレカガナカニイル": "dareka-ga-naka-ni-iru",
     "魔法使いの弟子たち": "mahotsukai-no-deshitachi",
+    "モレルの発明": "invention-of-morel",
+    "lainvenciondemorel": "invention-of-morel",
+    "天のろくろ": "lathe-of-heaven",
+    "thelatheofheaven": "lathe-of-heaven",
+    "アルハンブラ宮殿の思い出": "memories-of-the-alhambra",
+    "ストーカー": "stalker",
+    "路傍のピクニック": "stalker",
+    "ソラリス": "solaris",
+    "pluto": "pluto",
+    "プルートゥ": "pluto",
+    "イノセンス": "innocence",
+    "innocence": "innocence",
+    "innocenceghostintheshell2": "innocence",
+    "わたしを離さないで": "never-let-me-go",
+    "neverletmego": "never-let-me-go",
+    "shipoftheseus": "ship-of-theseus",
+    "バグダードのフランケンシュタイン": "frankenstein-in-baghdad",
+    "frankensteininbaghdad": "frankenstein-in-baghdad",
+    "千年女優": "millennium-actress",
+    "millenniumactress": "millennium-actress",
+    "dark": "dark",
+    "わたしたちが光の速さで進めないなら": "if-we-cannot-go-at-the-speed-of-light",
+    "제9지구": "district-9",
+    "第9地区": "district-9",
+    "district9": "district-9",
+    "折りたたみ北京": "folding-beijing",
+    "北京折叠": "folding-beijing",
+    "foldingbeijing": "folding-beijing",
+    "pumzi": "pumzi",
+    "ステーションイレブン": "station-eleven",
+    "stationeleven": "station-eleven",
+    "三体": "three-body",
+    "thethreebodyproblem": "three-body",
+    "leftovers残された世界": "the-leftovers",
+    "theleftovers": "the-leftovers",
 }
 
 # Human titles for canonical merged ids (used when appearances disagree).
@@ -302,7 +362,8 @@ def detect_media(small: str, byline: str, title: str, role: str) -> list[str]:
         add("ドラマ")
     if re.search(r"映画|監督|初映|劇場版", blob):
         add("映画")
-    if re.search(r"小説|長編|短編|短編集|中編|原作小説", blob):
+    novel_blob = re.sub(r"短編映画", "", blob)
+    if re.search(r"小説|長編|短編|短編集|中編|原作小説", novel_blob):
         add("小説")
     if re.search(r"プログラム|論文", blob) and "哲学・思想" not in found and not found:
         add("哲学・思想")
@@ -326,7 +387,7 @@ def detect_regions(title: str, orig: str, byline: str) -> list[str]:
             found.append(label)
 
     # Explicit markers first.
-    if re.search(r"韓国|오징어|Squid Game", blob):
+    if re.search(r"韓国|오징어|Squid Game|キム・チョヨプ|ソン・ジェジョン|アルハンブラ宮殿", blob):
         add("韓国")
     if re.search(r"ポーランド|レム|Lem|シュール|Stanisław|ソロヴィヨフ", blob):
         add("ポーランド")
@@ -346,13 +407,13 @@ def detect_regions(title: str, orig: str, byline: str) -> list[str]:
         add("デンマーク")
     if re.search(r"スペイン|アメナーバル|Amenábar|Abre los ojos", blob):
         add("スペイン")
-    if re.search(r"劉慈欣", blob):
+    if re.search(r"劉慈欣|郝景芳|北京折叠|折りたたみ北京", blob):
         add("中国")
     if re.search(r"イギリス|英国|ウェルズ|ウェルズ|クラーク|H\.G\.| Huxley|オーウェル|バラード|アダムズ|Pratchett|プラチェット|ゲイマン|Gaiman|莎士比亚", blob) or re.search(
         r"Wells|Clarke|Huxley|Orwell|Ballard|Shakespeare|Rowling|Doctor Who", blob
     ):
         add("イギリス")
-    if re.search(r"カナダ", blob):
+    if re.search(r"カナダ|マンデル|Station Eleven|ステーション・イレブン", blob):
         add("カナダ")
 
     # Japanese only if we see kanji creator names or explicit Japanese studios/hints.
@@ -645,6 +706,8 @@ def enrich(entry: Entry) -> None:
     entry.work_id = resolve_id(entry.title, entry.orig)
     if entry.work_id in THEME_OVERRIDES:
         entry.themes = list(THEME_OVERRIDES[entry.work_id])
+    if entry.work_id in REGION_OVERRIDES:
+        entry.regions = list(REGION_OVERRIDES[entry.work_id])
 
 
 def merge_entries(entries: list[Entry]) -> list[dict]:
@@ -796,11 +859,11 @@ def build():
 
     official = [e for e in all_entries if e.role != "読み物"]
     essays = [e for e in all_entries if e.role == "読み物"]
-    print(f"\n公式収録（本編+付録）: {len(official)}  (expected 224)")
+    print(f"\n公式収録（本編+付録）: {len(official)}  (expected 243)")
     print(f"読み物: {len(essays)}")
 
-    if len(official) != 224:
-        print("WARNING: official count is not 224", file=sys.stderr)
+    if len(official) != 243:
+        print("WARNING: official count is not 243", file=sys.stderr)
 
     works = merge_entries(all_entries)
     official_works = merge_entries(official)

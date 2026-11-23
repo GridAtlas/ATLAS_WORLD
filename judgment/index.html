@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="color-scheme" content="light dark" />
+    <title>判定 ― アトラス大全</title>
+    <meta name="description" content="この世界は本物か、この心は本物か。アトラスシリーズ全6冊を貫く「判定」の糸をたどる読み物。" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho+B1:wght@500;700;800&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet" />
+    <link rel="manifest" href="../manifest.webmanifest" />
+    <link rel="icon" type="image/svg+xml" href="../icon.svg" />
+    <link rel="apple-touch-icon" href="../apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <style>
+      button, [role="button"], select, summary, input:not([type="checkbox"], [type="radio"]) { min-height: 2.25rem; }
+      * { box-sizing: border-box; }
+      :root {
+        --bg: #fbfaf6;
+        --surface: #ffffff;
+        --ink: #191b1d;
+        --ink-2: #45484b;
+        --muted: #71757a;
+        --line: #ddd8cc;
+        --line-soft: #eae6db;
+        --accent: #b23318;
+        --accent-ink: #96290f;
+        --teal: #0d5c50;
+        --gold: #8a6d1f;
+        --gold-bg: #f5ecd2;
+        --chip-bg: #f0ede4;
+        --deep-bg: #f3f0e7;
+      }
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --bg: #101315;
+          --surface: #171a1d;
+          --ink: #edeade;
+          --ink-2: #c6c9c4;
+          --muted: #9aa0a0;
+          --line: #33383b;
+          --line-soft: #262b2e;
+          --accent: #e4704e;
+          --accent-ink: #eda183;
+          --teal: #57bfa9;
+          --gold: #d9b95c;
+          --gold-bg: #38300f;
+          --chip-bg: #22262a;
+          --deep-bg: #181c1f;
+        }
+      }
+      html { scroll-behavior: smooth; }
+      @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--ink);
+        font-family: "Zen Kaku Gothic New", "Hiragino Kaku Gothic ProN", sans-serif;
+        font-size: 16px;
+        line-height: 1.85;
+        -webkit-font-smoothing: antialiased;
+      }
+      .wrap { max-width: 1020px; margin: 0 auto; padding: 0 20px 72px; }
+      .serif { font-family: "Shippori Mincho B1", "Hiragino Mincho ProN", serif; }
+
+      .series-nav {
+        border-bottom: 1px solid var(--line);
+        background: var(--bg);
+        font-size: 13px;
+      }
+      .series-nav .inner {
+        max-width: 1020px;
+        margin: 0 auto;
+        padding: 10px 20px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px 0;
+        align-items: baseline;
+      }
+      .series-nav a {
+        color: var(--ink-2);
+        text-decoration: none;
+        font-weight: 500;
+      }
+      .series-nav a:hover,
+      .series-nav a:focus-visible { color: var(--accent-ink); }
+      .series-nav a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+      .series-nav .home {
+        font-weight: 700;
+        color: var(--accent-ink);
+        margin-right: 14px;
+        letter-spacing: .06em;
+      }
+      .series-nav .home.here { color: var(--ink); }
+      .series-nav .vols {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px 0;
+        align-items: baseline;
+      }
+      .series-nav .vols a,
+      .series-nav .vols .here { padding: 0 8px; }
+      .series-nav .vols .here { font-weight: 700; color: var(--ink); }
+      .series-nav .sep { color: var(--muted); opacity: .55; user-select: none; }
+      .series-nav .index-link {
+        margin-left: auto;
+        padding: 0 0 0 12px;
+        font-weight: 700;
+        letter-spacing: .06em;
+        color: var(--accent-ink);
+      }
+      .series-nav .index-link.here { color: var(--ink); }
+      .series-nav .index-link + .index-link { margin-left: 0; padding-left: 14px; }
+
+      .intro { padding: 36px 0 8px; }
+      .intro .kicker {
+        color: var(--accent-ink); font-weight: 700; font-size: 13px; letter-spacing: .14em; margin: 0 0 14px;
+      }
+      .intro h1 {
+        font-family: "Shippori Mincho B1", serif; font-weight: 800;
+        font-size: clamp(32px, 7vw, 52px); line-height: 1.25; margin: 0 0 10px; letter-spacing: .04em;
+      }
+      .intro .lead { font-size: 16.5px; max-width: 44em; margin: 0 0 10px; }
+      .intro .lead strong { color: var(--accent-ink); font-weight: 700; }
+      .intro .note { font-size: 13.5px; color: var(--muted); max-width: 44em; margin: 0; }
+
+      .toolbar-sticky {
+        position: sticky;
+        top: 0;
+        z-index: 5;
+        background: color-mix(in srgb, var(--bg) 92%, transparent);
+        backdrop-filter: blur(8px);
+        padding: 10px 0 8px;
+        margin: 8px 0 0;
+        border-bottom: 1px solid var(--line-soft);
+      }
+      @supports not (background: color-mix(in srgb, black 50%, white)) {
+        .toolbar-sticky { background: var(--bg); }
+      }
+
+      .search-row { display: flex; flex-wrap: wrap; gap: 10px 14px; align-items: center; }
+      .search {
+        flex: 1 1 220px;
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+        margin: 0;
+      }
+      .search input[type="search"] {
+        width: 100%;
+        font: inherit;
+        font-size: 16px;
+        padding: 8px 12px;
+        border: 1px solid var(--line);
+        border-radius: 6px;
+        background: var(--surface);
+        color: var(--ink);
+      }
+      .search input[type="search"]:focus {
+        outline: 2px solid var(--accent);
+        outline-offset: 2px;
+        border-color: var(--accent);
+      }
+      .tools {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px 14px;
+        align-items: center;
+        flex: 1 1 240px;
+      }
+      .tools label {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin: 0;
+        font-size: 13.5px;
+        color: var(--ink-2);
+        font-weight: 500;
+      }
+      .tools select {
+        font: inherit;
+        font-size: 15px;
+        padding: 6px 10px;
+        border: 1px solid var(--line);
+        border-radius: 6px;
+        background: var(--surface);
+        color: var(--ink);
+      }
+      .tools select:focus { outline: 2px solid var(--accent); outline-offset: 2px; }
+      #count {
+        margin: 0;
+        font-size: 13.5px;
+        color: var(--ink-2);
+        flex: 1 1 160px;
+      }
+      #clear {
+        font: inherit;
+        font-size: 13.5px;
+        font-weight: 700;
+        color: var(--accent-ink);
+        background: transparent;
+        border: 1px solid var(--line);
+        border-radius: 6px;
+        padding: 4px 12px;
+        cursor: pointer;
+      }
+      #clear:hover, #clear:focus-visible { border-color: var(--accent); }
+      #clear:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+      .filter-groups {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 4px 16px;
+        margin-top: 8px;
+      }
+      @media (min-width: 720px) {
+        .filter-groups { grid-template-columns: 1fr 1fr; }
+      }
+      .fg {
+        border: 0;
+        border-bottom: 1px solid var(--line-soft);
+        padding: 2px 0 8px;
+      }
+      .fg summary {
+        cursor: pointer;
+        font-size: 13px;
+        font-weight: 700;
+        letter-spacing: .08em;
+        color: var(--teal);
+        list-style: none;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .fg summary::-webkit-details-marker { display: none; }
+      .fg summary::after { content: "＋"; font-family: "Shippori Mincho B1", serif; color: var(--muted); }
+      .fg[open] summary::after { content: "−"; }
+      .fg summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+      .chips { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+      .chip {
+        display: inline-flex;
+        align-items: center;
+        margin: 0;
+        cursor: pointer;
+      }
+      .chip input {
+        position: absolute;
+        opacity: 0;
+        pointer-events: none;
+      }
+      .chip span {
+        display: inline-block;
+        font-size: 13px;
+        line-height: 1.3;
+        padding: 5px 10px;
+        border-radius: 999px;
+        border: 1px solid var(--line);
+        background: var(--chip-bg);
+        color: var(--ink-2);
+        min-height: 2.25rem;
+        display: inline-flex;
+        align-items: center;
+      }
+      .chip input:checked + span {
+        background: var(--gold-bg);
+        border-color: var(--gold);
+        color: var(--ink);
+        font-weight: 700;
+      }
+      .chip input:focus-visible + span {
+        outline: 2px solid var(--accent);
+        outline-offset: 2px;
+      }
+
+      #work-list { margin-top: 18px; display: flex; flex-direction: column; gap: 0; }
+      .work-card {
+        display: grid;
+        grid-template-columns: 72px 1fr;
+        gap: 8px 16px;
+        padding: 16px 0 18px;
+        border-bottom: 1px solid var(--line-soft);
+      }
+      @media (max-width: 519px) {
+        .work-card { grid-template-columns: 1fr; gap: 2px 0; }
+        .work-card .year { margin-bottom: 2px; }
+      }
+      .work-card .year {
+        font-family: "Shippori Mincho B1", serif;
+        font-weight: 700;
+        font-size: 18px;
+        color: var(--accent-ink);
+        line-height: 1.3;
+        padding-top: 4px;
+      }
+      .work-card h2 {
+        font-family: "Shippori Mincho B1", serif;
+        font-weight: 800;
+        font-size: clamp(18px, 4vw, 22px);
+        line-height: 1.35;
+        margin: 0 0 2px;
+      }
+      .work-card h2 a { color: inherit; text-decoration: none; }
+      .work-card h2 a:hover, .work-card h2 a:focus-visible { color: var(--accent-ink); }
+      .work-card h2 a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+      .work-card .orig {
+        margin-left: 8px;
+        font-family: "Zen Kaku Gothic New", sans-serif;
+        font-weight: 500;
+        font-size: 13px;
+        color: var(--muted);
+        letter-spacing: .02em;
+      }
+      .work-card .byline { margin: 0 0 4px; font-size: 13.5px; color: var(--ink-2); }
+      .work-card .apps { margin: 0 0 8px; font-size: 13px; font-weight: 500; }
+      .work-card .apps a { color: var(--teal); text-decoration: none; }
+      .work-card .apps a:hover, .work-card .apps a:focus-visible { color: var(--accent-ink); }
+      .work-card .apps .sep { margin: 0 6px; color: var(--muted); opacity: .6; }
+      .work-card .snippet { margin: 0 0 10px; font-size: 14.5px; color: var(--ink-2); line-height: 1.75; }
+      .work-card .tags { display: flex; flex-wrap: wrap; gap: 6px; list-style: none; margin: 0; padding: 0; }
+      .work-card .tags li {
+        font-size: 11.5px;
+        letter-spacing: .04em;
+        color: var(--muted);
+        background: var(--deep-bg);
+        border-radius: 4px;
+        padding: 1px 8px;
+      }
+
+      #empty { margin: 28px 0; color: var(--ink-2); }
+      #empty[hidden] { display: none; }
+
+      footer.colophon { margin-top: 64px; border-top: 2px solid var(--ink); padding-top: 18px; }
+      footer.colophon p { font-size: 13.5px; color: var(--muted); margin: 0 0 6px; }
+      footer.colophon .fin { font-family: "Shippori Mincho B1", serif; font-size: 15px; color: var(--ink-2); }
+      footer a { color: var(--accent-ink); text-decoration: none; border-bottom: 1px solid currentColor; }
+      footer a:hover, footer a:focus-visible { color: var(--accent); }
+
+      .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border: 0;
+      }
+
+      .essay { max-width: 720px; }
+      .intro h1 {
+        font-family: "Shippori Mincho B1", "Hiragino Mincho ProN", serif;
+        font-weight: 800;
+        font-size: clamp(2.1rem, 5vw, 3rem);
+        letter-spacing: 0.12em;
+        margin: 0 0 8px;
+        line-height: 1.2;
+      }
+      .kicker { letter-spacing: .18em; font-size: 12px; color: var(--muted); margin: 28px 0 8px; }
+      .sub { font-family: "Shippori Mincho B1", serif; color: var(--ink-2); margin: 0 0 24px; }
+      .lead { font-size: 1.05rem; color: var(--ink-2); margin: 0 0 12px; }
+      .thread {
+        margin: 36px 0 0;
+        padding-top: 28px;
+        border-top: 1px solid var(--line);
+      }
+      .thread header { margin-bottom: 12px; }
+      .thread .vol {
+        font-size: 12px;
+        letter-spacing: .14em;
+        color: var(--accent-ink);
+        margin: 0 0 4px;
+        font-weight: 700;
+      }
+      .thread h2 {
+        font-family: "Shippori Mincho B1", serif;
+        font-weight: 700;
+        font-size: 1.45rem;
+        margin: 0 0 6px;
+        letter-spacing: .06em;
+      }
+      .thread .axis { color: var(--muted); font-size: 0.92rem; margin: 0 0 14px; }
+      .thread p { margin: 0 0 12px; }
+      .works-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin: 16px 0 4px;
+      }
+      .works-row a {
+        display: inline-block;
+        text-decoration: none;
+        color: var(--accent-ink);
+        background: var(--chip-bg);
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        padding: 4px 12px;
+        font-size: 0.88rem;
+        font-weight: 500;
+      }
+      .works-row a:hover, .works-row a:focus-visible { border-color: var(--accent); color: var(--accent); }
+      .to-index {
+        margin-top: 40px;
+        padding: 22px 24px;
+        background: var(--deep-bg);
+        border: 1px solid var(--line);
+      }
+      .to-index h2 {
+        font-family: "Shippori Mincho B1", serif;
+        font-size: 1.2rem;
+        margin: 0 0 8px;
+      }
+      .to-index a { color: var(--accent-ink); }
+      footer.colophon { margin-top: 56px; padding-top: 24px; border-top: 1px solid var(--line); color: var(--muted); font-size: 0.9rem; }
+      footer.colophon .fin { color: var(--ink); font-weight: 700; }
+    </style>
+  </head>
+  <body>
+    <nav class="series-nav" aria-label="アトラスシリーズ">
+      <div class="inner">
+        <a class="home" href="../">アトラス大全</a>
+        <div class="vols"><a href="../virtual-reality/">仮想現実</a><span class="sep" aria-hidden="true">/</span><a href="../spacetime/">時空間</a><span class="sep" aria-hidden="true">/</span><a href="../management-society/">管理社会</a><span class="sep" aria-hidden="true">/</span><a href="../post-apocalypse/">ポストアポカリプス</a><span class="sep" aria-hidden="true">/</span><a href="../end-of-the-world/">終焉</a><span class="sep" aria-hidden="true">/</span><a href="../ai/">人工知能</a></div>
+        <span class="index-link here" aria-current="page">判定</span>
+        <a class="index-link" href="../works/">作品一覧</a>
+      </div>
+    </nav>
+
+    <main class="wrap essay">
+      <header class="intro">
+        <p class="kicker">アトラスシリーズを貫く読み</p>
+        <h1>判定</h1>
+        <p class="sub">この世界は本物か／この心は本物か</p>
+        <p class="lead">六冊は、別々の主題に見える。仮想現実、時空間、管理社会、ポストアポカリプス、終焉、人工知能。だが、いくつもの作品は、同じ場所で立ち止まる。<strong>これは本物か</strong>。</p>
+        <p class="lead">世界が本物か。心が本物か。時間は一つに繋がっているか。人として数えられるのは誰か。終わったあとに残ったものは何か。終わりは、本当に来たのか。判定の対象は冊ごとに変わる。問う作法だけが、シリーズを貫いている。</p>
+        <p class="lead">このページは、その糸をたどるための読みである。各冊の本編と付録へ渡り、最後に<a href="../works/">作品一覧</a>から、同じタグで横断できる。</p>
+      </header>
+
+      <section class="thread" id="virtual-reality">
+        <header>
+          <p class="vol">第一巻</p>
+          <h2>仮想現実アトラス</h2>
+          <p class="axis">軸 ― この世界は本物か。何で現実を判定するか。</p>
+        </header>
+        <p>いちばんむき出しの判定が、ここにある。目の前の街は、誰が作ったのか。どうやって戻るのか。何を手がかりに、本物だと決めるのか。小物や記憶や、反復される仕草が、世界の真偽を測る装置になる。</p>
+        <p>コンピュータ以前に、記録と実在の境を溶かしたのがビオイ＝カサーレス『モレルの発明』である。同じ年、ボルヘスは記述が現実へ漏れ出す側を書いた。ル＝グウィン『天のろくろ』では、個人の夢が、目覚めたあとの公共の世界を書き換える。岡嶋二人『クラインの壺』は、没入の装置そのものが判定を不可能にしていく。付録の韓国ドラマ『アルハンブラ宮殿の思い出』は、その問いを日常とゲームの重ね合わせへ移す。</p>
+        <div class="works-row">
+          <a href="../virtual-reality/#work-invention-of-morel">モレルの発明</a>
+          <a href="../virtual-reality/#work-lathe-of-heaven">天のろくろ</a>
+          <a href="../virtual-reality/#work-klein-bottle">クラインの壺</a>
+          <a href="../virtual-reality/#work-the-matrix">マトリックス</a>
+          <a href="../virtual-reality/#work-memories-of-the-alhambra">アルハンブラ宮殿の思い出</a>
+        </div>
+      </section>
+
+      <section class="thread" id="ai">
+        <header>
+          <p class="vol">第六巻（下書き）</p>
+          <h2>人工知能アトラス</h2>
+          <p class="axis">軸 ― 何をもって意識があると判定するか。</p>
+        </header>
+        <p>仮想現実が「世界」を測るなら、こちらは「心」を測る。対になる問いである。テスト、共感、ゴースト、対話。判定の装置は時代とともに形を変えるが、対象はいつも、作られた側に心があるかどうかだ。</p>
+        <p>レム『ソラリス』は、その装置を惑星の海へ向ける。現れるのは説明可能な機械ではなく、いちばん大切な記憶の形をした訪問者である。イシグロ『わたしを離さないで』は、施設で育った生が人として数えられるかを、思い出話の温度で問う。『PLUTO』と『イノセンス』は、機械の身体に宿るものを、捜査と人形の側から見る。付録では、井上夢人『ダレカガナカニイル…』が頭の中の声を、インド映画『Ship of Theseus』と『バグダードのフランケンシュタイン』が、入れ替わり、組み立てられた身体の連続を問う。</p>
+        <div class="works-row">
+          <a href="../ai/#work-solaris">ソラリス</a>
+          <a href="../ai/#work-pluto">PLUTO</a>
+          <a href="../ai/#work-innocence">イノセンス</a>
+          <a href="../ai/#work-never-let-me-go">わたしを離さないで</a>
+          <a href="../ai/#work-dareka-ga-naka-ni-iru">ダレカガナカニイル…</a>
+          <a href="../ai/#work-ship-of-theseus">Ship of Theseus</a>
+          <a href="../ai/#work-frankenstein-in-baghdad">バグダードのフランケンシュタイン</a>
+        </div>
+      </section>
+
+      <section class="thread" id="spacetime">
+        <header>
+          <p class="vol">第二巻</p>
+          <h2>時空間アトラス</h2>
+          <p class="axis">軸 ― 時間をどう扱ったか。いま起きていることは、一つの時間として一貫しているか。</p>
+        </header>
+        <p>時間ものが問う判定は、世界の材質でも心の有無でもない。<strong>これは、いま本当に起きていることか</strong>。ループの朝は何回目なのか。記憶と記録は同じ時間を指しているのか。因果の輪は、閉じているのか。</p>
+        <p>今敏『千年女優』では、女優の生涯と、演じた映画の場面が、同じ時間に重なっていく。装置で移動するのではなく、語りそのものが通路になる。連続ドラマ『DARK』は、小さな町の家族の時間を、閉じた輪として長く追う。キム・チョヨプ『わたしたちが光の速さで進めないなら』は、光の速さでも埋まらないずれを、惜別の温度で書く。判定は、時計の数字ではなく、逢いたい相手との距離に宿る。</p>
+        <div class="works-row">
+          <a href="../spacetime/#work-millennium-actress">千年女優</a>
+          <a href="../spacetime/#work-dark">DARK</a>
+          <a href="../spacetime/#work-if-we-cannot-go-at-the-speed-of-light">わたしたちが光の速さで進めないなら</a>
+          <a href="../spacetime/#work-w-29a394b4">ほしのこえ</a>
+          <a href="../spacetime/#work-predestination">プリデスティネーション</a>
+        </div>
+      </section>
+
+      <section class="thread" id="management-society">
+        <header>
+          <p class="vol">第三巻</p>
+          <h2>管理社会アトラス</h2>
+          <p class="axis">軸 ― 社会は人をどう管理するか。誰が、人間として数えられ、管理されるのか。</p>
+        </header>
+        <p>ここでは判定が、個人の知覚から制度の側へ移る。誰を市民として数え、誰を区の外へ出すのか。管理の文法は、監視、快楽、情報、身体、階級と分かれるが、根にあるのは<strong>人の割り当て</strong>である。</p>
+        <p>ブロムカンプ『第9地区』は、来訪者を居住区の境界で管理する。郝景芳『折りたたみ北京』は、同じ土地を時間で折りたたみ、階級を都市の構造そのものとして書く。どちらも、法の条文より先に、空間が判定を下している。『1984年』の監視が「見られているか」を問うなら、これらの作品は「どこにいることを許されるか」を問う。</p>
+        <div class="works-row">
+          <a href="../management-society/#work-nineteen-eighty-four">1984年</a>
+          <a href="../management-society/#work-district-9">第9地区</a>
+          <a href="../management-society/#work-folding-beijing">折りたたみ北京</a>
+          <a href="../management-society/#work-the-handmaid-s-tale">侍女の物語</a>
+        </div>
+      </section>
+
+      <section class="thread" id="post-apocalypse">
+        <header>
+          <p class="vol">第四巻</p>
+          <h2>ポストアポカリプスアトラス</h2>
+          <p class="axis">軸 ― 世界はどう終わり、何が残ったか。</p>
+        </header>
+        <p>終わったあとの判定は、真偽のテストではない。<strong>残ったものは、生きるに足るか</strong>。荒野の暴力か、静かな日常か、進入を禁じられた場所か。何を持ち運ぶかが、その世界の性格になる。</p>
+        <p>ストルガツキー兄弟『ストーカー』は、来訪のあとに「ゾーン」を残した。残ったものは資源というより、意味のわからない禁域である。マンデル『ステーション・イレブン』では、疫病のあと、旅する劇団が上演を持ち運ぶ。ワヌリ・カヒウの短編映画『Pumzi』は、水の尽きた地下から、外にまだ生きるものがあるかを探す。残存の判定は、武器の在庫ではなく、続く行為の側にある。</p>
+        <div class="works-row">
+          <a href="../post-apocalypse/#work-stalker">ストーカー</a>
+          <a href="../post-apocalypse/#work-station-eleven">ステーション・イレブン</a>
+          <a href="../post-apocalypse/#work-pumzi">Pumzi</a>
+          <a href="../post-apocalypse/#work-w-eb4d364a">少女終末旅行</a>
+        </div>
+      </section>
+
+      <section class="thread" id="end-of-the-world">
+        <header>
+          <p class="vol">第五巻</p>
+          <h2>終焉アトラス</h2>
+          <p class="axis">軸 ― 終わりは来たか。何が来て、どう迎えるか。</p>
+        </header>
+        <p>終焉の判定は、カウントダウンの側にある。終わりは本当に近づいているのか。迎撃するか、受け入れるか、見ないふりをするか。同じ災厄でも、物語はそこで割れる。</p>
+        <p>劉慈欣『三体』は、地球外からの呼びかけと、科学が信じられなくなる事態として、終わりの近づき方を書く。空の印と、個人に降りかかるカウントダウンが、同じ問いに属する。連続ドラマ『LEFTOVERS／残された世界』は、すでに来てしまった終わりを、残された人々の日常と信仰として続ける。『メランコリア』が受容の極北に立つなら、こちらは常態化した終焉の、生活の側の変奏である。</p>
+        <div class="works-row">
+          <a href="../end-of-the-world/#work-three-body">三体</a>
+          <a href="../end-of-the-world/#work-the-leftovers">LEFTOVERS／残された世界</a>
+          <a href="../end-of-the-world/#work-melancholia">メランコリア</a>
+          <a href="../end-of-the-world/#work-on-the-beach">渚にて</a>
+        </div>
+      </section>
+
+      <section class="to-index" id="index">
+        <h2>作品一覧で、同じ糸を辿る</h2>
+        <p>判定のタグは、作品一覧から横断できる。仮想現実側の「現実の判定」と、人工知能側の「意識の判定」は、対になる二つの入口である。本ページで挙げた作品は、各巻の年表と付録の該当項に、本編または付録として収録してある。</p>
+        <p>
+          <a href="../works/">作品一覧を開く</a>
+          　／　
+          <a href="../works/?theme=%E7%8F%BE%E5%AE%9F%E3%81%AE%E5%88%A4%E5%AE%9A">現実の判定</a>
+          　／　
+          <a href="../works/?theme=%E6%84%8F%E8%AD%98%E3%81%AE%E5%88%A4%E5%AE%9A">意識の判定</a>
+        </p>
+      </section>
+
+      <footer class="colophon">
+        <p class="fin">判定 ― アトラスシリーズ全6冊を貫く読み</p>
+        <p><a href="../">アトラス大全</a>／<a href="../works/">作品一覧</a>／仮想現実／時空間／管理社会／ポストアポカリプス／終焉／人工知能</p>
+      </footer>
+    </main>
+  </body>
+</html>

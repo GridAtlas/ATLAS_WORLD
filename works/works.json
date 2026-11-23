@@ -1,11 +1,11 @@
 {
   "generatedBy": "tools/build-works.py",
   "counts": {
-    "officialEntries": 224,
+    "officialEntries": 243,
     "essayEntries": 9,
-    "allEntries": 233,
-    "uniqueOfficialWorks": 213,
-    "uniqueAllWorks": 222,
+    "allEntries": 252,
+    "uniqueOfficialWorks": 232,
+    "uniqueAllWorks": 241,
     "multiVolumeOfficial": 10
   },
   "taxonomy": {
@@ -704,6 +704,39 @@
       ]
     },
     {
+      "id": "invention-of-morel",
+      "title": "モレルの発明",
+      "orig": "La invención de Morel",
+      "year": 1940,
+      "yearLabel": "1940 記録された世界",
+      "decade": "1940年代",
+      "byline": "アドルフォ・ビオイ＝カサーレス ― 長編小説（1940。ボルヘスが序文を寄せた）",
+      "bylines": [
+        "アドルフォ・ビオイ＝カサーレス ― 長編小説（1940。ボルヘスが序文を寄せた）"
+      ],
+      "snippet": "無人に見える島で、語り手は、毎日おなじ仕草を繰り返す人々の姿を見る。モレルの「発明」は、記録と実在の境を溶かしていく。コンピュータ以前に、再現された人と、それを見る者が同じ場所に立つ構図を書いた、ラテンアメリカからの一本。",
+      "media": [
+        "小説"
+      ],
+      "regions": [
+        "アルゼンチン"
+      ],
+      "themes": [
+        "仮想世界",
+        "現実の判定"
+      ],
+      "appearances": [
+        {
+          "volume": "virtual-reality",
+          "volumeLabel": "仮想現実アトラス",
+          "role": "本編",
+          "href": "../virtual-reality/#work-invention-of-morel",
+          "titleInVolume": "モレルの発明",
+          "core": true
+        }
+      ]
+    },
+    {
       "id": "by-his-bootstraps",
       "title": "時の門",
       "orig": "By His Bootstraps",
@@ -1173,6 +1206,42 @@
           "role": "本編",
           "href": "../spacetime/#work-all-you-zombies",
           "titleInVolume": "―輪廻―",
+          "core": true
+        }
+      ]
+    },
+    {
+      "id": "solaris",
+      "title": "ソラリス",
+      "orig": "Solaris",
+      "year": 1961,
+      "yearLabel": "1961 接触と心の判定",
+      "decade": "1960年代",
+      "byline": "スタニスワフ・レム ― 長編小説（1961。日本語は国書刊行会の沼野充義訳が知られる。旧題『ソラリスの陽のもとに』）",
+      "bylines": [
+        "スタニスワフ・レム ― 長編小説（1961。日本語は国書刊行会の沼野充義訳が知られる。旧題『ソラリスの陽のもとに』）"
+      ],
+      "snippet": "惑星ソラリスを覆う海は、知性を持つらしい。観測ステーションに、亡き恋人が現れる。接触は理解にも征服にもならず、判定は「相手は海か、記憶か、それとも心か」へ移る。作られた知性ではなく、人間には測りきれない意識との出会いを、この軸の早い位置に置いた古典である。",
+      "media": [
+        "小説"
+      ],
+      "regions": [
+        "ポーランド"
+      ],
+      "themes": [
+        "意識の判定",
+        "作られた存在",
+        "複製・コピー",
+        "夢・記憶",
+        "死後の世界"
+      ],
+      "appearances": [
+        {
+          "volume": "ai",
+          "volumeLabel": "人工知能アトラス",
+          "role": "本編",
+          "href": "../ai/#work-solaris",
+          "titleInVolume": "ソラリス",
           "core": true
         }
       ]
@@ -1664,6 +1733,41 @@
       ]
     },
     {
+      "id": "lathe-of-heaven",
+      "title": "天のろくろ",
+      "orig": "The Lathe of Heaven",
+      "year": 1971,
+      "yearLabel": "1971 書き換えられる世界",
+      "decade": "1970年代",
+      "byline": "アーシュラ・K・ル＝グウィン ― 長編小説（1971。日本語は脇明子訳、1979年サンリオ）",
+      "bylines": [
+        "アーシュラ・K・ル＝グウィン ― 長編小説（1971。日本語は脇明子訳、1979年サンリオ）"
+      ],
+      "snippet": "ジョージ・オーアの夢は、目覚めたあとの世界を書き換える。見たものが、共有された現実として残るとき、世界の真偽を測る装置は、夢の側へ移る。同じ1971年の『泰平ヨンの未来学会議』が幻覚の階層を描くなら、こちらは「夢が公共の世界を直してしまう」側の話である。",
+      "media": [
+        "小説"
+      ],
+      "regions": [
+        "アメリカ"
+      ],
+      "themes": [
+        "仮想世界",
+        "現実の判定",
+        "夢・記憶",
+        "時間改変"
+      ],
+      "appearances": [
+        {
+          "volume": "virtual-reality",
+          "volumeLabel": "仮想現実アトラス",
+          "role": "本編",
+          "href": "../virtual-reality/#work-lathe-of-heaven",
+          "titleInVolume": "天のろくろ",
+          "core": true
+        }
+      ]
+    },
+    {
       "id": "the-futurological-congress",
       "title": "泰平ヨンの未来学会議",
       "orig": "The Futurological Congress",
@@ -1694,6 +1798,38 @@
           "href": "../virtual-reality/#work-the-futurological-congress",
           "titleInVolume": "泰平ヨンの未来学会議",
           "core": false
+        }
+      ]
+    },
+    {
+      "id": "stalker",
+      "title": "ストーカー",
+      "orig": "Пикник на обочине / 路傍のピクニック",
+      "year": 1972,
+      "yearLabel": "1972 残された禁域",
+      "decade": "1970年代",
+      "byline": "アルカジイ＆ボリス・ストルガツキー ― 長編小説（1972。現行のハヤカワ版題は『ストーカー』、原題は『路傍のピクニック』）",
+      "bylines": [
+        "アルカジイ＆ボリス・ストルガツキー ― 長編小説（1972。現行のハヤカワ版題は『ストーカー』、原題は『路傍のピクニック』）"
+      ],
+      "snippet": "何者かの来訪のあと、地上には「ゾーン」が残された。立ち入る者たちは、そこで何かを求める。終わった後の世界を、荒野の無法ではなく、禁域として書いた。東欧SFの古典であり、本巻E軸（残された場所）の早い位置に置く。のちにタルコフスキーが映画化した（1979）。",
+      "media": [
+        "小説"
+      ],
+      "regions": [
+        "ロシア"
+      ],
+      "themes": [
+        "終わった後"
+      ],
+      "appearances": [
+        {
+          "volume": "post-apocalypse",
+          "volumeLabel": "ポストアポカリプスアトラス",
+          "role": "本編",
+          "href": "../post-apocalypse/#work-stalker",
+          "titleInVolume": "ストーカー",
+          "core": true
         }
       ]
     },
@@ -4649,6 +4785,75 @@
       ]
     },
     {
+      "id": "millennium-actress",
+      "title": "千年女優",
+      "orig": "Millennium Actress",
+      "year": 2002,
+      "yearLabel": "2002 記憶の層",
+      "decade": "2000年代",
+      "byline": "今敏 ― アニメ映画（日本公開2002年9月14日。製作2001年。脚本：村井さだゆき／今敏、音楽：平沢進、制作：マッドハウス）",
+      "bylines": [
+        "今敏 ― アニメ映画（日本公開2002年9月14日。製作2001年。脚本：村井さだゆき／今敏、音楽：平沢進、制作：マッドハウス）"
+      ],
+      "snippet": "往年の女優、藤原千代子の生涯を辿る記録が、彼女の記憶と、演じた映画の場面と重なっていく。時間は機械で移動するのではなく、語りと映像の層として折り重なる。同じ2002年の『ほしのこえ』が距離による時間のずれを書くなら、こちらは記憶が時間の通路になる側の話である。",
+      "media": [
+        "アニメ",
+        "映画"
+      ],
+      "regions": [
+        "日本"
+      ],
+      "themes": [
+        "時間の操作",
+        "夢・記憶",
+        "時間のずれ"
+      ],
+      "appearances": [
+        {
+          "volume": "spacetime",
+          "volumeLabel": "時空間アトラス",
+          "role": "本編",
+          "href": "../spacetime/#work-millennium-actress",
+          "titleInVolume": "千年女優",
+          "core": true
+        }
+      ]
+    },
+    {
+      "id": "pluto",
+      "title": "PLUTO",
+      "orig": "プルートゥ",
+      "year": 2003,
+      "yearLabel": "2003 ロボットの心",
+      "decade": "2000年代",
+      "byline": "浦沢直樹 ― 漫画（『ビッグコミックオリジナル』2003年18号〜2009年8号、小学館。原作は手塚治虫「地上最大のロボット」、監修は手塚眞）",
+      "bylines": [
+        "浦沢直樹 ― 漫画（『ビッグコミックオリジナル』2003年18号〜2009年8号、小学館。原作は手塚治虫「地上最大のロボット」、監修は手塚眞）"
+      ],
+      "snippet": "ロボットと人間が共存する世界で、ロボット刑事ゲジヒトが連続する事件を追う。手塚治虫の「地上最大のロボット」を、浦沢直樹が長く暗い調べで書き直した。機械の身体に宿るものの重さは、本巻のゴーストの層に属する。",
+      "media": [
+        "漫画"
+      ],
+      "regions": [
+        "日本"
+      ],
+      "themes": [
+        "意識の判定",
+        "作られた存在",
+        "身体の管理"
+      ],
+      "appearances": [
+        {
+          "volume": "ai",
+          "volumeLabel": "人工知能アトラス",
+          "role": "本編",
+          "href": "../ai/#work-pluto",
+          "titleInVolume": "PLUTO",
+          "core": true
+        }
+      ]
+    },
+    {
       "id": "secondlife",
       "title": "Second Life",
       "orig": "セカンドライフ",
@@ -4679,6 +4884,41 @@
           "href": "../virtual-reality/#work-secondlife",
           "titleInVolume": "Second Life",
           "core": false
+        }
+      ]
+    },
+    {
+      "id": "innocence",
+      "title": "イノセンス",
+      "orig": "INNOCENCE / Ghost in the Shell 2",
+      "year": 2004,
+      "yearLabel": "2004 人形といのち",
+      "decade": "2000年代",
+      "byline": "押井守 ― 劇場アニメ（2004年3月6日公開。原作：士郎正宗、制作：Production I.G）",
+      "bylines": [
+        "押井守 ― 劇場アニメ（2004年3月6日公開。原作：士郎正宗、制作：Production I.G）"
+      ],
+      "snippet": "人形と義体が行き交う都市で、バトーはある事件を追う。ゴーストと身体の境は、1995年の『攻殻機動隊』よりさらに冷たい場所へ移る。本籍はこちらの「意識の判定」に置き、前作が仮想現実アトラスにも本籍を持つことと対にする。",
+      "media": [
+        "アニメ"
+      ],
+      "regions": [
+        "日本"
+      ],
+      "themes": [
+        "意識の判定",
+        "作られた存在",
+        "仮想世界",
+        "身体の管理"
+      ],
+      "appearances": [
+        {
+          "volume": "ai",
+          "volumeLabel": "人工知能アトラス",
+          "role": "本編",
+          "href": "../ai/#work-innocence",
+          "titleInVolume": "イノセンス",
+          "core": true
         }
       ]
     },
@@ -4817,6 +5057,40 @@
           "role": "本編",
           "href": "../spacetime/#work-w-d125371c",
           "titleInVolume": "リピート",
+          "core": true
+        }
+      ]
+    },
+    {
+      "id": "never-let-me-go",
+      "title": "わたしを離さないで",
+      "orig": "Never Let Me Go",
+      "year": 2005,
+      "yearLabel": "2005 作られた生",
+      "decade": "2000年代",
+      "byline": "カズオ・イシグロ ― 長編小説（2005年4月5日刊。日本語は土屋政雄訳、2006年）",
+      "bylines": [
+        "カズオ・イシグロ ― 長編小説（2005年4月5日刊。日本語は土屋政雄訳、2006年）"
+      ],
+      "snippet": "施設で育てられた子どもたちの、静かな人生の記録。彼らの生が何のためだったのかは、説明ではなく日常の温度で明かされていく。作られた生は、人として数えられるのか。本巻が機械に向けてきた判定を、ごく近い人間の顔へ移した一本である。",
+      "media": [
+        "小説"
+      ],
+      "regions": [
+        "イギリス"
+      ],
+      "themes": [
+        "意識の判定",
+        "作られた存在",
+        "複製・コピー"
+      ],
+      "appearances": [
+        {
+          "volume": "ai",
+          "volumeLabel": "人工知能アトラス",
+          "role": "本編",
+          "href": "../ai/#work-never-let-me-go",
+          "titleInVolume": "わたしを離さないで",
           "core": true
         }
       ]
@@ -5092,6 +5366,38 @@
           "role": "本編",
           "href": "../post-apocalypse/#work-world-war-z",
           "titleInVolume": "ワールド・ウォーZ",
+          "core": true
+        }
+      ]
+    },
+    {
+      "id": "three-body",
+      "title": "三体",
+      "orig": "三体 / The Three-Body Problem",
+      "year": 2006,
+      "yearLabel": "2006 到来の前夜",
+      "decade": "2000年代",
+      "byline": "劉慈欣 ― 長編小説（『科幻世界』2006年5〜12月連載。単行本は2008年1月、重慶出版社）",
+      "bylines": [
+        "劉慈欣 ― 長編小説（『科幻世界』2006年5〜12月連載。単行本は2008年1月、重慶出版社）"
+      ],
+      "snippet": "地球外からの呼びかけと、科学が信じられなくなる事態。空に現れる不可解な印と、個人に降りかかるカウントダウンが、終わりの近づき方を変える。本巻はシリーズの第1長編を本籍とし、宇宙からの接近をC軸に置く。後続巻の構想には立ち入らない。",
+      "media": [
+        "小説"
+      ],
+      "regions": [
+        "中国"
+      ],
+      "themes": [
+        "終わる直前"
+      ],
+      "appearances": [
+        {
+          "volume": "end-of-the-world",
+          "volumeLabel": "終焉アトラス",
+          "role": "本編",
+          "href": "../end-of-the-world/#work-three-body",
+          "titleInVolume": "三体",
           "core": true
         }
       ]
@@ -5500,6 +5806,39 @@
       ]
     },
     {
+      "id": "pumzi",
+      "title": "Pumzi",
+      "orig": "",
+      "year": 2009,
+      "yearLabel": "2009 映画／ケニア",
+      "decade": "2000年代",
+      "byline": "ワヌリ・カヒウ ― 映画（2009年10月21日、ケニア国際映画祭。短い尺の作品）",
+      "bylines": [
+        "ワヌリ・カヒウ ― 映画（2009年10月21日、ケニア国際映画祭。短い尺の作品）"
+      ],
+      "snippet": "水の尽きた未来。地下の共同体で暮らす若い女性が、外の世界にまだ生きるものがあるのではないかと探る。アフリカの女性監督による短い記録として、本編の環境崩壊・残された場所の隣に置く。",
+      "media": [
+        "映画"
+      ],
+      "regions": [
+        "ケニア"
+      ],
+      "themes": [
+        "終わった後",
+        "階級"
+      ],
+      "appearances": [
+        {
+          "volume": "post-apocalypse",
+          "volumeLabel": "ポストアポカリプスアトラス",
+          "role": "付録",
+          "href": "../post-apocalypse/#work-pumzi",
+          "titleInVolume": "Pumzi",
+          "core": false
+        }
+      ]
+    },
+    {
       "id": "w-5682cc49",
       "title": "アイアムアヒーロー",
       "orig": "",
@@ -5716,6 +6055,39 @@
           "href": "../spacetime/#work-w-467a9f9d",
           "titleInVolume": "涼宮ハルヒの憂鬱 ― エンドレスエイト",
           "core": true
+        }
+      ]
+    },
+    {
+      "id": "district-9",
+      "title": "第9地区",
+      "orig": "District 9",
+      "year": 2009,
+      "yearLabel": "2009 居住区の境界",
+      "decade": "2000年代",
+      "byline": "ニール・ブロムカンプ ― 映画（2009年8月28日、南アフリカ公開）",
+      "bylines": [
+        "ニール・ブロムカンプ ― 映画（2009年8月28日、南アフリカ公開）"
+      ],
+      "snippet": "異星の来訪者たちは、都市の一画に収容されて暮らす。管理は法律の条文だけでなく、居住区の境界そのものとして現れる。アフリカ大陸を主たる舞台と制作の場所にした、本巻では数少ない一本。",
+      "media": [
+        "映画"
+      ],
+      "regions": [
+        "南アフリカ"
+      ],
+      "themes": [
+        "管理と支配",
+        "階級"
+      ],
+      "appearances": [
+        {
+          "volume": "management-society",
+          "volumeLabel": "管理社会アトラス",
+          "role": "本編",
+          "href": "../management-society/#work-district-9",
+          "titleInVolume": "第9地区",
+          "core": false
         }
       ]
     },
@@ -6168,6 +6540,40 @@
       ]
     },
     {
+      "id": "ship-of-theseus",
+      "title": "Ship of Theseus",
+      "orig": "テセウスの船（インド映画）",
+      "year": 2012,
+      "yearLabel": "2012 映画／インド",
+      "decade": "2010年代",
+      "byline": "アナンド・ガンディー ― 映画（2012年トロント国際映画祭、インド公開2013年7月19日）",
+      "bylines": [
+        "アナンド・ガンディー ― 映画（2012年トロント国際映画祭、インド公開2013年7月19日）"
+      ],
+      "snippet": "テセウスの船の問いを、身体と自己の連続として映画にした。部分が入れ替わっても、同じ私だと言えるのか。本編が機械の心を判定するなら、こちらは「同じ私の判定」を、作られた部品ではなく生きている身体の側で問う。日本のドラマ・漫画『テセウスの船』とは別作品である。",
+      "media": [
+        "映画"
+      ],
+      "regions": [
+        "インド"
+      ],
+      "themes": [
+        "意識の判定",
+        "作られた存在",
+        "身体の管理"
+      ],
+      "appearances": [
+        {
+          "volume": "ai",
+          "volumeLabel": "人工知能アトラス",
+          "role": "付録",
+          "href": "../ai/#work-ship-of-theseus",
+          "titleInVolume": "Ship of Theseus",
+          "core": false
+        }
+      ]
+    },
+    {
       "id": "sword-art-online",
       "title": "ソードアート・オンライン",
       "orig": "Sword Art Online",
@@ -6474,6 +6880,41 @@
       ]
     },
     {
+      "id": "frankenstein-in-baghdad",
+      "title": "バグダードのフランケンシュタイン",
+      "orig": "Frankenstein in Baghdad",
+      "year": 2013,
+      "yearLabel": "2013 小説／イラク",
+      "decade": "2010年代",
+      "byline": "アフマド・サアダーウィー ― 長編小説（アラビア語2013年、レバノン al-Jamal。日本語は柳谷あゆみ訳、集英社2020年）",
+      "bylines": [
+        "アフマド・サアダーウィー ― 長編小説（アラビア語2013年、レバノン al-Jamal。日本語は柳谷あゆみ訳、集英社2020年）"
+      ],
+      "snippet": "戦後のバグダードで、瓦礫と遺体の断片から一つの身体が組み立てられる。フランケンシュタインの系譜を、戦争のあとに移した変奏。作られた者が街を歩くとき、判定は実験室を出て、廃墟の倫理へ移る。",
+      "media": [
+        "小説"
+      ],
+      "regions": [
+        "イラク"
+      ],
+      "themes": [
+        "意識の判定",
+        "作られた存在",
+        "身体の管理",
+        "戦争"
+      ],
+      "appearances": [
+        {
+          "volume": "ai",
+          "volumeLabel": "人工知能アトラス",
+          "role": "付録",
+          "href": "../ai/#work-frankenstein-in-baghdad",
+          "titleInVolume": "バグダードのフランケンシュタイン",
+          "core": false
+        }
+      ]
+    },
+    {
       "id": "w-a853bded",
       "title": "ログ・ホライズン",
       "orig": "",
@@ -6503,6 +6944,39 @@
           "role": "付録",
           "href": "../virtual-reality/#work-w-a853bded",
           "titleInVolume": "ログ・ホライズン",
+          "core": false
+        }
+      ]
+    },
+    {
+      "id": "the-leftovers",
+      "title": "LEFTOVERS／残された世界",
+      "orig": "The Leftovers",
+      "year": 2014,
+      "yearLabel": "2014 連続ドラマ",
+      "decade": "2010年代",
+      "byline": "デイモン・リンドロフ ― 連続ドラマ（HBO、2014〜2017年。原作はトム・ペロッタの小説、2011年）",
+      "bylines": [
+        "デイモン・リンドロフ ― 連続ドラマ（HBO、2014〜2017年。原作はトム・ペロッタの小説、2011年）"
+      ],
+      "snippet": "突然、人々の一部が消えたあと。終わりはスペクタクルとしてではなく、残された人々の日常と信仰として続く。本編が「終わりが来る過程」を追うのに対し、こちらはすでに来てしまった終わりを、常態として生きる側の話である。",
+      "media": [
+        "ドラマ",
+        "小説"
+      ],
+      "regions": [
+        "アメリカ"
+      ],
+      "themes": [
+        "終わる直前"
+      ],
+      "appearances": [
+        {
+          "volume": "end-of-the-world",
+          "volumeLabel": "終焉アトラス",
+          "role": "付録",
+          "href": "../end-of-the-world/#work-the-leftovers",
+          "titleInVolume": "LEFTOVERS／残された世界",
           "core": false
         }
       ]
@@ -6575,6 +7049,39 @@
       ]
     },
     {
+      "id": "station-eleven",
+      "title": "ステーション・イレブン",
+      "orig": "Station Eleven",
+      "year": 2014,
+      "yearLabel": "2014 残る上演",
+      "decade": "2010年代",
+      "byline": "エミリー・セント・ジョン・マンデル ― 長編小説（2014年9月9日刊）",
+      "bylines": [
+        "エミリー・セント・ジョン・マンデル ― 長編小説（2014年9月9日刊）"
+      ],
+      "snippet": "疫病のあと、旅する劇団が残る。終わったあとに持ち運ばれるのは武器ではなく、上演と記憶である。同じ2014年の『少女終末旅行』が静かな路上を歩くなら、こちらは芸術が共同体の残り方になる側の話である。本籍は小説に置く。",
+      "media": [
+        "小説"
+      ],
+      "regions": [
+        "カナダ"
+      ],
+      "themes": [
+        "終わった後",
+        "夢・記憶"
+      ],
+      "appearances": [
+        {
+          "volume": "post-apocalypse",
+          "volumeLabel": "ポストアポカリプスアトラス",
+          "role": "本編",
+          "href": "../post-apocalypse/#work-station-eleven",
+          "titleInVolume": "ステーション・イレブン",
+          "core": true
+        }
+      ]
+    },
+    {
       "id": "predestination",
       "title": "プリデスティネーション",
       "orig": "Predestination",
@@ -6639,6 +7146,40 @@
           "role": "本編",
           "href": "../post-apocalypse/#work-w-eb4d364a",
           "titleInVolume": "少女終末旅行",
+          "core": true
+        }
+      ]
+    },
+    {
+      "id": "folding-beijing",
+      "title": "折りたたみ北京",
+      "orig": "北京折叠 / Folding Beijing",
+      "year": 2014,
+      "yearLabel": "2014 折りたたまれる都市",
+      "decade": "2010年代",
+      "byline": "郝景芳 ― 中編小説（正式初出は2014年2月、『文艺风賞・閃電宮』。日本語は早川書房のアンソロジー等に収録）",
+      "bylines": [
+        "郝景芳 ― 中編小説（正式初出は2014年2月、『文艺风賞・閃電宮』。日本語は早川書房のアンソロジー等に収録）"
+      ],
+      "snippet": "北京は、折りたたまれて空間と時間を分け、異なる階級が同じ土地を順番に使う。管理はスコアや監視カメラだけでなく、都市そのものの構造として現れる。中国の当代SFが、本巻のF軸に直接つながる一本。",
+      "media": [
+        "小説"
+      ],
+      "regions": [
+        "中国"
+      ],
+      "themes": [
+        "管理と支配",
+        "階級",
+        "監視"
+      ],
+      "appearances": [
+        {
+          "volume": "management-society",
+          "volumeLabel": "管理社会アトラス",
+          "role": "本編",
+          "href": "../management-society/#work-folding-beijing",
+          "titleInVolume": "折りたたみ北京",
           "core": true
         }
       ]
@@ -6901,6 +7442,40 @@
       ]
     },
     {
+      "id": "dark",
+      "title": "DARK",
+      "orig": "ダーク",
+      "year": 2017,
+      "yearLabel": "2017 因果の輪",
+      "decade": "2010年代",
+      "byline": "バラン・ボー・オダー、ヤンチェ・フリーゼ ― 連続ドラマ（Netflix、ドイツ、2017年12月1日〜2020年6月27日、全3シーズン）",
+      "bylines": [
+        "バラン・ボー・オダー、ヤンチェ・フリーゼ ― 連続ドラマ（Netflix、ドイツ、2017年12月1日〜2020年6月27日、全3シーズン）"
+      ],
+      "snippet": "ドイツの小さな町ヴィデンで、子どもが消える。残された家族の時間は、閉じた輪の中へ入っていく。連続ドラマとして、因果の輪を長い時間で追う。タイトルの『DARK』は、別巻付録の映画『ダークシティ』とは別作品である。",
+      "media": [
+        "ドラマ"
+      ],
+      "regions": [
+        "ドイツ"
+      ],
+      "themes": [
+        "時間の操作",
+        "因果の輪",
+        "家族"
+      ],
+      "appearances": [
+        {
+          "volume": "spacetime",
+          "volumeLabel": "時空間アトラス",
+          "role": "本編",
+          "href": "../spacetime/#work-dark",
+          "titleInVolume": "DARK",
+          "core": true
+        }
+      ]
+    },
+    {
       "id": "horizonzerodawn",
       "title": "Horizon Zero Dawn",
       "orig": "",
@@ -7048,6 +7623,40 @@
       ]
     },
     {
+      "id": "memories-of-the-alhambra",
+      "title": "アルハンブラ宮殿の思い出",
+      "orig": "알함브라 궁전의 추억 / Memories of the Alhambra",
+      "year": 2018,
+      "yearLabel": "2018 連続ドラマ／韓国",
+      "decade": "2010年代",
+      "byline": "脚本：ソン・ジェジョン、演出：アン・ギルホ ― 連続ドラマ（tvN、2018年、全16話）",
+      "bylines": [
+        "脚本：ソン・ジェジョン、演出：アン・ギルホ ― 連続ドラマ（tvN、2018年、全16話）"
+      ],
+      "snippet": "グラナダを舞台に、ARゲームと現実の生活が重なっていく。仮想の重ね合わせが、日常の真偽を揺らす。本編が「世界は本物か」を哲学とハードSFで追うのに対し、こちらは恋愛と事業の危機を、連続ドラマの長さで書く、付録E（前提がひっくり返る）の変奏である。",
+      "media": [
+        "ドラマ"
+      ],
+      "regions": [
+        "韓国"
+      ],
+      "themes": [
+        "仮想世界",
+        "現実の判定",
+        "哲学"
+      ],
+      "appearances": [
+        {
+          "volume": "virtual-reality",
+          "volumeLabel": "仮想現実アトラス",
+          "role": "付録",
+          "href": "../virtual-reality/#work-memories-of-the-alhambra",
+          "titleInVolume": "アルハンブラ宮殿の思い出",
+          "core": false
+        }
+      ]
+    },
+    {
       "id": "ready-player-one",
       "title": "レディ・プレイヤー1",
       "orig": "Ready Player One",
@@ -7111,6 +7720,39 @@
           "role": "本編",
           "href": "../spacetime/#work-outerwilds",
           "titleInVolume": "Outer Wilds",
+          "core": true
+        }
+      ]
+    },
+    {
+      "id": "if-we-cannot-go-at-the-speed-of-light",
+      "title": "わたしたちが光の速さで進めないなら",
+      "orig": "우리가 빛의 속도로 갈 수 없다면",
+      "year": 2019,
+      "yearLabel": "2019 届かない距離",
+      "decade": "2010年代",
+      "byline": "キム・チョヨプ（金草葉） ― 短編集（2019年6月24日刊。日本語は早川書房）",
+      "bylines": [
+        "キム・チョヨプ（金草葉） ― 短編集（2019年6月24日刊。日本語は早川書房）"
+      ],
+      "snippet": "光の速さでも埋まらない距離と、すれ違う時間。表題作をはじめ、逢いたい相手との時間のずれが、移動では解けないものとして書かれる。韓国の新しい声が、E軸の「ずれ」を、工学の驚異ではなく、静かな惜別の温度で書いた。",
+      "media": [
+        "小説"
+      ],
+      "regions": [
+        "韓国"
+      ],
+      "themes": [
+        "時間の操作",
+        "時間のずれ"
+      ],
+      "appearances": [
+        {
+          "volume": "spacetime",
+          "volumeLabel": "時空間アトラス",
+          "role": "本編",
+          "href": "../spacetime/#work-if-we-cannot-go-at-the-speed-of-light",
+          "titleInVolume": "わたしたちが光の速さで進めないなら",
           "core": true
         }
       ]
