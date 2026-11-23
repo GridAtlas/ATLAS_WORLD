@@ -46,7 +46,7 @@ AXIS_THEMES = {
 # (e.g. AI axis always adds 作られた存在; the keyword 「判定」 also flags VR works).
 THEME_OVERRIDES = {
     "klein-bottle": ["仮想世界", "現実の判定"],
-    "dareka-ga-naka-ni-iru": ["意識の判定"],
+    "dareka-ga-naka-ni-iru": ["意識の判定", "時間の操作"],
     "mahotsukai-no-deshitachi": ["終わる直前", "感染", "時間の操作"],
 }
 
