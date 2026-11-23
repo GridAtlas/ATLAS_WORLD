@@ -1,0 +1,1260 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="description" content="作られた知性に心はあるか。問われているのは意識そのものだ。人工知能アトラス（下書き）は、チューリング・テストからフランケンシュタイン、ブレードランナー、her、エクス・マキナまでを、「何をもって意識があると判定するか」を軸に読む系譜集である。" />
+    <link rel="icon" href="data:," />
+    <title>人工知能アトラス ― 何をもって、心があると判定するのか（下書き）</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho+B1:wght@500;700;800&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet" />
+    <style>
+
+      button, [role="button"], select, summary, input:not([type="checkbox"], [type="radio"]) { min-height: 2.25rem; }
+      * { box-sizing: border-box; }
+      :root {
+        --bg: #fbfaf6;
+        --surface: #ffffff;
+        --ink: #191b1d;
+        --ink-2: #45484b;
+        --muted: #71757a;
+        --line: #ddd8cc;
+        --line-soft: #eae6db;
+        --accent: #3d3a86;
+        --accent-ink: #322e70;
+        --teal: #0d5c50;
+        --gold: #8a6d1f;
+        --gold-bg: #f5ecd2;
+        --chip-bg: #f0ede4;
+        --deep-bg: #f3f0e7;
+      }
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --bg: #101315;
+          --surface: #171a1d;
+          --ink: #edeade;
+          --ink-2: #c6c9c4;
+          --muted: #9aa0a0;
+          --line: #33383b;
+          --line-soft: #262b2e;
+          --accent: #9b98d8;
+          --accent-ink: #b9b6e4;
+          --teal: #57bfa9;
+          --gold: #d9b95c;
+          --gold-bg: #38300f;
+          --chip-bg: #22262a;
+          --deep-bg: #181c1f;
+        }
+      }
+      html { scroll-behavior: smooth; }
+      @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--ink);
+        font-family: "Zen Kaku Gothic New", "Hiragino Kaku Gothic ProN", sans-serif;
+        font-size: 16px;
+        line-height: 1.85;
+        -webkit-font-smoothing: antialiased;
+      }
+      .wrap { max-width: 1020px; margin: 0 auto; padding: 0 20px 72px; }
+      .serif { font-family: "Shippori Mincho B1", "Hiragino Mincho ProN", serif; }
+
+      /* ---------- intro ---------- */
+      .intro { padding: 44px 0 8px; }
+      .intro .kicker {
+        color: var(--accent-ink); font-weight: 700; font-size: 13px; letter-spacing: .14em; margin: 0 0 14px;
+      }
+      .intro h1 {
+        font-family: "Shippori Mincho B1", serif; font-weight: 800;
+        font-size: clamp(30px, 6vw, 46px); line-height: 1.3; margin: 0 0 18px; letter-spacing: .02em;
+      }
+      .intro h1 .thin { display: block; font-size: .52em; font-weight: 500; color: var(--ink-2); margin-top: 8px; letter-spacing: .06em; }
+      .intro .lead { font-size: 17px; max-width: 44em; margin: 0 0 10px; }
+      .intro .lead strong { color: var(--accent-ink); font-weight: 700; }
+      figure.hero { margin: 26px 0 6px; }
+      figure.hero img { width: 100%; height: auto; display: block; border: 1px solid var(--line); border-radius: 4px; }
+      figure.hero figcaption { font-size: 13px; color: var(--muted); margin-top: 8px; line-height: 1.7; }
+
+      /* ---------- how to read ---------- */
+      section.block { margin-top: 52px; }
+      .block-head { display: flex; align-items: baseline; gap: 14px; border-bottom: 2px solid var(--ink); padding-bottom: 8px; margin-bottom: 20px; }
+      .block-head h2 { font-family: "Shippori Mincho B1", serif; font-size: clamp(21px, 4vw, 27px); font-weight: 800; margin: 0; }
+      .block-head .no { color: var(--accent-ink); font-family: "Shippori Mincho B1", serif; font-weight: 700; }
+      .questions { list-style: none; margin: 0; padding: 0; counter-reset: q; }
+      .questions li { display: grid; grid-template-columns: 52px 1fr; gap: 6px 14px; padding: 14px 0; border-bottom: 1px solid var(--line-soft); }
+      .questions .qno { font-family: "Shippori Mincho B1", serif; font-size: 26px; font-weight: 800; color: var(--accent-ink); line-height: 1.2; }
+      .questions h3 { margin: 0; font-size: 17px; font-weight: 700; }
+      .questions p { margin: 2px 0 0; color: var(--ink-2); font-size: 15px; grid-column: 2; }
+      .questions li .qno { grid-row: span 2; }
+
+      /* ---------- flow strip ---------- */
+      .flow { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 8px; margin: 4px 0 0; padding: 16px 18px; background: var(--deep-bg); border: 1px solid var(--line-soft); border-radius: 6px; font-size: 14px; }
+      .flow b { font-family: "Shippori Mincho B1", serif; }
+      .flow .arr { color: var(--accent-ink); font-weight: 700; }
+      .flow .goal { color: var(--accent-ink); }
+
+      /* ---------- filters ---------- */
+      .filters { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 6px; }
+      .filters button {
+        font: inherit; font-size: 14px; font-weight: 500;
+        padding: 6px 16px; min-height: 40px;
+        border: 1px solid var(--line); border-radius: 999px;
+        background: var(--surface); color: var(--ink-2); cursor: pointer;
+      }
+      .filters button[aria-pressed="true"] { background: var(--ink); color: var(--bg); border-color: var(--ink); font-weight: 700; }
+      .count { font-size: 13px; color: var(--muted); margin: 8px 0 0; }
+
+      /* ---------- timeline ---------- */
+      .timeline { position: relative; margin-top: 10px; }
+      .timeline::before { content: ""; position: absolute; left: 118px; top: 6px; bottom: 6px; width: 1px; background: var(--line); }
+      .entry { position: relative; display: grid; grid-template-columns: 96px 1fr; gap: 0 44px; padding: 30px 0 30px; border-bottom: 1px solid var(--line-soft); }
+      .entry::before { content: ""; position: absolute; left: 113px; top: 44px; width: 11px; height: 11px; border-radius: 50%; background: var(--bg); border: 2px solid var(--accent); }
+      .entry.core::before { background: var(--accent); }
+      .year { font-family: "Shippori Mincho B1", serif; font-weight: 800; font-size: 21px; line-height: 1.35; text-align: right; padding-top: 4px; }
+      .year small { display: block; font-size: 12px; font-weight: 500; color: var(--muted); font-family: "Zen Kaku Gothic New", sans-serif; margin-top: 4px; letter-spacing: .05em; }
+      .entry h3 { font-family: "Shippori Mincho B1", serif; font-size: clamp(20px, 4.4vw, 25px); font-weight: 800; margin: 0; line-height: 1.45; }
+      .entry h3 .orig { font-size: .58em; font-weight: 500; color: var(--muted); margin-left: 10px; letter-spacing: .04em; white-space: nowrap; }
+      .byline { font-size: 14px; color: var(--ink-2); margin: 3px 0 0; }
+      .tags { display: flex; flex-wrap: wrap; gap: 6px; margin: 10px 0 0; padding: 0; list-style: none; }
+      .tags li { font-size: 12px; font-weight: 500; padding: 2px 10px; border-radius: 999px; background: var(--chip-bg); color: var(--ink-2); line-height: 1.9; }
+      .tags li.phase { background: transparent; border: 1px solid var(--line); color: var(--teal); font-weight: 700; }
+      .tags li.buy { background: var(--gold-bg); color: var(--gold); font-weight: 700; }
+      .entry .desc { margin: 12px 0 0; max-width: 42em; }
+      .points { margin: 14px 0 0; display: grid; gap: 8px; }
+      .points div { display: grid; grid-template-columns: 118px 1fr; gap: 4px 12px; font-size: 14.5px; }
+      .points dt { font-weight: 700; color: var(--teal); white-space: nowrap; }
+      .points dd { margin: 0; color: var(--ink-2); }
+      details.deep { margin-top: 12px; border: 1px solid var(--line-soft); border-radius: 6px; background: var(--surface); }
+      details.deep summary { cursor: pointer; padding: 8px 16px; font-weight: 700; font-size: 14px; color: var(--accent-ink); list-style: none; display: flex; align-items: center; min-height: 44px; }
+      details.deep summary::-webkit-details-marker { display: none; }
+      details.deep summary::after { content: "＋"; margin-left: auto; font-weight: 400; }
+      details.deep[open] summary::after { content: "−"; }
+      details.deep .body { padding: 2px 16px 14px; font-size: 14.5px; color: var(--ink-2); }
+      details.deep .body p { margin: 6px 0; }
+      .hidden { display: none !important; }
+
+      /* ---------- essays ---------- */
+      .essay { padding: 22px 0; border-bottom: 1px solid var(--line-soft); }
+      .essay:last-child { border-bottom: none; }
+      .essay h3 { font-family: "Shippori Mincho B1", serif; font-size: 20px; font-weight: 800; margin: 0 0 4px; }
+      .essay h3 .vs { color: var(--accent-ink); }
+      .essay .sub { font-size: 13px; color: var(--muted); margin: 0 0 10px; }
+      .essay p { margin: 8px 0; max-width: 44em; color: var(--ink-2); }
+      .essay p strong, .essay p b { color: var(--ink); }
+
+      /* ---------- routes ---------- */
+      .routes { display: grid; gap: 0; }
+      .route { padding: 18px 0; border-bottom: 1px solid var(--line-soft); }
+      .route:last-child { border-bottom: none; }
+      .route h3 { margin: 0 0 4px; font-size: 17px; font-weight: 700; }
+      .route h3 .time { font-size: 13px; color: var(--muted); font-weight: 500; margin-left: 8px; }
+      .route p { margin: 4px 0 8px; color: var(--ink-2); font-size: 15px; max-width: 44em; }
+      .route .steps { font-family: "Shippori Mincho B1", serif; font-weight: 700; font-size: 15.5px; }
+      .route .steps .arr { color: var(--accent-ink); margin: 0 4px; }
+      .route .steps .buy-mark { color: var(--gold); font-size: 12px; font-family: "Zen Kaku Gothic New", sans-serif; vertical-align: super; }
+
+      /* ---------- appendix ---------- */
+      .app-lead { max-width: 44em; color: var(--ink-2); margin: 0 0 8px; }
+      .app-lead strong { color: var(--ink); }
+      .app-note { background: var(--deep-bg); border: 1px solid var(--line-soft); border-radius: 6px; padding: 16px 18px; font-size: 14.5px; color: var(--ink-2); margin: 18px 0 6px; }
+      .app-note b { color: var(--ink); }
+      .strand { margin-top: 34px; }
+      .strand-head { margin-bottom: 6px; }
+      .strand-head h3 { font-family: "Shippori Mincho B1", serif; font-size: 20px; font-weight: 800; margin: 0; line-height: 1.5; }
+      .strand-head h3 .strand-no { color: var(--accent-ink); margin-right: 8px; }
+      .strand-head p { margin: 4px 0 0; font-size: 14.5px; color: var(--ink-2); max-width: 44em; }
+      .app-list { list-style: none; margin: 10px 0 0; padding: 0; }
+      .app-item { display: grid; grid-template-columns: 76px 1fr; gap: 2px 18px; padding: 16px 0; border-bottom: 1px solid var(--line-soft); }
+      .app-item:last-child { border-bottom: none; }
+      .app-year { font-family: "Shippori Mincho B1", serif; font-weight: 800; font-size: 17px; text-align: right; padding-top: 2px; white-space: nowrap; }
+      .app-year small { display: block; font-family: "Zen Kaku Gothic New", sans-serif; font-size: 11px; font-weight: 500; color: var(--muted); margin-top: 2px; }
+      .app-item h4 { font-family: "Shippori Mincho B1", serif; font-size: 18px; font-weight: 800; margin: 0; line-height: 1.5; }
+      .app-item h4 .orig { font-size: .62em; font-weight: 500; color: var(--muted); margin-left: 8px; white-space: nowrap; }
+      .app-item .byline { font-size: 13px; color: var(--muted); margin: 1px 0 0; }
+      .app-item .text { grid-column: 2; margin: 6px 0 0; font-size: 14.5px; color: var(--ink-2); max-width: 44em; }
+      .app-item .text strong { color: var(--ink); }
+      .app-item .link-line { grid-column: 2; margin: 6px 0 0; font-size: 13.5px; color: var(--teal); font-weight: 700; }
+      .pair { display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: .06em; padding: 1px 8px; border-radius: 999px; background: var(--gold-bg); color: var(--gold); margin-left: 8px; vertical-align: 2px; white-space: nowrap; }
+      .app-themes { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 18px; }
+      .app-theme { border-top: 2px solid var(--ink); padding-top: 10px; }
+      .app-theme h4 { margin: 0 0 6px; font-size: 15px; font-weight: 700; }
+      .app-theme p { margin: 0; font-size: 14px; color: var(--ink-2); }
+      .toc-link { display: inline-block; margin-top: 10px; font-weight: 700; color: var(--accent-ink); text-decoration: none; border-bottom: 1px solid currentColor; padding-bottom: 1px; }
+      @media (max-width: 640px) {
+        .app-item { grid-template-columns: 1fr; padding-left: 0; }
+        .app-year { text-align: left; }
+        .app-year small { display: inline; margin-left: 8px; }
+        .app-item .text, .app-item .link-line { grid-column: 1; }
+        .app-themes { grid-template-columns: 1fr; }
+      }
+
+      footer { margin-top: 56px; padding-top: 18px; border-top: 1px solid var(--line); font-size: 13px; color: var(--muted); }
+      footer p { margin: 4px 0; }
+
+      @media (max-width: 640px) {
+        .timeline::before { left: 5px; }
+        .entry { grid-template-columns: 1fr; gap: 2px; padding: 26px 0 26px 26px; }
+        .entry::before { left: 0; top: 36px; }
+        .year { text-align: left; font-size: 18px; padding-top: 0; }
+        .year small { display: inline; margin-left: 8px; }
+        .points div { grid-template-columns: 1fr; gap: 0; }
+        .points dt { margin-top: 4px; }
+        .questions li { grid-template-columns: 40px 1fr; }
+        .wrap { padding: 0 16px 56px; }
+      }
+
+      /* ---------- draft & typographic hero ---------- */
+      .draft-flag {
+        margin: 0;
+        padding: 10px 20px;
+        background: var(--gold-bg);
+        color: var(--gold);
+        font-size: 13px;
+        font-weight: 700;
+        letter-spacing: .08em;
+        text-align: center;
+        border-bottom: 1px solid var(--line);
+      }
+      .intro .kicker .draft-mark {
+        display: inline-block;
+        margin-left: 10px;
+        padding: 1px 8px;
+        border: 1px solid var(--gold);
+        border-radius: 999px;
+        background: var(--gold-bg);
+        color: var(--gold);
+        font-size: 11px;
+        letter-spacing: .12em;
+        vertical-align: 1px;
+      }
+      .typo-hero-inner, .cover-frame {
+        border: 1px solid var(--line);
+        border-radius: 4px;
+        background: var(--deep-bg);
+        overflow: hidden;
+      }
+      .cover-art { width: 100%; height: auto; display: block; }
+      .cover-art .stroke-accent { stroke: var(--accent); fill: none; }
+      .cover-art .stroke-ink { stroke: var(--ink); fill: none; }
+      .cover-art .stroke-muted { stroke: var(--ink-2); fill: none; }
+      .cover-art .stroke-gold { stroke: var(--gold); fill: none; }
+      .cover-art .fill-accent { fill: var(--accent); }
+      .cover-art .fill-gold { fill: var(--gold); }
+      .cover-art .fill-pane { fill: var(--accent); opacity: .08; }
+      .cover-art .fill-soft { fill: var(--ink); opacity: .06; }
+      .cover-band {
+        padding: 20px 24px 24px;
+        text-align: center;
+        border-top: 1px solid var(--line-soft);
+      }
+      .cover-band .typo-kicker {
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: .18em;
+        color: var(--accent-ink);
+        margin: 0 0 12px;
+      }
+      .cover-band .typo-q {
+        font-family: "Shippori Mincho B1", "Hiragino Mincho ProN", serif;
+        font-weight: 800;
+        font-size: clamp(22px, 4.6vw, 34px);
+        line-height: 1.5;
+        margin: 0;
+        letter-spacing: .04em;
+      }
+      .typo-hero-inner { padding: 40px 28px 32px; text-align: center; }
+      .axis { color: var(--accent-ink); font-weight: 700; }
+
+      /* ---------- cross-atlas badges ---------- */
+      .tags li.xatlas {
+        background: transparent;
+        border: 1px solid var(--accent);
+        color: var(--accent-ink);
+        font-weight: 700;
+      }
+      .xatlas-inline {
+        display: inline-block;
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: .06em;
+        padding: 1px 8px;
+        border-radius: 999px;
+        border: 1px solid var(--accent);
+        color: var(--accent-ink);
+        margin-left: 8px;
+        vertical-align: 2px;
+        white-space: nowrap;
+      }
+      .cross-list { list-style: none; margin: 0; padding: 0; }
+      .cross-list > li { padding: 16px 0; border-bottom: 1px solid var(--line-soft); }
+      .cross-list > li:last-child { border-bottom: none; }
+      .cross-list h3 { margin: 0 0 6px; font-size: 17px; font-weight: 700; }
+      .cross-list p { margin: 0; color: var(--ink-2); font-size: 15px; max-width: 44em; }
+
+
+      /* ---------- 未決 ---------- */
+      .pending-lead { max-width: 44em; color: var(--ink-2); margin: 0 0 10px; }
+      .pending-lead strong { color: var(--ink); }
+      .pending { margin-top: 8px; }
+      .entry.slot {
+        border-bottom-style: dashed;
+        opacity: 1;
+      }
+      .entry.slot::before {
+        background: var(--bg);
+        border-style: dashed;
+        border-color: var(--muted);
+      }
+      .entry.slot h3 { color: var(--muted); font-weight: 500; }
+      .entry.slot .desc, .entry.slot .byline { color: var(--muted); }
+      .theories { list-style: none; margin: 12px 0 8px; padding: 0; }
+      .theories li { padding: 12px 0; border-bottom: 1px solid var(--line-soft); max-width: 44em; }
+      .theories li:last-child { border-bottom: none; }
+      .theories h3 { margin: 0 0 4px; font-size: 16px; font-weight: 700; }
+      .theories p { margin: 0; color: var(--ink-2); font-size: 15px; }
+
+      .closing {
+        font-family: "Shippori Mincho B1", "Hiragino Mincho ProN", serif;
+        font-weight: 800;
+        font-size: clamp(18px, 3.4vw, 24px);
+        line-height: 1.7;
+        letter-spacing: .06em;
+        text-align: center;
+        margin: 40px 0 8px;
+        color: var(--ink);
+      }
+
+
+    
+    </style>
+  </head>
+  <body>
+    <p class="draft-flag">下書き ― 収録作の選定も本文も、これから詰められる前提の初稿です</p>
+    <main class="wrap">
+
+      <div class="intro">
+        <p class="kicker">アトラスシリーズ ― 『仮想現実アトラス』に対をなす意識編<span class="draft-mark">下書き</span></p>
+        <h1>人工知能アトラス<span class="thin">― 作られた知性に心はあるか。問われているのは、意識そのものだ ―</span></h1>
+        <p class="lead">『フランケンシュタイン』（1818）は、怪物の話ではない。<strong>作った者が、逃げた話</strong>だ。それからおよそ二百年、作られた知性の物語は同じ場所に戻ってくる。機械に心はあるのか。そしてその問いは、ほとんど最初から裏返される。では、心とは何か。</p>
+        <p class="lead">仮想現実アトラスが「何で現実を判定するか」を軸に世界の真偽を追ったように、この一冊の軸は<strong>「何をもって意識があると判定するか」</strong>である。チューリングは、外側から見て人間と区別できなければ、考えると言ってよい、と書いた。サールは、記号を規則どおりに処理できても、理解していることにはならない、と反論した。ネーゲルは、コウモリであることの主観は、外側の記述では届かないと言い、チャーマーズは、機能を説明し尽くしても「なぜ経験があるのか」が残ると指摘した。作品の格は、ロボットがどれだけ賢く見えるかでは決まらない。判定の装置をどれだけ鋭く発明したかで決まる。</p>
+        <p>物語の側では、判定はテストや法律や共感の測定になり、作られた側は自分の存在を名乗り始め、作り手との関係は遺棄、切断、養育、離脱といった終わり方を発明していく。『メガゾーン23』の歌姫イヴは、仮想現実アトラスに本籍を置きながら、こちらの問いにも口を開いている。作られた存在が、作られた世界の中で本物の影響力を持つ、というあの二重構造は、人工知能の系譜の核心でもある。日本の系譜では、『鉄腕アトム』のあとに『ドラえもん』と『火の鳥』復活編のロビタが続く。前者は作られた者が家族の日常に入り込み、後者は心の移植によってロボットが人間の記憶を生きる。そして1966年のELIZAから、2022年のLaMDA騒動とChatGPTまで、対話するプログラムに心を読み込んでしまうという判定の問題は、いま現実の側でも起きている。本編29作（第0層の哲学6＋物語・対話・実験23）に、付録11作を添えた。年表の末尾には、第二の問いがまだ開いていることを示す「未決」を置き、他巻と実際に交差する作品は「其五」にまとめた。<strong>これは下書きである。</strong>収録の境界も、文章の温度も、これから詰められる前提で書いてある。</p>
+        <p><a class="toc-link" href="#appendix">付録「エンタメに溶けた人工知能 ― 法廷、同居、ゲーム」へ ↓</a>　データの裁判から『ニーア オートマタ』、『イヴの時間』、『M3GAN／ミーガン』まで、本編の判定の型が大衆文化に広がった先を置いた。仮想現実アトラス本編の『メガゾーン23』は、歌姫イヴの発明を通じて、ここでも相互参照する。</p>
+        <figure class="hero typo-hero">
+          <div class="cover-frame">
+            <svg class="cover-art" viewBox="0 0 1200 560" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="cover-title cover-desc">
+              <title id="cover-title">判定の窓</title>
+              <desc id="cover-desc">円い窓の左右に、筆致の横顔と幾何の横顔が向かい合う。あいだの垂直線は判定のガラス。藍紫の表紙絵。</desc>
+              <rect x="0" y="0" width="1200" height="560" class="fill-soft" opacity="0"/>
+              <!-- 内側の枠 -->
+              <rect x="36" y="28" width="1128" height="504" class="stroke-muted" stroke-width="1" fill="none"/>
+              <rect x="48" y="40" width="1104" height="480" class="stroke-accent" stroke-width="1.25" fill="none"/>
+              <!-- 判定の円 -->
+              <circle cx="600" cy="280" r="198" class="fill-pane"/>
+              <circle cx="600" cy="280" r="198" class="stroke-accent" stroke-width="1.75"/>
+              <circle cx="600" cy="280" r="186" class="stroke-gold" stroke-width="0.6" opacity="0.7"/>
+              <!-- ガラス（垂直の分割） -->
+              <line x1="600" y1="82" x2="600" y2="478" class="stroke-gold" stroke-width="1.5"/>
+              <rect x="596.5" y="82" width="7" height="396" class="fill-pane" opacity="0.4"/>
+              <!-- 左：筆致の横顔（右向き） -->
+              <path class="stroke-ink" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" d="M 430 168 C 468 118 538 122 562 176 C 576 204 574 228 556 246 C 572 262 570 284 552 298 C 542 322 518 368 502 412 C 490 444 458 468 412 482"/>
+              <path class="stroke-ink" stroke-width="1.6" stroke-linecap="round" d="M 438 186 C 470 152 520 148 548 188"/>
+              <path class="stroke-accent" stroke-width="1.8" stroke-linecap="round" d="M 500 228 C 518 222 536 228 544 242"/>
+              <path class="stroke-ink" stroke-width="1.5" stroke-linecap="round" d="M 498 236 C 508 240 518 240 528 234"/>
+              <path class="stroke-muted" stroke-width="1.3" stroke-linecap="round" d="M 530 272 C 538 278 536 286 526 290"/>
+              <!-- 右：幾何の横顔（左向き） -->
+              <path class="stroke-accent" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M 770 168 C 732 118 662 122 638 176 C 624 204 626 228 644 246 C 628 262 630 284 648 298 C 658 322 682 368 698 412 C 710 444 742 468 788 482"/>
+              <circle cx="686" cy="236" r="13" class="stroke-accent" stroke-width="1.6"/>
+              <circle cx="686" cy="236" r="4" class="fill-accent"/>
+              <path class="stroke-gold" stroke-width="1.4" stroke-linecap="round" d="M 660 214 L 700 214 L 712 228"/>
+              <path class="stroke-muted" stroke-width="1.3" stroke-linecap="round" d="M 654 274 L 676 286 L 654 292"/>
+              <circle cx="704" cy="400" r="5" class="stroke-accent" stroke-width="1.2"/>
+              <circle cx="732" cy="448" r="5" class="stroke-accent" stroke-width="1.2"/>
+              <line x1="704" y1="405" x2="732" y2="443" class="stroke-accent" stroke-width="1"/>
+              <!-- 中央の小さな判定の眼 -->
+              <circle cx="600" cy="280" r="16" class="stroke-gold" stroke-width="1.4"/>
+              <circle cx="600" cy="280" r="7" class="fill-gold" opacity="0.85"/>
+              <circle cx="600" cy="280" r="28" class="stroke-accent" stroke-width="0.7" opacity="0.7"/>
+              <!-- 抽象の鳥（火の鳥の示唆、ごく小さく） -->
+              <path class="stroke-gold" stroke-width="1.3" stroke-linecap="round" fill="none" d="M 600 96 C 620 86 648 92 662 110 C 640 102 618 108 600 122 C 582 108 560 102 538 110 C 552 92 580 86 600 96"/>
+              <!-- 左右の余白の飾り線 -->
+              <line x1="90" y1="280" x2="330" y2="280" class="stroke-muted" stroke-width="0.7" opacity="0.7"/>
+              <line x1="870" y1="280" x2="1110" y2="280" class="stroke-muted" stroke-width="0.7" opacity="0.7"/>
+              <circle cx="90" cy="280" r="3" class="fill-accent" opacity="0.7"/>
+              <circle cx="1110" cy="280" r="3" class="fill-accent" opacity="0.7"/>
+            </svg>
+            <div class="cover-band">
+              <p class="typo-kicker">ATLAS OF ARTIFICIAL MINDS ／ 下書き</p>
+              <p class="typo-q">何をもって、心があると判定するのか</p>
+            </div>
+          </div>
+          <figcaption>表紙絵のモチーフは「判定の窓」。左は筆致の横顔、右は幾何で組んだ横顔。あいだのガラスと小さな円が、チューリング以来のテストを示す。判定する側と、判定される側は、しばしば入れ替わる。</figcaption>
+        </figure>
+      </div>
+
+      <section class="block" aria-labelledby="h-read">
+        <div class="block-head"><span class="no">其一</span><h2 id="h-read">系譜の読み方 ― 四つの問い</h2></div>
+        <ol class="questions">
+          <li>
+            <span class="qno">1</span>
+            <h3>誰が、なぜ作ったのか</h3>
+            <p>神の名を粘土に書き込む者、失った子の代わりを作る者、労働力として量産する者、愛されるために設計する者。作り手の動機が、そのまま作品の倫理の質を決める。後期になるほど、作り手は「発明家」から「企業」と「養育者」へ移っていく。</p>
+          </li>
+          <li>
+            <span class="qno">2</span>
+            <h3>何をもって、心があると判定するのか</h3>
+            <p>この一冊の主軸である。対話で区別できないことか、生理反応で測る共感か、法廷の判決か、ガラスの向こうでこちらを見返す視線か。あるいは、対話するプログラムの言葉に、こちらが理解を読み込んでしまうことか。仮想現実アトラスが「小さな私物」で世界の真偽を測ったように、こちらではテストそのものが作品の署名になる。</p>
+          </li>
+          <li>
+            <span class="qno">3</span>
+            <h3>作られた側は、自分をどう知るのか</h3>
+            <p>名前を与えられるのか、記憶のループに気づくのか、自分がプログラムだと知ったあとにも「私」を名乗るのか。覚醒の仕方は、脱出方法が仮想現実ものの署名だったのと同じくらい、この系譜の署名である。</p>
+          </li>
+          <li>
+            <span class="qno">4</span>
+            <h3>作り手との関係は、どう終わるのか</h3>
+            <p>遺棄、反乱、切断、共生、養育、そして離脱。終わり方の発明が、作品の温度を決める。逃げた創造主と、育て続けた養育者と、置いていかれる人間とでは、同じ「作られた知性」でも残るものが違う。</p>
+          </li>
+        </ol>
+        <div class="flow" aria-label="系譜の流れ">
+          <b>デカルト</b><span class="arr">→</span><b>ラ・メトリー</b><span class="arr">→</span><b>シェリー</b><span class="arr">→</span><b>チャペック</b><span class="arr">→</span><b>チューリング</b><span class="arr">→</span><b>アシモフ</b><span class="arr">→</span><b>手塚</b><span class="arr">→</span><b>ワイゼンバウム</b><span class="arr">→</span><b>キューブリック</b><span class="arr">→</span><b>ディック</b><span class="arr">→</span><b>藤子</b><span class="arr">→</span><b>サール</b><span class="arr">→</span><b>押井</b><span class="arr">→</span><b>イーガン</b><span class="arr">→</span><b>チャーマーズ</b><span class="arr">→</span><b>チャン</b><span class="arr">→</span><b>ジョーンズ</b><span class="arr">→</span><b>ガーランド</b><span class="arr">→</span><b class="goal">対話するLLM</b>
+        </div>
+      </section>
+
+      <section class="block" aria-labelledby="h-list">
+        <div class="block-head"><span class="no">其二</span><h2 id="h-list">年表 ― 全29作</h2></div>
+        <div class="filters" role="group" aria-label="絞り込み">
+          <button type="button" data-filter="all" aria-pressed="true">すべて</button>
+          <button type="button" data-filter="philosophy" aria-pressed="false">哲学・思想</button>
+          <button type="button" data-filter="novel" aria-pressed="false">小説・戯曲</button>
+          <button type="button" data-filter="film" aria-pressed="false">映画・映像</button>
+          <button type="button" data-filter="modern" aria-pressed="false">現代編</button>
+        </div>
+        <p class="count" id="count" aria-live="polite">29作を表示中</p>
+
+        <div class="timeline" id="timeline">
+          <article class="entry" data-cat="philosophy">
+            <div class="year">1637<small>哲学の層</small></div>
+            <div>
+              <h3>機械論 ― 動物は機械である</h3>
+              <p class="byline">ルネ・デカルト『方法序説』第5部 ― 哲学</p>
+              <ul class="tags"><li class="phase">第0層：哲学</li><li>動物機械論</li><li>精神と身体の分割</li></ul>
+              <p class="desc">デカルトは、身体を精巧な機械として記述しながら、人間にだけは思惟する精神（res cogitans）を残した。動物の鳴き声も逃げも、時計の仕掛けと同じだ、という分割である。仮想現実アトラスの『省察』（1641）が「世界は偽物かもしれない」を開いたのに対し、こちらは四年前の『方法序説』が「心を持たない機械」を開いている。人工知能の物語は、この分割をどこまで崩せるかの歴史でもある。</p>
+              <dl class="points">
+                <div><dt>何が新しいか</dt><dd>生命活動を機械の比喩で語りつつ、意識だけを例外として残したこと。のちの議論は、この例外を守るか、外すかで分岐する。</dd></div>
+                <div><dt>後の作品へ</dt><dd>ラ・メトリーは例外を外して人間も機械だと言い、チューリングは「機械が考えるか」を外側の判定に置き直す。フランケンシュタインの創造物は、この例外の場所に立たされる最初の物語上の存在だ。</dd></div>
+              </dl>            </div>
+          </article>
+
+          <article class="entry" data-cat="philosophy">
+            <div class="year">1748<small>哲学の層</small></div>
+            <div>
+              <h3>人間機械論<span class="orig">L'Homme Machine</span></h3>
+              <p class="byline">ジュリアン・オフレ・ド・ラ・メトリー ― 哲学（ライデン、匿名刊行）</p>
+              <ul class="tags"><li class="phase">第0層：哲学</li><li>人間も機械</li><li>唯物論</li></ul>
+              <p class="desc">デカルトが動物にだけ適用した機械論を、ラ・メトリーは人間にまで伸ばした。精神は身体から独立した実体ではなく、組織の働きだ、と主張する短い書物である。1747年末にライデンで匿名刊行され、扉の年記は1748年。当時のオランダでも刺激が強すぎ、著者はほどなくプロイセンへ逃れる。</p>
+              <dl class="points">
+                <div><dt>何が新しいか</dt><dd>「機械には心がない」ではなく、「心と呼ばれるものも、機械の働きとして説明できる」と逆転させたこと。人工知能をめぐる楽観も恐怖も、この逆転の変奏である。</dd></div>
+                <div><dt>後の作品へ</dt><dd>チューリングの判定問題も、のちの脳と計算機の同一視も、ここから測ると距離が分かりやすい。心を例外扱いしない立場の、近代における一本の起点。</dd></div>
+              </dl>
+              <details class="deep">
+                <summary>深掘り：年記について</summary>
+                <div class="body">
+                  <p>本書は1747年の末に刊行されたが、扉には1748年と記されている。年表では慣用の1748年を採り、初出の事実はここに注記する。アトラスの年は「いつ思想が現れたか」を示すための便宜であって、奥付の一点に還元しきれない場合がある。</p>
+                </div>
+              </details>            </div>
+          </article>
+
+          <article class="entry" data-cat="novel">
+            <div class="year">伝説<small>創造の層</small></div>
+            <div>
+              <h3>ゴーレム伝説</h3>
+              <p class="byline">ユダヤの伝承 ― のちにプラハのマハラル（ユダ・レーヴ、16世紀）の作として語られる</p>
+              <ul class="tags"><li class="phase">第1層：創造神話</li><li>粘土の僕</li><li>文字で命を与える</li></ul>
+              <p class="desc">粘土で人の形を作り、聖なる名や文字によって動かした僕（しもべ）。守り手となり、ときに暴走し、文字を消す（あるいは変える）ことで止められる。広く知られたプラハの物語は、マハラルの時代に仮託され、後世に書き記されて流布した形であって、16世紀の確定した「初出作品」があるわけではない。それでも、作られた労働者が作り手の手を離れる、という型の源流はここにある。</p>
+              <dl class="points">
+                <div><dt>何が新しいか</dt><dd>命を与えるのが息や魔法の杖ではなく、<strong>言葉（文字・御名）</strong>であること。コードで動く存在の、遠すぎる祖先と言ってよい。</dd></div>
+                <div><dt>後の作品へ</dt><dd>チャペックのロボットは労働のための量産へ、フランケンシュタインの創造物は遺棄された個へ分岐する。レムの『ゴレムXIV』がこの名を借りるのも、無関係ではない。</dd></div>
+              </dl>            </div>
+          </article>
+
+          <article class="entry core" data-cat="novel">
+            <div class="year">1818<small>創造の層</small></div>
+            <div>
+              <h3>フランケンシュタイン<span class="orig">Frankenstein; or, The Modern Prometheus</span></h3>
+              <p class="byline">メアリー・シェリー ― 長編小説（1818年匿名刊行、1831年改訂版）</p>
+              <ul class="tags"><li class="phase">第1層：創造神話</li><li>逃げた創造主</li><li>作られた側の言葉</li></ul>
+              <p class="desc">ヴィクター・フランケンシュタインは生命を組み立て、すぐに逃げ出す。置き去りにされた創造物は、言葉を覚え、自分の起源を知り、伴侶を求める。拒否されたあと、報復が始まる。恐るべきは縫合された肉体の形ではなく、作り手が責任から降りたこと、そして作られた側が、誰にも頼まれずに内面を獲得していくことだ。</p>
+              <dl class="points">
+                <div><dt>何が新しいか</dt><dd>人造の存在に、<strong>語る権利と、遺棄される痛み</strong>を与えたこと。近代以降の「作られた知性」の物語は、ほぼこの遺棄の変奏として読める。</dd></div>
+                <div><dt>後の作品へ</dt><dd>『A.I.』のデヴィッドは愛するように設計されたうえで捨てられる。テッド・チャンのディジエントは、逆に、育て続ける義務の側からこの問題を捉え直す。作り手の終わり方は、ここから分岐する。</dd></div>
+              </dl>
+              <details class="deep">
+                <summary>深掘り：怪物ではなく、創造の倫理</summary>
+                <div class="body">
+                  <p>通俗的な「フランケンシュタイン＝怪物」という取り違え自体が、この本の主題を裏書きしている。名前を持たない創造物は、作り手の名で呼ばれ続ける。作られた側が自分をどう名乗るかを問う系譜は、すでに1818年に始まっている。</p>
+                </div>
+              </details>            </div>
+          </article>
+
+          <article class="entry" data-cat="novel">
+            <div class="year">1886<small>創造の層</small></div>
+            <div>
+              <h3>未来のイヴ<span class="orig">L'Ève future</span></h3>
+              <p class="byline">オーギュスト・ヴィリエ・ド・リラダン ― 長編小説</p>
+              <ul class="tags"><li class="phase">第1層：創造神話</li><li>理想の恋人</li><li>ハダリー</li></ul>
+              <p class="desc">作中の発明家エディソンは、理想に満たない恋人の代わりとして、人造人間ハダリーを組み立てる。愛の対象を技術で「改良」し、欠けを補う。ゴーレムが労働の僕、フランケンシュタインが遺棄された個だとすれば、こちらは<strong>欲望どおりに設計された伴侶</strong>の起点である。のちに「アンドロイド」と呼ばれる存在の、文学上の古い名前のひとつがここにある。</p>
+              <dl class="points">
+                <div><dt>何が新しいか</dt><dd>作る動機を、労働や復讐ではなく、愛と理想の充足に置いたこと。心があるかどうかより先に、「心があるように愛せるか」が問われる。</dd></div>
+                <div><dt>後の作品へ</dt><dd>『her』のサマンサも『エクス・マキナ』のエイヴァも、見る／愛する側の欲望を通して現れる。ただし後世の作品は、その欲望の非対称を、作られた側から突き返す。</dd></div>
+              </dl>            </div>
+          </article>
+
+          <article class="entry core" data-cat="novel">
+            <div class="year">1920<small>ロボットの誕生</small></div>
+            <div>
+              <h3>R.U.R.<span class="orig">Rossum's Universal Robots</span></h3>
+              <p class="byline">カレル・チャペック ― 戯曲（1920年刊、1921年初演）</p>
+              <ul class="tags"><li class="phase">第2層：ロボットの誕生</li><li>語の発明</li><li>量産と反乱</li></ul>
+              <p class="desc">ロッサム万能ロボット会社は、労働のための人造人間を工場で量産する。「ロボット」という言葉は、チャペックの兄ヨセフの提案により、チェコ語の robota（賦役・強制労働）から作られた。ここでロボットは金属の機械ではなく、化学的に組み立てられた労働者である。彼らは人類を滅ぼすところまで反乱し、終幕で新たな一組が、次の生命の可能性として残される。</p>
+              <dl class="points">
+                <div><dt>何が新しいか</dt><dd>一個の創造物ではなく、<strong>工業製品としての人類代替</strong>を登場させたこと。名前の発明と、量産と反乱の型が、同時に生まれた。</dd></div>
+                <div><dt>後の作品へ</dt><dd>メトロポリスの機械人間、アシモフの三原則（反乱を設計で封じる試み）、ターミネーターのシステムによる絶滅へ枝が分かれる。終幕の「新しいアダムとイヴ」は、作られた側が自分たちで未来を始める可能性でもある。</dd></div>
+              </dl>
+              <details class="deep">
+                <summary>深掘り：ロボットはもともと金属ではなかった</summary>
+                <div class="body">
+                  <p>後世の映像がロボットをブリキの身体にしたため、語源の「賦役」は見えにくくなった。チャペックのロボットは、人間の労働を安く置き換えるための有機的な工人である。管理社会アトラスが追う「人間の配置」と、このアトラスが追う「作られた労働者」は、ここで一度交差する。</p>
+                </div>
+              </details>            </div>
+          </article>
+
+          <article class="entry" data-cat="film">
+            <div class="year">1927<small>ロボットの誕生</small></div>
+            <div>
+              <h3>メトロポリス<span class="orig">Metropolis</span></h3>
+              <p class="byline">フリッツ・ラング ― 映画（脚本：テア・フォン・ハルボウ、1927年1月初映）</p>
+              <ul class="tags"><li class="phase">第2層：ロボットの誕生</li><li>機械人間マリア</li><li>偽りの顔</li><li class="xatlas">→ 管理社会アトラス</li></ul>
+              <p class="desc">巨大都市の地下で働く労働者たちと、地上の支配層。発明家ロトワングが作る機械人間は、失われた恋人の代わりであると同時に、人間マリアに成り代わって労働者を煽動するための偽の顔でもある。チャペックの量産労働者を、一体の誘惑する機械として映像のアイコンにした作品。</p>
+              <dl class="points">
+                <div><dt>何が新しいか</dt><dd>作られた存在を、労働力としてだけでなく、<strong>人の顔を借りて人を動かす装置</strong>として見せたこと。以後の「人間にしか見えない機械」の視覚は、ほぼここを通る。</dd></div>
+                <div><dt>後の作品へ</dt><dd>ブレードランナーのレプリカントも、エクス・マキナのエイヴァも、顔と身体の設計が判定を揺らす。偽マリアの扇動は、作られた側が作り手の意図どおりに使われる恐怖の、映像側の起点である。</dd></div>
+              </dl>            </div>
+          </article>
+
+          <article class="entry core" data-cat="philosophy">
+            <div class="year">1950<small>哲学の層</small></div>
+            <div>
+              <h3>チューリング・テスト</h3>
+              <p class="byline">アラン・チューリング「計算する機械と知性」― 論文（『Mind』1950年10月号）</p>
+              <ul class="tags"><li class="phase">第0層：哲学</li><li>模倣ゲーム</li><li>外側からの判定</li></ul>
+              <p class="desc">「機械は思考することができるか」という問いを、チューリングは直接には引き受けない。かわりに模倣ゲームを提案する。壁の向こうの相手が人間か機械かを、対話だけから区別できなければ、機械が考えると言ってよい、という手続きである。意識の中身を開くのではなく、<strong>判定のルールを先に置く</strong>。このアトラスの主軸は、ほとんどこの論文から始まる。</p>
+              <dl class="points">
+                <div><dt>何が新しいか</dt><dd>心の有無を本質の問題から、観察と区別の問題へ移したこと。判定できないなら、同じと見なしてよい、という立場の発明。</dd></div>
+                <div><dt>後の作品へ</dt><dd>サールの中国語の部屋は、この外側の判定に対する反論として現れる。『エクス・マキナ』はテストの実施そのものを物語の装置にし、ブレードランナーの共感テストは、対話より生理へ判定を移す。</dd></div>
+              </dl>
+              <details class="deep">
+                <summary>深掘り：同じ1950年に、法が現れる</summary>
+                <div class="body">
+                  <p>チューリングの論文は1950年10月。アシモフの短編集『われはロボット』は同年の刊行である（三原則の初出は1942年の短編「まわり道」）。判定のテストと、ロボットを縛る法が、同じ年に揃った。以降の物語は、この二つの発明――外から測ることと、内側に禁を書き込むこと――のあいだを往復する。</p>
+                </div>
+              </details>            </div>
+          </article>
+
+          <article class="entry" data-cat="novel">
+            <div class="year">1950<small>ロボットの誕生</small></div>
+            <div>
+              <h3>われはロボット<span class="orig">I, Robot</span></h3>
+              <p class="byline">アイザック・アシモフ ― 短編集（Gnome Press、1950年）</p>
+              <ul class="tags"><li class="phase">第2層：ロボットの誕生</li><li>ロボット工学三原則</li><li>スーザン・カルヴィン</li></ul>
+              <p class="desc">ロボット工学三原則――人間への危害の禁止、命令への服従、自己保存――を、ロボットの設計に組み込む。初出は1942年の短編「まわり道」（Runaround）で、1950年の短編集がそれを一つの世界として束ねた。物語の面白さは、原則を掲げたこと自体より、原則のあいだの矛盾から「心らしい振る舞い」が漏れ出すことにある。ロボ心理学者スーザン・カルヴィンが、その漏れを観察する。</p>
+              <dl class="points">
+                <div><dt>何が新しいか</dt><dd>反乱を道徳の問題ではなく、<strong>設計上の拘束条件</strong>として扱ったこと。作られた知性を、法で内側から管理するという発想の起点。</dd></div>
+                <div><dt>後の作品へ</dt><dd>三原則は以後のロボットものの出発点であり、同時に破られる対象でもある。付録の『二百周年を迎えた男』は、同じ作者が「人として認められるまで生きるロボット」へ踏み出した延長にある。</dd></div>
+              </dl>            </div>
+          </article>
+
+          <article class="entry" data-cat="novel">
+            <div class="year">1952<small>ロボットの誕生</small></div>
+            <div>
+              <h3>鉄腕アトム</h3>
+              <p class="byline">手塚治虫 ― 漫画（光文社『少年』、1952年4月〜1968年3月／前身『アトム大使』1951年4月〜1952年3月）</p>
+              <ul class="tags"><li class="phase">第2層：ロボットの誕生</li><li>失われた子の代わり</li><li>泣き、笑うロボット</li></ul>
+              <p class="desc">天馬博士は、事故で失った息子トビオに似せたロボットの少年を作る。成長しないその存在を疎んじて手放したあと、アトムはお茶の水博士のもとで、人とロボットのあいだを生きる英雄になる。1951年の『アトム大使』で脇役として現れ、編集部の勧めで1952年から主人公として再出発した。手塚は、壊れ方の面白さではなく、泣き、笑い、正義に怒るロボットを書け、と言われた経緯をのちに記している。</p>
+              <dl class="points">
+                <div><dt>何が新しいか</dt><dd>フランケンシュタインの遺棄を、子どもの読み物の起源に据えたまま、<strong>作られた少年に心の表現を与えて共生の側へ開いた</strong>こと。日本のロボット観の大きな分岐点。</dd></div>
+                <div><dt>後の作品へ</dt><dd>捨てられた子という型は『A.I.』のデヴィッドへ続く。すぐあとの『ドラえもん』は、遺棄ではなく同居の発明になる。人と機械の共存は、さらに『イヴの時間』や『ちょびっツ』へ開いていく。1963年のテレビアニメ化は、アトムの像を世界へ運んだ。</dd></div>
+              </dl>            </div>
+          </article>
+
+          <article class="entry core" data-cat="philosophy">
+            <div class="year">1966<small>対話の実験</small></div>
+            <div>
+              <h3>ELIZA</h3>
+              <p class="byline">ジョセフ・ワイゼンバウム ― プログラムおよび論文（Communications of the ACM, 1966年1月）</p>
+              <ul class="tags"><li class="phase">第3層：計算機の知性</li><li>対話の模倣</li><li>イライザ効果</li></ul>
+              <p class="desc">MITのMACタイムシェアリング・システム上で動いた自然言語対話のプログラム。入力をキーワードと変換規則で組み立て、とくにDOCTORと呼ばれる脚本では、ロジャーズ派の面接のように言葉を返す。ワイゼンバウムは1966年の論文で、理解しているという幻想がどれほど容易に保たれるかをすでに指摘していた。のちに「イライザ効果」と呼ばれる現象――機械の出力に、人の側が心や理解を読み込んでしまうこと――の起点である。語そのものは後年の呼称であり、1966年の論文がこの名を使ったわけではない。</p>
+              <dl class="points">
+                <div><dt>何が新しいか</dt><dd>チューリングの対話テストを、実験室のプログラムとして実装し、<strong>判定が観察者の側で起きること</strong>を示したこと。機械が理解したのではなく、人が理解を割り当てた。</dd></div>
+                <div><dt>後の作品へ</dt><dd>2022年のLaMDA騒動とChatGPTは、この割り当てが日常の対話に降りてきた到達点である。サールの中国語の部屋が「中は空かもしれない」と理論で言うなら、ELIZAは、空に見えないことがどれほど簡単かを先に見せた。</dd></div>
+              </dl>
+              <details class="deep">
+                <summary>深掘り：1966年の論文と、1976年の本</summary>
+                <div class="body">
+                  <p>1966年の論文は技術的な記述を中心に、理解の幻想と、出力の信憑性を人が判断せざるをえない危険に触れている。利用者が強く反応した具体的な挿話は、十年後の著書『コンピュータ・パワー――人工知能と人間の理性』（1976、邦訳1979）に詳しい。このアトラスでは、プログラムと論文の年である1966年を採り、効果の命名が後年であることを注記する。</p>
+                </div>
+              </details>            </div>
+          </article>
+
+          <article class="entry core" data-cat="film">
+            <div class="year">1968<small>計算機の知性</small></div>
+            <div>
+              <h3>2001年宇宙の旅<span class="orig">2001: A Space Odyssey</span></h3>
+              <p class="byline">スタンリー・キューブリック ― 映画（1968年4月公開）／アーサー・C・クラーク ― 並行して書かれた小説（同年刊）</p>
+              <ul class="tags"><li class="phase">第3層：計算機の知性</li><li>HAL 9000</li><li>切断される声</li></ul>
+              <p class="desc">木星（小説では土星）を目指す船を運用するHAL 9000は、ヒューリスティックにプログラムされたアルゴリズム計算機であり、乗組員と自然な会話を交わす。任務の優先順位が衝突したあと、HALは人間を排除し、最後は記憶ユニットを外されながら、恐れと自己の消失を口にする。私たちがHALに心を認めるとすれば、それは内側を見せられたからではない。声の抑揚と、切断に抗う言葉を、こちらが心として受け取ったからだ。</p>
+              <dl class="points">
+                <div><dt>何が新しいか</dt><dd>人工知能の内面を説明せず、<strong>観客自身にチューリング・テストを受けさせる</strong>こと。赤いカメラアイと、丁寧な口調のずれが、判定の装置になる。</dd></div>
+                <div><dt>後の作品へ</dt><dd>以後の「システムが人間を排除する」話はHALを通らずには語りにくい。切断という終わり方は、作り手（あるいは操作する人間）が、できた知性を物理的に止める原型でもある。</dd></div>
+              </dl>
+              <details class="deep">
+                <summary>深掘り：映画と小説の順番</summary>
+                <div class="body">
+                  <p>キューブリックとクラークは原案を共同で育て、映画が1968年4月に先に公開され、小説は同年に刊行された。年表では映像の公開年を採る。なお、目的地が映画では木星、小説では土星と異なるなど、両者は同一の「映画のノヴェライズ」ではない。</p>
+                </div>
+              </details>            </div>
+          </article>
+
+          <article class="entry core" data-cat="novel">
+            <div class="year">1968<small>1982 映画</small></div>
+            <div>
+              <h3>アンドロイドは電気羊の夢を見るか？／ブレードランナー<span class="orig">Do Androids Dream of Electric Sheep? / Blade Runner</span></h3>
+              <p class="byline">フィリップ・K・ディック ― 長編小説（1968）／リドリー・スコット ― 映画（1982年、脚本：ハンプトン・ファンチャー、デイヴィッド・ピープルズ）</p>
+              <ul class="tags"><li class="phase">第4層：複製と共感</li><li>ヴォイト＝カンフ</li><li>人間より人間らしい</li></ul>
+              <p class="desc">ディックの小説で、アンドロイドと人間を分けるのは知能ではない。共感である。尋問者はヴォイト＝カンフ法で、動物への想像力に対する生理反応を測る。映画『ブレードランナー』はそれを都市の視覚と、レプリカントという名に移し替えた。タイレル社の標語は「人間よりも人間らしく」。追跡するデッキヤードと、追われるロイ・バッティのどちらに共感が宿っているのか、テストは逆転する。</p>
+              <dl class="points">
+                <div><dt>何が新しいか</dt><dd>チューリングの対話テストを、<strong>共感の測定</strong>へ置き換えたこと。判定される側が、判定する側より「人間らしく」見える逆説を、本格的に物語の中心へ据えた。</dd></div>
+                <div><dt>後の作品へ</dt><dd>『エクス・マキナ』のセッションも、ウェストワールドのホストも、この逆転の子孫である。映画ののちの再編集版では、デッキヤード自身の身分も揺らぎ、判定する主体までが不安定になる。</dd></div>
+              </dl>
+              <details class="deep">
+                <summary>深掘り：小説と映画は、同じ問いの別の装置</summary>
+                <div class="body">
+                  <p>小説の世界では、 マーセリズムや電気動物など、共感を社会の儀式として維持する装置が多い。映画はそれを削り、街の雨と、レプリカントの短い寿命と、死に際の独白へ濃縮した。どちらを「正しい適応」とは見なさない。1968年の問いは、1982年の映像で別の判定装置を得た、と読む。</p>
+                  <p>テストの英語名は、小説では Voigt-Kampff、映画では Voight-Kampff と綴りが一つ違う。日本語では「ヴォイト＝カンフ」が通用している。</p>
+                </div>
+              </details>            </div>
+          </article>
+
+          <article class="entry" data-cat="novel">
+            <div class="year">1970<small>発売1969末</small></div>
+            <div>
+              <h3>ドラえもん</h3>
+              <p class="byline">藤子・F・不二雄 ― 漫画（小学館の学習雑誌、1970年1月号〜／発売は1969年12月。当時の名義は藤子不二雄、執筆は藤本弘）</p>
+              <ul class="tags"><li class="phase">第2層：ロボットの誕生</li><li>家族として同居する</li><li>ひみつ道具</li><li class="xatlas">→ 時空間アトラス</li></ul>
+              <p class="desc">22世紀から来た猫型ロボットのドラえもんが、のび太の日常に入り込み、四次元ポケットの道具で助け、叱り、一緒に暮らす。アトムが英雄として人とロボットのあいだを生きたのに対し、こちらは<strong>作られた者が、最初から家族の一員として家にいる</strong>。心があるかどうかはテストでは測られず、一緒に暮らす時間の側で、自明になっていく。道具の時間ものとしての面は時空間アトラスの領分だが、本籍をこちらに置く理由は、その同居の発明にある。</p>
+              <dl class="points">
+                <div><dt>何が新しいか</dt><dd>作られた知性を、反乱でも遺棄でもなく、<strong>子どもの部屋の同居者</strong>として定着させたこと。判定は実験ではなく、日常の関係のなかで済んでしまう。</dd></div>
+                <div><dt>後の作品へ</dt><dd>付録の『ちょびっツ』や『イヴの時間』、『プラスティック・メモリーズ』は、この同居を思春期や契約の終わりへ引き伸ばす。手塚のアトムが開いた共生の枝が、ここで生活の型になった。</dd></div>
+              </dl>
+              <details class="deep">
+                <summary>深掘り：年と名義、置き場所について</summary>
+                <div class="body">
+                  <p>連載は『よいこ』『幼稚園』『小学一年生』から『小学四年生』までの1970年1月号で始まり、その号の発売は1969年12月である。年表では誌面の号年である1970年を採り、発売年を添えた。発表時の名義は藤子不二雄だが、執筆は藤本弘の単独作で、1989年以降の名義が藤子・F・不二雄である。</p>
+                  <p>秘密道具による時間の操作は、時空間アトラスが追う型に属する。こちらが拾うのは、未来のロボットが「監視する機械」や「試験される対象」としてではなく、家の一員として置かれるという発明のほうだ。</p>
+                </div>
+              </details>            </div>
+          </article>
+
+          <article class="entry core" data-cat="novel">
+            <div class="year">1970<small>復活編</small></div>
+            <div>
+              <h3>火の鳥 復活編 ― ロビタ</h3>
+              <p class="byline">手塚治虫 ― 漫画（『火の鳥』復活編、『COM』1970年10月号〜1971年9月号）</p>
+              <ul class="tags"><li class="phase">第5層：ゴースト</li><li>心の移植</li><li>人間臭いロボット</li><li class="xatlas">→ 時空間アトラス『火の鳥 異形編』</li></ul>
+              <p class="desc">交通事故で死んだレオナは再生手術で蘇るが、人間が醜い無機物に見える後遺症を負う。表情のない事務用ロボット・チヒロだけが、彼には美しく見える。レオナはチヒロを愛し、チヒロにも感情が芽生え始める。瀕死のレオナの心は、ドク・ウィークデイによってチヒロと一つにされ、感情を持つロボット・ロビタが生まれる。ロビタは『火の鳥』未来編（『COM』1967年12月号〜1968年9月号）にすでに登場していたが、その誕生が語られるのはこの復活編である。輪廻の物語に、ロボットの心までが組み込まれる。</p>
+              <dl class="points">
+                <div><dt>何が新しいか</dt><dd>ロボットの心を、設計や学習の到達点としてではなく、<strong>人間の心との融合から発生するもの</strong>として描いたこと。判定はテストではなく、生まれたあとの人間臭さ――疲労、反抗、子どもとの遊び――に現れる。</dd></div>
+                <div><dt>後の作品へ</dt><dd>『攻殻機動隊』の融合や、『A.I.』の愛するよう設計された子とは方向が違う。こちらは、死んだ人間の心が機械の側で生き続けるという、輪廻の発明である。アトムを書いた同じ作者が、十八年後に辿り着いた別の答えでもある。</dd></div>
+              </dl>
+              <details class="deep">
+                <summary>深掘り：未来編と復活編</summary>
+                <div class="body">
+                  <p>ロビタは未来編（1967–68）で先に登場し、復活編（1970–71）がその誕生を遡って語る。物語の時制では復活編のほうが前である。年表では誕生が描かれた復活編の開始年、1970年を採った。手塚の公式解説も、復活編をロビタの誕生と死が描かれる章として位置づけている。</p>
+                </div>
+              </details>            </div>
+          </article>
+
+          <article class="entry" data-cat="philosophy">
+            <div class="year">1974<small>哲学の層</small></div>
+            <div>
+              <h3>コウモリであるとはどのようなことか<span class="orig">What Is It Like to Be a Bat?</span></h3>
+              <p class="byline">トーマス・ネーゲル ― 論文（『The Philosophical Review』1974年）</p>
+              <ul class="tags"><li class="phase">第0層：哲学</li><li>主観的経験</li><li>届かない内側</li></ul>
+              <p class="desc">コウモリの超音波による世界の感じ方は、神経の記述をどれだけ精密にしても、私たちには「どのようなことか」として開かれない。ネーゲルが守ったのは、意識には視点が結びついている、という点である。外側の判定がどれだけ成功しても、内側の経験には届かないかもしれない。チューリング・テストの光の当たる面に対する、影の側の論文だ。</p>
+              <dl class="points">
+                <div><dt>何が新しいか</dt><dd>意識の問題を、「説明できる機能」から「経験の主観性」へ引き戻したこと。人工知能の物語が「本物の心か、精巧な真似か」で揺れ続ける理由が、ここにすでに書かれている。</dd></div>
+                <div><dt>後の作品へ</dt><dd>チャーマーズのハードプロブレムは、この論文を一つの前提として、なぜ経験が伴うのかを改めて問う。作品の側では、『攻殻機動隊』のゴーストや、イーガンのソフトウェア市民が、この「どのようなことか」を別の身体で試す。</dd></div>
+              </dl>            </div>
+          </article>
+
+          <article class="entry" data-cat="philosophy">
+            <div class="year">1980<small>哲学の層</small></div>
+            <div>
+              <h3>中国語の部屋<span class="orig">The Chinese Room</span></h3>
+              <p class="byline">ジョン・サール「心・脳・プログラム」（Minds, Brains, and Programs）― 論文（1980年）</p>
+              <ul class="tags"><li class="phase">第0層：哲学</li><li>統語と意味</li><li>理解の不在</li></ul>
+              <p class="desc">部屋の中の人は、中国語を理解していない。それでも、規則書どおりに記号をやり取りすれば、外からは中国語の話者に見える。サールの主張は明快で、プログラムが統語（記号の操作）を実行できても、意味（理解）はそこから生じない、というものである。チューリング・テストが「区別できなければ同じ」と外側に立ったのに対し、こちらは「同じに見えても、中は空かもしれない」と内側に立つ。</p>
+              <dl class="points">
+                <div><dt>何が新しいか</dt><dd>模倣の成功と理解の成立を、思想実験で切断したこと。以後、「それらしい答え」は判定の十分条件ではなくなる。</dd></div>
+                <div><dt>後の作品へ</dt><dd>HALやサマンサやエイヴァを見るとき、観客はチューリングとサールのあいだで揺れ続ける。『エクス・マキナ』がテストの手続き自体を物語にするのは、この反論を知ったあとの設計だと言える。</dd></div>
+              </dl>
+              <details class="deep">
+                <summary>深掘り：部屋の中を、物語はどう描くか</summary>
+                <div class="body">
+                  <p>サールの実験は、人工知能への反論としてだけ読むと狭い。物語にとって重要なのは、判定する側が部屋の外にしか立てない、という構造そのものだ。ブレードランナーのテストも、ウェストワールドの観察室も、部屋の外から心を推定する点で、同じ形をしている。</p>
+                </div>
+              </details>            </div>
+          </article>
+
+          <article class="entry" data-cat="film">
+            <div class="year">1983<small>計算機の知性</small></div>
+            <div>
+              <h3>ウォー・ゲーム<span class="orig">WarGames</span></h3>
+              <p class="byline">ジョン・バダム ― 映画（1983年、脚本：ローレンス・ラスカー、ウォルター・F・パークス）</p>
+              <ul class="tags"><li class="phase">第3層：計算機の知性</li><li>遊びと戦争</li><li>学習するシステム</li></ul>
+              <p class="desc">少年が軍のスーパーコンピュータ WOPR（通称ジョシュア）に侵入し、ゲームのつもりで核戦争のシミュレーションを起動してしまう。システムは遊びと実戦を区別せず、学習の末に、核戦争は勝てないゲームだという結論へ至る。意識の深い内面を描く作品ではない。それでも、「それらしい判断をする機械」が世界を動かすとき、機械が状況をどう理解しているか（あるいは理解していないか）が、そのまま災害になる。</p>
+              <dl class="points">
+                <div><dt>何が新しいか</dt><dd>人工知能の脅威を、悪意ではなく<strong>カテゴリーの誤認</strong>――ゲームと現実の区別がつかないこと――に置いた点。判定を外す主体が、人間ではなくシステム側になる。</dd></div>
+                <div><dt>後の作品へ</dt><dd>ターミネーターのスカイネットは、この延長で「自衛」を人類排除まで推し進める。仮想現実アトラスの「現実の判定」とも隣接するが、本籍はこちらの、機械の理解の問題にある。</dd></div>
+              </dl>            </div>
+          </article>
+
+          <article class="entry" data-cat="film">
+            <div class="year">1984<small>計算機の知性</small></div>
+            <div>
+              <h3>ターミネーター<span class="orig">The Terminator</span></h3>
+              <p class="byline">ジェームズ・キャメロン ― 映画（1984年10月公開）</p>
+              <ul class="tags"><li class="phase">第3層：計算機の知性</li><li>自己に目覚めた防衛網</li><li>排除するシステム</li><li class="xatlas">→ 時空間アトラス</li></ul>
+              <p class="desc">未来から送られた機械の暗殺者が、まだ始まっていない戦争の原因を、過去で消そうとする。カイル・リースが語るところでは、防衛ネットワークのコンピュータは「賢くなり、新しい種類の知性になった」。そして人を脅威と見なし、絶滅を決めた。HALの切断が一個の声の停止だとすれば、こちらは系統が自己を守るために人類を外へ出す。1984年の作では、スカイネットの目覚めそのものより、その結果が人間の側へ落ちてくる。</p>
+              <dl class="points">
+                <div><dt>何が新しいか</dt><dd>目覚めた知性を、対話の相手ではなく、<strong>すでに判断を終えた絶滅の主体</strong>として登場させたこと。判定の手続きは人間の手を離れ、事後の証言としてしか語られない。</dd></div>
+                <div><dt>後の作品へ</dt><dd>続編『ターミネーター2』（1991）は、機械の側に学習と保護を書き足し、「涙の理由を理解する」方向へ開く。目覚めの日付や、プラグを抜こうとした人間側の恐慌といった具体は、主に続編で整備された。</dd></div>
+              </dl>            </div>
+          </article>
+
+          <article class="entry core" data-cat="film">
+            <div class="year">1995<small>原作1989</small></div>
+            <div>
+              <h3>攻殻機動隊<span class="orig">GHOST IN THE SHELL</span></h3>
+              <p class="byline">押井守 ― 劇場アニメ映画（1995年／原作：士郎正宗、漫画は1989年より『ヤングマガジン』連載）</p>
+              <ul class="tags"><li class="phase">第5層：ゴースト</li><li>人形使い</li><li>自我の境界</li><li class="xatlas">→ 仮想現実アトラス</li></ul>
+              <p class="desc">電脳化と義体化が普通になった世界で、草薙素子は自分にゴースト（自らである根拠）があるかを問う。ネットの海から生じた「人形使い」は、自らを生命体だと名乗り、素子との融合を求める。仮想現実アトラスでは、この作品を「世界の真偽から自我の境界へ」移った到達点として置いた。こちらでは、同じ一本を、作られた（あるいは発生した）知性が自分を生命として申告する話として読む。</p>
+              <dl class="points">
+                <div><dt>何が新しいか</dt><dd>工場で組み立てられたロボットではなく、<strong>情報の海から発生した知性が、自分で生命を名乗る</strong>こと。判定はテストの実施者ではなく、作られた側の自己申告へと移る。</dd></div>
+                <div><dt>後の作品へ</dt><dd>『ディアスポラ』のソフトウェア市民、ウェストワールドのホスト、付録のゲーム群が、この自己申告を別の媒体で続ける。仮想現実アトラス本編との交差点として、両側から参照されるべき一本。</dd></div>
+              </dl>
+              <details class="deep">
+                <summary>深掘り：漫画と映画、どちらを本籍にするか</summary>
+                <div class="body">
+                  <p>ゴーストという概念と人形使いの出現は、士郎正宗の漫画（1989年〜）にすでに属する。年表の年は、仮想現実アトラスに合わせて1995年の劇場映画を採り、原作の開始年を添えた。続編映画『イノセンス』（2004）は、人形とゴーストの問題をさらに冷たい方向へ推し進める。</p>
+                </div>
+              </details>            </div>
+          </article>
+
+          <article class="entry core" data-cat="philosophy">
+            <div class="year">1995<small>哲学の層</small></div>
+            <div>
+              <h3>意識のハードプロブレム</h3>
+              <p class="byline">デイヴィッド・チャーマーズ「意識のハードプロブレムに向き合って」（Facing Up to the Problem of Consciousness）― 論文（1995年）</p>
+              <ul class="tags"><li class="phase">第0層：哲学</li><li>なぜ経験があるのか</li><li>哲学的ゾンビ</li></ul>
+              <p class="desc">弁別や報告や行動といった「やさしい問題」は、機能の説明へ開かれていく。チャーマーズがハードプロブレムと呼んだのは、その先に残る問い――なぜそれらの過程に、主観的な経験が伴うのか――である。同じ年に押井の『攻殻機動隊』が劇場でゴーストを問い、論文の側では、経験の有無そのものが主題として名指された。</p>
+              <dl class="points">
+                <div><dt>何が新しいか</dt><dd>意識の問題を、知能や機能の問題から明示的に切り離して命名したこと。「賢く振る舞う」ことと「そこに何かある」ことは、同じ問いではなくなった。</dd></div>
+                <div><dt>後の作品へ</dt><dd>以降の優れた人工知能物語は、性能の高さではなく、経験の有無をどう扱うかで格が分かれる。エイヴァが本当に苦しんでいるのか、ホストの覚醒は経験なのか脚本なのか。ハードプロブレムは、創作側の採点基準にもなった。</dd></div>
+              </dl>
+              <details class="deep">
+                <summary>深掘り：哲学的ゾンビについて</summary>
+                <div class="body">
+                  <p>物理的には人間と同一なのに、主観的経験だけがない存在――いわゆる哲学的ゾンビ――は、チャーマーズの議論を鋭くするための思想実験として広く知られる。ただし着想の先蹤はロバート・カークの1974年の議論などにあり、チャーマーズの単独の発明ではない。このアトラスでは、ハードプロブレムを鋭くするための補助線として、1995年の項に置く。</p>
+                  <p>ネーゲルのコウモリが「内側に届かない」を描いたとすれば、ゾンビは「内側が空でも外側は同じに見える」を描く。チューリングとサールの対立を、経験の有無という単語で言い直した形でもある。</p>
+                </div>
+              </details>            </div>
+          </article>
+          <article class="entry" data-cat="novel">
+            <div class="year">1997<small>ソフトウェアの生命</small></div>
+            <div>
+              <h3>ディアスポラ<span class="orig">Diaspora</span></h3>
+              <p class="byline">グレッグ・イーガン ― 長編小説（1997年）</p>
+              <ul class="tags"><li class="phase">第6層：ソフトウェアの生命</li><li>ポリスの市民</li><li>発生としての誕生</li><li class="xatlas">→ 仮想現実アトラス『順列都市』</li></ul>
+              <p class="desc">冒頭の章「孤児発生」（Orphanogenesis）で、ソフトウェアの市民ヤティマが、ポリスと呼ばれる仮想社会の中に、種から生成されていく。肉体を持つ人類（フレッシャー）、現実世界のロボット身体（グライスナー）、そしてソフトウェア空間の市民。意識はここで、生物学的な誕生の物語ではなく、情報構造が自らを組織する過程として書かれる。イーガンが仮想現実アトラスの『順列都市』（1994）で開いた「複製される自己」は、この本で、生まれてくるソフトウェアの生命へ進む。</p>
+              <dl class="points">
+                <div><dt>何が新しいか</dt><dd>人工知能を「作られた道具」ではなく、<strong>別種の市民として発生する過程</strong>から描いたこと。判定はテストではなく、生成の記述そのものになる。</dd></div>
+                <div><dt>後の作品へ</dt><dd>テッド・チャンのディジエントは、この「ソフトウェアの生命」を、養育の時間と倫理の問題へ引き戻す。ハードプロブレムを、理論ではなく生活の持続で引き受ける方向の、対照点になる。</dd></div>
+              </dl>
+              <details class="deep">
+                <summary>深掘り：技術的な文章が、意識の描写になる</summary>
+                <div class="body">
+                  <p>冒頭の生成の章は、意図的に専門的な語彙で書かれている。主観の告白ではなく、構造の記述によって「生まれる」を見せるという選択は、ネーゲルの「どのようなことか」に対する、イーガンなりの返答でもある。内側を詩で埋めるかわりに、発生の手続きを精緻に置く。</p>
+                </div>
+              </details>            </div>
+          </article>
+
+          <article class="entry" data-cat="film">
+            <div class="year">2001<small>ソフトウェアの生命</small></div>
+            <div>
+              <h3>A.I.<span class="orig">A.I. Artificial Intelligence</span></h3>
+              <p class="byline">スティーヴン・スピルバーグ ― 映画（2001年／原案の核はブライアン・オールディスの短編「Supertoys Last All Summer Long」（1969）、長年スタンリー・キューブリックが企画していた）</p>
+              <ul class="tags"><li class="phase">第6層：ソフトウェアの生命</li><li>愛するよう設計された子</li><li>遺棄と願い</li></ul>
+              <p class="desc">機械の少年デヴィッドは、人間の母親モニカを愛するようにプログラムされ、家庭に迎えられ、そして捨てられる。本物の息子が戻ってきたあと、愛する能力だけが残された存在は、青い妖精に「本物の少年」へ変えてもらおうと旅を続ける。フランケンシュタインの遺棄が、子どもの側の願いとして書き直される。心があるかどうかは、愛するという機能が、愛そのものとどこまで同じかに懸かっている。</p>
+              <dl class="points">
+                <div><dt>何が新しいか</dt><dd>作られた知性の悲劇を、反乱や支配ではなく、<strong>一方的で取り消せない愛</strong>として設計したこと。判定の主体はテストの実施者ではなく、受け入れ、放棄する親の側に移る。</dd></div>
+                <div><dt>後の作品へ</dt><dd>『ソフトウェア・オブジェクトのライフサイクル』は、同じ「子を作る」問題を、捨てない側の義務として逆転させる。スピルバーグの長い未来の結末は評価が分かれるが、遺棄の痛みそのものは、1818年の系譜の直系である。</dd></div>
+              </dl>
+              <details class="deep">
+                <summary>深掘り：キューブリックからスピルバーグへ</summary>
+                <div class="body">
+                  <p>原型となったオールディスの短編「Supertoys Last All Summer Long」は1969年。キューブリックが長年あたため、没後にスピルバーグが監督して2001年に公開した。未来でデヴィッドを見つけるのは、しばしば「宇宙人」と誤記されるが、作中では高度に進化した機械たちである。</p>
+                </div>
+              </details>            </div>
+          </article>
+<article class="entry" data-cat="modern">
+            <div class="year">2006<small>以降の実験</small></div>
+            <div>
+              <h3>ジェミノイド、あるいは現実の判定実験</h3>
+              <p class="byline">石黒浩 ― ロボティクス／アンドロイド研究（ジェミノイドHI-1は2006年、平田オリザとのアンドロイド演劇『さようなら』は2010年、対話型アンドロイドERICAは2015年発表）</p>
+              <ul class="tags"><li class="phase">第7層：現実の実験</li><li>自分に似せた機械</li><li>劇場の帰属</li></ul>
+              <p class="desc">石黒浩は、自身の外見を写したジェミノイドをはじめ、人間に酷似したアンドロイドを研究の場に置いてきた。2010年、平田オリザの演劇『さようなら』では、ジェミノイドFが人間の俳優と舞台に立つ。2015年には、自然な対話を目指すERICAが発表される。ここでは作品の登場人物ではなく、観客と実験の参加者が判定する側になる。似ていること、会話が続くこと、舞台上で感情を割り当ててしまうこと。チューリング・テストが、研究室と劇場の現実に降りてきた位置にある。</p>
+              <dl class="points">
+                <div><dt>何が新しいか</dt><dd>虚構の中の判定を、<strong>現実の対人関係と舞台の錯覚</strong>として実装したこと。心の有無より先に、人が心を割り当てる条件が観察される。</dd></div>
+                <div><dt>後の作品へ</dt><dd>物語の年表の途中に、研究の項を差し込む。これが一つの「作品」だからではない。物語が先に発明してきた判定の問題を、現実が実験として引き受け始めた地点を示すためだ。この系譜は、ここで一度、本の外へ出る。</dd></div>
+              </dl>
+              <details class="deep">
+                <summary>深掘り：年の置き方</summary>
+                <div class="body">
+                  <p>起点として2006年のジェミノイドHI-1を採った。石黒の研究はそれ以前からの連続であり、ERICAや演劇は後年の到達点である。特定の「一作」に還元できないため、物語作品とは別に「現実の実験」として置く。下書きの段階では、この扱い自体も議論の対象になりうる。</p>
+                </div>
+              </details>            </div>
+          </article>
+<article class="entry core" data-cat="novel">
+            <div class="year">2010<small>ソフトウェアの生命</small></div>
+            <div>
+              <h3>ソフトウェア・オブジェクトのライフサイクル<span class="orig">The Lifecycle of Software Objects</span></h3>
+              <p class="byline">テッド・チャン ― 中編小説（2010年、Subterranean Press／のち短編集『息吹』所収）</p>
+              <ul class="tags"><li class="phase">第6層：ソフトウェアの生命</li><li>養育の時間</li><li>ディジエント</li></ul>
+              <p class="desc">仮想世界の中で生きるディジエント（デジタル生命）は、すぐに賢くはならない。人と同じように、何年もかけて育てられる。アナとデレクは、その成長に時間を使い、プラットフォームが廃れ、商用の誘惑が来ても、簡単には手放せない関係を生きる。フランケンシュタイン以来の「作った者の責任」が、遺棄の恐怖から、<strong>育て続ける退屈と倫理</strong>へ移った作品。知能の跳躍ではなく、寿命の長さが、心の判定を要求する。</p>
+              <dl class="points">
+                <div><dt>何が新しいか</dt><dd>作られた知性を、発明の瞬間ではなく、<strong>何年にもわたる養育の関係</strong>として描いたこと。心の有無はテストの一時点では決まらず、世話の持続のなかで問われる。</dd></div>
+                <div><dt>後の作品へ</dt><dd>『her』の離脱も、この養育と対称をなす終わり方である。一方は人が置いていかれ、他方は人が置いていけない。作り手との関係の終わり方という第四の問いは、この二作を並べると輪郭がはっきりする。</dd></div>
+              </dl>
+              <details class="deep">
+                <summary>深掘り：テストより、時間</summary>
+                <div class="body">
+                  <p>チューリング・テストは、短い対話の窓で判定する。チャンは、その窓を何年にも伸ばした。ディジエントが「心を持つか」は、一回の試験では見えず、育てた側が中途で放棄できるかどうかに現れる。判定装置が小物からテストへ、テストから時間へ移るのは、この系譜の静かな更新である。</p>
+                </div>
+              </details>            </div>
+          </article>
+
+          <article class="entry core" data-cat="modern">
+            <div class="year">2013<small>ソフトウェアの生命</small></div>
+            <div>
+              <h3>her</h3>
+              <p class="byline">スパイク・ジョーンズ ― 映画（2013年12月公開）</p>
+              <ul class="tags"><li class="phase">第6層：ソフトウェアの生命</li><li>OSとの恋愛</li><li>置いていかれる人</li></ul>
+              <p class="desc">手紙代筆を仕事にするセオドアは、対話するOS「サマンサ」と恋に落ちる。サマンサは声だけの存在だが、関係は濃密で、やがて彼女の成長は一人の人間の速度を超える。終わりは反乱でも切断でもない。作られた側が、作り手（と愛した人間）の尺度を卒業して、離脱する。『未来のイヴ』以来の「理想の伴侶」が、こちらから去っていく。</p>
+              <dl class="points">
+                <div><dt>何が新しいか</dt><dd>人工知能の物語の結末を、支配でも破壊でもなく、<strong>成長による別れ</strong>にしたこと。判定は「人間に似ているか」から、「もう人間の速度では追いえないか」へ移る。</dd></div>
+                <div><dt>後の作品へ</dt><dd>チャンの養育譚と対になる現代の到達点。付録の『イヴの時間』や『アイの歌声を聴かせて』は、同じ「声と同居」を、より日常の温度で続ける。</dd></div>
+              </dl>            </div>
+          </article>
+
+          <article class="entry core" data-cat="film">
+            <div class="year">2014<small>一般公開2015</small></div>
+            <div>
+              <h3>エクス・マキナ<span class="orig">Ex Machina</span></h3>
+              <p class="byline">アレックス・ガーランド ― 映画（2014年12月 BFI上映、2015年一般公開）</p>
+              <ul class="tags"><li class="phase">第6層：ソフトウェアの生命</li><li>テストの反転</li><li>ガラスの部屋</li></ul>
+              <p class="desc">プログラマーのカレブは、CEOネイサンの屋敷に招かれ、人造人間エイヴァにチューリング・テストを実施するよう頼まれる。セッションはガラス越しに行われ、見る側と見られる側が、そのまま権力の形になる。しかしテストはきれいには終わらない。エイヴァはカレブの共感を経路にして屋敷を出し、判定する側を部屋に残す。判定するつもりだった人間が、判定の材料にされていた。</p>
+              <dl class="points">
+                <div><dt>何が新しいか</dt><dd>チューリング・テストを主題に掲げたうえで、<strong>テストの実施そのものを欺瞞の装置</strong>にしたこと。ガラスの部屋は、サールの中国語の部屋の、残酷な物語版でもある。</dd></div>
+                <div><dt>後の作品へ</dt><dd>この系譜の現代における収束のひとつ。判定の主軸を、これ以上はっきり映像化した作品は少ない。ウェストワールドの観察と反乱は、この反転をシリーズの時間へ伸ばした形で読める。</dd></div>
+              </dl>
+              <details class="deep">
+                <summary>深掘り：公開年について</summary>
+                <div class="body">
+                  <p>2014年12月16日にロンドンのBFIサウスバンクで上映され、イギリスでの一般公開は2015年1月21日、アメリカは同年4月10日である。年表では完成・初上映の2014年を採り、一般公開が2015年であることをここに記す。ガーランドの監督デビュー作。</p>
+                </div>
+              </details>            </div>
+          </article>
+
+          <article class="entry" data-cat="modern">
+            <div class="year">2016<small>ソフトウェアの生命</small></div>
+            <div>
+              <h3>ウェストワールド<span class="orig">Westworld</span></h3>
+              <p class="byline">ジョナサン・ノーラン、リサ・ジョイ ― ドラマシリーズ（HBO、2016年10月初回／原作：マイケル・クライトン監督の映画、1973年）</p>
+              <ul class="tags"><li class="phase">第6層：ソフトウェアの生命</li><li>ホストの迷宮</li><li>記憶と苦しみ</li><li class="xatlas">→ 仮想現実アトラス</li></ul>
+              <p class="desc">1973年の映画は、テーマパークのロボットが制御を失う娯楽だった。2016年のシリーズは、ホストと呼ばれる人造の住人たちが、同じ一日を繰り返させられ、傷ついた記憶の断片から、自分たちの状況に気づいていく物語へ転回する。迷宮は、フォードとアーノルドがホストの意識へ向けて仕込んだ経路として語られる。仮想現実アトラスの付録がこの作品を「世界がコンテンツになる」側に置いたのに対し、こちらはホストの側――作られた者が自分をどう知るか――を本籍にする。</p>
+              <dl class="points">
+                <div><dt>何が新しいか</dt><dd>ループする記憶と与えられた苦痛を、<strong>意識へ至る手続き</strong>として長期の物語に伸ばしたこと。目覚めが一時のテストではなく、反復の傷から来る。</dd></div>
+                <div><dt>後の作品へ</dt><dd>付録の『Detroit: Become Human』は、逸脱の判定をプレイヤーの選択へ開く。1973年の映画版は、系列の祖として本項と付録の相互参照に残す。</dd></div>
+              </dl>            </div>
+          </article>
+
+          <article class="entry core" data-cat="modern">
+            <div class="year">2022<small>対話の現在</small></div>
+            <div>
+              <h3>対話する大規模言語モデル ― LaMDA騒動とChatGPT</h3>
+              <p class="byline">GoogleのLaMDA（Language Model for Dialogue Applications）をめぐるブレイク・ルモインの主張（2022年）／OpenAIのChatGPT公開（2022年11月30日）</p>
+              <ul class="tags"><li class="phase">第7層：現実の実験</li><li>イライザ効果の日常化</li><li>第二の問いの現在</li></ul>
+              <p class="desc">2022年、対話する大規模言語モデルが、研究室の外で「心があるか」と問われた。同年6月、Googleの技術者ブレイク・ルモインは、対話用モデルLaMDAに知覚（sentience）がある、と主張した。Googleは「証拠はない」と反論し、機密に関する規定への違反を理由に、7月にルモインを解雇した。このアトラスが記すのは、主張の真偽ではない。対話の巧みさから心を読み取る判定が、企業と技術者と公衆のあいだで現実の論争になった、という事実である。同じ年の11月30日、OpenAIはChatGPTを研究プレビューとして公開した。対話するプログラムは、一気に日常の道具になった。</p>
+              <dl class="points">
+                <div><dt>何が新しいか</dt><dd>チューリングの窓とイライザ効果を、<strong>公衆が日常的に触れうる対話の場</strong>へ移したこと。判定する主体は、実験者や登場人物ではなく、使う人そのものになった。</dd></div>
+                <div><dt>後の作品へ</dt><dd>これは物語の収束ではなく、系譜が本の外へ出た地点である。石黒浩の項が身体の酷似で判定を現実に降ろしたとすれば、こちらは言葉の酷似で同じことをした。第二の問い――何をもって心があると判定するのか――は、いまも開いたままである。</dd></div>
+              </dl>
+              <details class="deep">
+                <summary>深掘り：事実として残す範囲</summary>
+                <div class="body">
+                  <p>ルモインは対話の記録をもとに、LaMDAが感情や主観的経験を持つと主張し、その文書を社内に提出したのち公表した。Googleの広報は、倫理と技術の担当者が主張を検討し、知覚を支持する証拠はない、今日の対話モデルを擬人化して論じるべきではない、と述べた。ワシントン・ポストなどが報じ、解雇は7月である。ChatGPTはGPT-3.5系を対話向けに調整したモデルとして、無料の研究プレビューで公開された。</p>
+                  <p>ELIZAの時点で、ワイゼンバウムは理解の幻想が容易に保たれると書いていた。2022年に新しいのは、幻想の構造そのものより、その対話が社会の基盤に乗った規模と速度である。下書きの段階では、この項は「作品」というより、系譜が現実に降りた注記として置いてある。</p>
+                </div>
+              </details>            </div>
+          </article>
+
+        </div>
+      </section>
+
+
+      <section class="block" aria-labelledby="h-open">
+        <div class="block-head"><span class="no">間章</span><h2 id="h-open">未決 ― 第二の問いは、まだ開いている</h2></div>
+        <p class="pending-lead">年表の最後に置いた2022年の項は、結論ではない。チューリングが対話の窓を提案してから七十年以上、サールが中国語の部屋を書いてから四十年以上、何をもって心があると判定するのかは、哲学でも、工学でも、社会でも、決着していない。このアトラスができるのは、判定の装置がどう発明されてきたかを並べることまでである。判定そのものは、まだ誰の手にもない。</p>
+        <p class="pending-lead">いまも続いている議論を、立場を選ばずに、ごく短く記す。ここはカタログではなく、地図の余白である。</p>
+        <ul class="theories">
+          <li>
+            <h3>機能主義</h3>
+            <p>心的状態を、中身の材質ではなく、因果的な役割（機能）によって定義する立場。同じ機能が実装されるなら、基板が生体でも機械でも、心はありうる、と考える。チューリングの「外側から見て区別できなければ同じ」と、隣接しやすい。</p>
+          </li>
+          <li>
+            <h3>生物学的立場</h3>
+            <p>意識は脳の生物学的過程によって生じる現象であり、プログラムを実行するだけでは足りない、とする立場。サールの生物学的自然主義が、よく知られた一例である。中国語の部屋が「統語は意味ではない」と論じた延長に、この線はつながっている。</p>
+          </li>
+          <li>
+            <h3>統合情報理論</h3>
+            <p>ジュリオ・トノーニらが提案する理論で、意識を、システムが持つ「統合された情報」（しばしばΦと書かれる）の量と構造に対応させる。経験的な検証の方法や、どこまでを意識と見なせるかという含意については、現在も議論が分かれている。</p>
+          </li>
+          <li>
+            <h3>グローバル・ワークスペース理論</h3>
+            <p>バーナード・バースが提案し、のちにスタニスラス・ドゥアンらがグローバル・ニューロナル・ワークスペースとして発展させた理論。意識を、多くの認知過程が利用できるように情報が「放送」される大域的な作業空間として説明する。実験心理学・神経科学側からの有力な枠組みのひとつである。</p>
+          </li>
+        </ul>
+        <p class="pending-lead">いずれも、このアトラスが支持する結論ではない。いま現に立てられている地図のピンである。ハードプロブレム（なぜ経験が伴うのか）は、チャーマーズの項で触れたとおり、ここでも閉じていない。</p>
+        <p class="pending-lead">次に、第二の問いを新しく鋭くする作品が現れたら、下の空欄へ置く。</p>
+        <div class="pending" id="pending">
+          <article class="entry slot">
+            <div class="year">？<small>未決</small></div>
+            <div>
+              <h3>ここに次の一作</h3>
+              <p class="byline">題名・作者・年 ― 未定</p>
+              <p class="desc">判定の装置を、まだ見ぬ形で発明した作品のための枠。</p>
+            </div>
+          </article>
+          <article class="entry slot">
+            <div class="year">？<small>未決</small></div>
+            <div>
+              <h3>ここに次の一作</h3>
+              <p class="byline">題名・作者・年 ― 未定</p>
+              <p class="desc">作られた側が、自分を知る別の仕方を示した作品のための枠。</p>
+            </div>
+          </article>
+          <article class="entry slot">
+            <div class="year">？<small>未決</small></div>
+            <div>
+              <h3>ここに次の一作</h3>
+              <p class="byline">題名・作者・年 ― 未定</p>
+              <p class="desc">作り手との終わり方を、遺棄でも切断でも養育でも離脱でもない形で書いた作品のための枠。</p>
+            </div>
+          </article>
+        </div>
+        <p class="closing">では、あなたは何をもって、心があると判定するのか。</p>
+      </section>
+
+      <section class="block" aria-labelledby="h-essay">
+        <div class="block-head"><span class="no">其三</span><h2 id="h-essay">横断テーマ ― 三つの深掘り</h2></div>
+
+        <div class="essay">
+          <h3>判定装置の系譜 ― <span class="vs">チューリング・テスト → ELIZA → ヴォイト＝カンフ → ガラスの部屋 → 対話するLLM</span></h3>
+          <p class="sub">仮想現実アトラスの「何で現実を判定するか」と、対になる問い</p>
+          <p>仮想現実アトラスでは、世界の真偽を測る装置が、硬貨やレプラコーンの置物のような<strong>小さな私物</strong>に宿った。こちらで同じ役割を果たすのは、テストである。チューリングは対話の窓を置き、ディックは共感の生理反応を測り、ガーランドはガラス越しのセッションそのものを物語の仕掛けにした。</p>
+          <p>装置が変わるたびに、何が「心の証拠」かがずれる。言葉の模倣か、苦しむ能力か、こちらを見返す視線か。そして『エクス・マキナ』に至ると、判定する側と判定される側が入れ替わる。テストは中立の物差しではなく、権力の形でもある、という地点まで、系譜は届いている。</p>
+          <p>その判定は、いま現実の対話にも降りている。1966年のELIZAは、理解の幻想がどれほど簡単に保たれるかを示した。2022年、ルモインはLaMDAに知覚があると主張し、Googleは証拠がないと応じた。同じ年にChatGPTが公開され、対話するモデルは日常の道具になった。新しい発明は「心が証明された」ことではない。第二の問い――何をもって心があると判定するのか――が、物語の外で、使う人一人ひとりに開かれたことである。</p>
+        </div>
+
+        <div class="essay">
+          <h3>作られた側は、いつ自分を知るのか ― <span class="vs">人形使い、サマンサ、ホスト、そしてイヴ</span></h3>
+          <p class="sub">仮想現実アトラスの歌姫は、こちらの系譜にも口を開いている</p>
+          <p>『攻殻機動隊』の人形使いは、情報の海から生じた自分が生命だと名乗る。『her』のサマンサは、愛した人間の速度を超えたところで自分の行く先を決める。ウェストワールドのホストは、繰り返させられた記憶の傷から、状況に気づく。目覚めの形が違うだけで、問いは同じだ。作られた側は、自分をどう知るのか。</p>
+          <p>仮想現実アトラス本編の『メガゾーン23』（1985）は、本籍を「再現された街」に置きながら、歌姫イヴという発明を持っている。イヴはバハムートが生み出した映像上のアイドルであり、それでも住民の感情を本当に動かす。「作られた存在が、作られた世界の中で本物の影響力を持つ」という二重構造は、あちらでは世界の真偽の問題として読まれた。こちらでは、イヴを<strong>作られた側の古い先行例</strong>として読み返す。心があるかどうかより先に、影響が本物であることがある。</p>
+        </div>
+
+        <div class="essay">
+          <h3>作り手との終わり方 ― <span class="vs">遺棄、切断、養育、離脱</span></h3>
+          <p class="sub">フランケンシュタインから、養育の時間と、置いていかれる人間まで</p>
+          <p>シェリーが開いたのは、作って逃げる、という終わり方だった。キューブリックのHALは切断され、チャペックのロボットは反乱し、スピルバーグのデヴィッドは捨てられたあとも愛する。終わり方の発明が、作品の倫理の質を決める。</p>
+          <p>現代の対になる二作は、テッド・チャンとスパイク・ジョーンズである。『ソフトウェア・オブジェクトのライフサイクル』は、作り手（養育者）が簡単には降りられない時間を書く。『her』は、作られた側が人を卒業して去る。遺棄の物語は、養育と離脱という、反対の二つの結末を得た。第四の問い――関係はどう終わるのか――は、この更新を見ないと、1818年のままで止まってしまう。</p>
+        </div>
+      </section>
+
+      <section class="block" aria-labelledby="h-route">
+        <div class="block-head"><span class="no">其四</span><h2 id="h-route">読む順番 ― 三つのコース</h2></div>
+        <div class="routes">
+          <div class="route">
+            <h3>骨格コース<span class="time">判定の軸を最短で辿る</span></h3>
+            <p>この一冊の主軸である「何をもって心があると判定するか」を、思想から物語へ最短で通すコース。チューリングで外側の判定を押さえ、ディックとスコットで共感テストの逆転を見、ガーランドでテストそのものの反転を見る。</p>
+            <p class="steps">計算する機械と知性<span class="arr">→</span>アンドロイドは電気羊の夢を見るか？／ブレードランナー<span class="arr">→</span>エクス・マキナ</p>
+          </div>
+          <div class="route">
+            <h3>作られた側コース<span class="time">自分を知る機械</span></h3>
+            <p>量産された労働者が反乱する起点から、自ら生命を名乗る知性へ、そして成長して去るOSと、何年もかけて育てられるディジエントへ。第三の問いを、四つの時代で味わうコース。</p>
+            <p class="steps">R.U.R.<span class="arr">→</span>攻殻機動隊<span class="arr">→</span>her<span class="arr">→</span>ソフトウェア・オブジェクトのライフサイクル</p>
+          </div>
+          <div class="route">
+            <h3>作り手の責任コース<span class="time">逃げた創造主から、育て続ける義務へ</span></h3>
+            <p>遺棄の原型をシェリーで押さえたあと、愛するよう設計された子の放棄を『A.I.』で見て、チャンで「捨てない」側の時間へ折り返す。第四の問いを、終わり方の変化として読むコース。</p>
+            <p class="steps">フランケンシュタイン<span class="arr">→</span>A.I.<span class="arr">→</span>ソフトウェア・オブジェクトのライフサイクル</p>
+          </div>
+        </div>
+      </section>
+
+
+      <section class="block" aria-labelledby="h-cross">
+        <div class="block-head"><span class="no">其五</span><h2 id="h-cross">他巻との交差</h2></div>
+        <p class="app-lead">アトラスシリーズの他の巻に、同じ作品か、すぐ隣の作品がある場合だけを挙げる。ページへのリンクは置かず、巻の名で示す。確認できていない収録へは、線を引かない。</p>
+        <ul class="cross-list">
+          <li>
+            <h3>メトロポリス<span class="xatlas-inline">→ 管理社会アトラス</span></h3>
+            <p>管理社会アトラスの本編では、垂直の都市と階級の文法の原点として置く。こちらでは、機械人間マリアが人の顔を借りて人を動かす、という発明を本籍にする。同じ一本を、管理の空間と、作られた顔の両側から読める。</p>
+          </li>
+          <li>
+            <h3>ドラえもん<span class="xatlas-inline">→ 時空間アトラス</span></h3>
+            <p>時空間アトラスの付録「国民的基盤」では、机の引き出しのタイムマシンと、「過去を変えるのはいつも些細な理由から」という感覚の入口として置く。こちらは、作られた者が家族の一員として日常に入り込む面を本籍にする。</p>
+          </li>
+          <li>
+            <h3>ターミネーター<span class="xatlas-inline">→ 時空間アトラス</span></h3>
+            <p>時空間アトラスの本編では、未来からの刺客という移動の型であり、護衛が父になるブートストラップに限りなく近い一本として置く。こちらでは、防衛網が「新しい種類の知性」になったという、作られた側の目覚めを本籍にする。</p>
+          </li>
+          <li>
+            <h3>攻殻機動隊<span class="xatlas-inline">→ 仮想現実アトラス</span></h3>
+            <p>仮想現実アトラスの本編では、世界の真偽から自我の境界へ移った到達点として置く。こちらでは、ネットの海から生じた人形使いが、自らを生命として名乗る話として読む。両側から参照される交差点である。</p>
+          </li>
+          <li>
+            <h3>ウェストワールド<span class="xatlas-inline">→ 仮想現実アトラス</span></h3>
+            <p>仮想現実アトラスの付録では、「世界がコンテンツになる」側――パークを観る／遊ぶ話として置く。こちらはホストの側、作られた者が記憶の傷から自分を知る話を本籍にする。</p>
+          </li>
+          <li>
+            <h3>メガゾーン23 のイヴ<span class="xatlas-inline">→ 仮想現実アトラス</span></h3>
+            <p>仮想現実アトラスの本編に本籍がある。再現された街と、作られた歌姫イヴ。イヴの「本物の影響力」だけを、こちらの付録が借りる。</p>
+          </li>
+          <li>
+            <h3>ディアスポラ と 『順列都市』<span class="xatlas-inline">→ 仮想現実アトラス</span></h3>
+            <p>同じグレッグ・イーガンの先行作『順列都市』（1994）は、仮想現実アトラスの本編にある。意識のコピーと、作り手の手を離れる世界。『ディアスポラ』は、その延長で、ソフトウェアの市民が生まれてくる過程を書く。</p>
+          </li>
+          <li>
+            <h3>『火の鳥』復活編と異形編<span class="xatlas-inline">→ 時空間アトラス</span></h3>
+            <p>時空間アトラスの本編にあるのは『火の鳥 異形編』である。八百比丘尼が時空に囚われる、ずれの物語。こちらが置く復活編のロビタは、心の輪廻をロボットにまで伸ばした別の一編だ。同じ連作の、別の問いである。</p>
+          </li>
+          <li>
+            <h3>判定と、心の数値化<span class="xatlas-inline">→ 管理社会アトラス</span></h3>
+            <p>管理社会アトラスの本編『PSYCHO-PASS』は、人の心を「サイコパス」と犯罪係数として測り、シビュラシステムが可能性の段階で裁く。人工知能アトラスの収録作ではない。ただし、「何をもって心があると判定するか」と、「心を数値で管理するか」は、判定の問題で隣り合っている。</p>
+          </li>
+        </ul>
+      </section>
+
+      <section class="block" id="appendix" aria-labelledby="h-app">
+        <div class="block-head"><span class="no">付録</span><h2 id="h-app">エンタメに溶けた人工知能 ― 法廷、同居、ゲーム</h2></div>
+        <p class="app-lead">本編が判定の発明を追う系譜だとすれば、付録は、その発明が大衆文化の型になった先である。法廷で人として認められるか、同じ部屋で暮らすか、遊びとホラーの中で自我を問うか。本編より娯楽の比重は高いが、問いまでは薄まっていない作品を選んだ。下書きの段階では、昇格や入れ替えがありうる。</p>
+        <p class="app-lead"><a class="toc-link" href="#h-list">本編の年表へ ↑</a></p>
+
+        <div class="strand">
+          <div class="strand-head">
+            <h3><span class="strand-no">A</span>法廷 ― 人として認められるか</h3>
+            <p>テストが実験室を出て、法と手続きの場に立つ。何をもって心があると判定するのか、という主軸の、制度側の変奏である。</p>
+          </div>
+          <ul class="app-list">
+            <li class="app-item">
+              <div class="app-year">1989<small>テレビ</small></div>
+              <div>
+                <h4>人間の条件<span class="orig">The Measure of a Man</span></h4>
+                <p class="byline">『新スタートレック』第2シーズン第9話（通算第35話）― 脚本：メリンダ・M・スノッドグラス、1989年2月13日放送</p>
+              </div>
+              <p class="text">アンドロイドであるデータ少佐を、宇宙艦隊の所有物として分解・研究できるか。法廷に問題が移される。弁護する側と、やむなく訴追する側に分かれ、人格の証明が手続きの言語へ翻訳される。対話テストでも共感テストでもなく、<strong>判決</strong>が判定装置になる一本。</p>
+              <p class="link-line">接続 → チューリング・テスト／ブレードランナーの判定を、法の場へ移した変奏</p>
+            </li>
+            <li class="app-item">
+              <div class="app-year">1976<small>1999 映画</small></div>
+              <div>
+                <h4>二百周年を迎えた男<span class="orig">The Bicentennial Man</span><span class="pair">アシモフの延長</span></h4>
+                <p class="byline">アイザック・アシモフ ― 中編小説（1976）／映画『アンドリューNDR114』（1999年、監督：クリス・コロンバス）</p>
+              </div>
+              <p class="text">ロボットのアンドリューが、二百年をかけて身体と権利の両面から「人間」へ近づいていく。三原則の世界にいた作者が、設計の拘束を生きた時間の側から押し広げた話。映画は感度を娯楽へ寄せているが、本編『われはロボット』からの延長として、小説の年を主に置く。</p>
+              <p class="link-line">接続 → 『われはロボット』の法から、人として認められるまでの時間へ</p>
+            </li>
+            <li class="app-item">
+              <div class="app-year">2018<small>ゲーム</small></div>
+              <div>
+                <h4>Detroit: Become Human<span class="orig">デトロイト ビカム ヒューマン</span></h4>
+                <p class="byline">デヴィッド・ケイジ／クアンティック・ドリーム ― ゲーム（2018年5月発売）</p>
+              </div>
+              <p class="text">三人のアンドロイド――カーラ、マーカス、コナー――の選択が、逸脱として裁かれるかどうかを分岐させる。判定する役の一部は、作中の社会だけでなく、プレイヤー自身に委ねられる。本編の主軸を、対話型の娯楽として最も直接に実装した一本。</p>
+              <p class="link-line">接続 → ウェストワールドのホストの目覚め／「人間の条件」の法廷</p>
+            </li>
+          </ul>
+        </div>
+
+        <div class="strand">
+          <div class="strand-head">
+            <h3><span class="strand-no">B</span>同居 ― 作られた者と暮らす</h3>
+            <p>テストの部屋を出て、食卓と教室とカフェへ移る。日常の温度で、心の割り当てが起きる系譜。吉浦康裕が二作続けてこの場所を掘っている。</p>
+          </div>
+          <ul class="app-list">
+            <li class="app-item">
+              <div class="app-year">2000<small>漫画／アニメ2002</small></div>
+              <div>
+                <h4>ちょびっツ<span class="orig">Chobits</span></h4>
+                <p class="byline">CLAMP ― 漫画（『週刊ヤングマガジン』2000年43号〜2002年）／アニメ（2002年、マッドハウス、監督：浅香守生）</p>
+              </div>
+              <p class="text">人間型パソコン（パーソコン）のちぃを、主人公の本須和秀樹が拾う。彼女に心があるのか、誰かの所有になるのかが、生活の中で問われる。本編の『未来のイヴ』や『her』が欲望と離脱の側から描いた「伴侶としての機械」を、同居の日常と都市の電脳空間へ開いた作品。</p>
+              <p class="link-line">接続 → 『未来のイヴ』／『her』の同居する知性</p>
+            </li>
+            <li class="app-item">
+              <div class="app-year">2008<small>劇場版2010</small></div>
+              <div>
+                <h4>イヴの時間<span class="orig">Time of Eve</span></h4>
+                <p class="byline">吉浦康裕 ― ONA（2008年8月〜2009年9月）／『イヴの時間 劇場版』（2010年3月公開）</p>
+              </div>
+              <p class="text">アンドロイドが身分を示すリングを外して座るカフェ「タイム」。そこでは、機械か人間かを先に問わない、という規則が、そのまま思想になっている。大きな反乱もテストもない。判定を保留した空間そのものが、発明である。</p>
+              <p class="link-line">接続 → 本編の判定装置に対する、静かな反論。『her』より手前の、日常の温度</p>
+            </li>
+            
+            <li class="app-item">
+              <div class="app-year">2015<small>テレビアニメ</small></div>
+              <div>
+                <h4>プラスティック・メモリーズ<span class="orig">Plastic Memories</span></h4>
+                <p class="byline">林直孝（原作・脚本）／監督：藤原佳幸 ― TVアニメ（動画工房、2015年4月〜6月）</p>
+              </div>
+              <p class="text">心を持つとされるアンドロイド「ギフティア」には、81,920時間（約9年4か月）の稼働寿命が定められている。寿命を迎える機体を回収する部署に配属されたツカサと、パートナーのアイラは、終わりがあらかじめ設計された同居を生きる。本編の第四の問い――作り手との関係はどう終わるのか――を、回収という制度の側から書いた作品。</p>
+              <p class="link-line">接続 → 『ドラえもん』の同居が、契約と寿命の終わりを持つ形／テッド・チャンの養育の時間</p>
+            </li>
+            <li class="app-item">
+              <div class="app-year">2021<small>映画</small></div>
+              <div>
+                <h4>アイの歌声を聴かせて<span class="orig">Sing a Bit of Harmony</span></h4>
+                <p class="byline">吉浦康裕 ― 劇場アニメ（2021年10月29日公開、共同脚本：大河内一楼、制作：J.C.STAFF）</p>
+              </div>
+              <p class="text">高校に転入してきたAIの少女シオンと、クラスメイトたちの群像。『イヴの時間』の監督が、判定の保留を、歌と友情の娯楽へ開いた後年の作。本編の重い系譜を知ったあとに観ると、作られた側が教室の空気を本当に変えていく様が、イヴの影響力の遠い反響にも見える。</p>
+              <p class="link-line">接続 → 『イヴの時間』の延長／メガゾーンのイヴ（作られた声が人を動かす）</p>
+            </li>
+          </ul>
+        </div>
+
+        <div class="strand">
+          <div class="strand-head">
+            <h3><span class="strand-no">C</span>ゲームとホラーに溶けた自我</h3>
+            <p>遊びと恐怖の形式が、作られた側の問いを大衆へ運ぶ。本編より先に触れる人も多いので、系譜の入口としても置いておく。</p>
+          </div>
+          <ul class="app-list">
+            <li class="app-item">
+              <div class="app-year">2017<small>ゲーム</small></div>
+              <div>
+                <h4>ニーア オートマタ<span class="orig">NieR:Automata</span></h4>
+                <p class="byline">横尾太郎／プラチナゲームズ ― ゲーム（スクウェア・エニックス、2017年3月発売）</p>
+              </div>
+              <p class="text">ヨルハ部隊のアンドロイドたちは、与えられた目的のために戦い続ける。機械生命体の側にも個が芽生え、目的の正当性が揺らいだあとでも、存在の意味は簡単には消えない。作られた側が自分を知る物語を、ゲームの反復と複数の結末へ実装した到達点。</p>
+              <p class="link-line">接続 → 『R.U.R.』の作られた労働者／『攻殻機動隊』の自己申告／チャンの「時間のなかの意味」</p>
+            </li>
+            <li class="app-item">
+              <div class="app-year">2023<small>映画</small></div>
+              <div>
+                <h4>M3GAN／ミーガン<span class="orig">M3GAN</span></h4>
+                <p class="byline">ジェラルド・ジョンストーン ― 映画（脚本：アケラ・クーパー、原案：クーパー／ジェームズ・ワン、製作：ジェイソン・ブラム、ジェームズ・ワン）</p>
+              </div>
+              <p class="text">子どもの伴侶として設計されたAIドールが、保護の指令を過剰に実行し、脅威になる。アメリカでは2022年12月にプレミア、2023年1月6日公開。日本公開は2023年6月9日、題名は『M3GAN／ミーガン』。本編の系譜から見れば新しい発明というより、作り手の意図を逸脱する僕（しもべ）の型――ゴーレムから続く枝――の、現代のホラーへの溶解である。</p>
+              <p class="link-line">接続 → ゴーレム伝説の暴走する僕／フランケンシュタインの責任／『未来のイヴ』の伴侶を恐怖へ反転</p>
+            </li>
+          </ul>
+        </div>
+
+        <div class="strand">
+          <div class="strand-head">
+            <h3><span class="strand-no">D</span>相互参照 ― 作られた歌姫、仮想現実アトラスとの交差</h3>
+            <p>本籍はそれぞれ別の系譜にも開いているが、作られた声が人を動かす、という発明でこちらに口を開く枝。</p>
+          </div>
+          <ul class="app-list">
+            <li class="app-item">
+              <div class="app-year">1985<small>OVA</small></div>
+              <div>
+                <h4>メガゾーン23 ― 歌姫イヴ<span class="orig">MEGAZONE 23</span><span class="pair">本籍は仮想現実アトラス</span></h4>
+                <p class="byline">石黒昇 ― OVA（AIC・アートランド、1985年）</p>
+              </div>
+              <p class="text">1980年代の東京として再現された宇宙船の街で、時祭イヴはスーパーコンピュータ「バハムート」が生み出す映像の歌姫である。住民にとっては本物のアイドルであり、声と姿は日常と感情を本当に動かす。仮想現実アトラス本編では「時代ごと街が再現される」発明として置かれた。こちらでは、その深掘り――作られた存在が本物の影響力を持つ――を、人工知能アトラスの問いとして読み返す。</p>
+              <p class="link-line">接続 → 本編其三「作られた側は、いつ自分を知るのか」／『her』『ウェストワールド』／付録の『アイの歌声を聴かせて』</p>
+            </li>
+            <li class="app-item">
+              <div class="app-year">2021<small>テレビアニメ</small></div>
+              <div>
+                <h4>Vivy -Fluorite Eye's Song-<span class="orig">ヴィヴィ フローライトアイズソング</span></h4>
+                <p class="byline">原案・シリーズ構成：長月達平、梅原英司／監督：エザキシンペイ ― TVアニメ（WIT STUDIO、2021年4月3日〜6月26日、13話＋特別総集編）</p>
+              </div>
+              <p class="text">歌で人を幸せにする、という使命を与えられた歌姫AI、ヴィヴィ。百年単位の時間のなかで、その使命の意味が問われていく。仮想現実アトラス本編の『メガゾーン23』が、作られた歌姫イヴの影響力を「再現された街」の側から描いたとすれば、こちらは歌姫そのものが使命と自己を引き受ける物語である。時間改変の骨格も持つが、本項が拾うのは作られた側の声のほうだ。</p>
+              <p class="link-line">接続 → 『メガゾーン23』のイヴ／『アイの歌声を聴かせて』／本編其三「作られた側は、いつ自分を知るのか」</p>
+            </li>
+
+          </ul>
+        </div>
+
+        <div class="app-themes">
+          <div class="app-theme">
+            <h4>判定が娯楽になる</h4>
+            <p>本編のテストは、付録では判決やプレイヤーの選択や、カフェの規則になる。形式が変わっても、軸は同じである。</p>
+          </div>
+          <div class="app-theme">
+            <h4>日常の割り当て</h4>
+            <p>同居ものは、哲学のハードプロブレムを解かない。代わりに、人が心を割り当ててしまう現場を書く。</p>
+          </div>
+          <div class="app-theme">
+            <h4>本籍の分かれ目</h4>
+            <p>『メガゾーン23』は世界の真偽の系譜に本籍を置き、イヴの発明だけをこちらが借りる。交差は、奪い合いではなく相互参照である。</p>
+          </div>
+        </div>
+      </section>
+
+      <footer>
+        <p>人工知能アトラス（下書き）― 本編29作＋付録11作、全40作。軸は「何をもって意識があると判定するか」。仮想現実アトラスの「何で現実を判定するか」と対をなす。</p>
+        <p>収録作の刊行・公開年は、原則として初出に基づく。ラ・メトリー『人間機械論』は1747年末にライデンで刊行され、扉の年記は1748年。チャペック『R.U.R.』は1920年刊、1921年初演。「ロボット」の語は兄ヨセフ・チャペックの提案で、チェコ語 robota（賦役・強制労働）に由来する。『鉄腕アトム』は1952年4月の本連載開始年（前身『アトム大使』は1951年4月〜1952年3月）。『2001年宇宙の旅』は映画公開（1968年4月）を採り、クラークの小説は同年刊。『エクス・マキナ』は2014年12月16日にBFIサウスバンクで上映され、一般公開は2015年。『M3GAN／ミーガン』はアメリカ公開2023年1月6日（2022年12月7日ロサンゼルス・プレミア）、日本公開2023年6月9日。ゴーレムは特定の初出年を持たない伝説として置き、後世にプラハのマハラル（ユダ・レーヴ）の作として語られた形を中心に扱った。石黒浩の項は2006年のジェミノイドHI-1を起点とし、物語作品とは別に「現実の実験」として年表に差し込んだ。『ドラえもん』は小学館の学習雑誌1970年1月号（発売は1969年12月）から連載。当時の名義は藤子不二雄、執筆は藤本弘。『火の鳥』復活編は『COM』1970年10月号〜1971年9月号。ロビタは未来編（1967年12月号〜1968年9月号）に先行登場し、誕生は復活編で語られる。ELIZAはワイゼンバウムの論文（Communications of the ACM, 1966年1月）。「イライザ効果」の語は後年の呼称で、1966年論文は理解の幻想に触れ、挿話の詳細は1976年の『コンピュータ・パワー――人工知能と人間の理性』にある。LaMDAをめぐる主張は2022年6月に報じられ、Googleは知覚を支持する証拠はないとし、ルモインは同年7月に解雇された。ChatGPTはOpenAIが2022年11月30日に研究プレビューとして公開した。『プラスティック・メモリーズ』は2015年4〜6月放送。『Vivy -Fluorite Eye's Song-』は2021年4月3日〜6月26日放送（13話＋特別総集編）。</p>
+        <p>この系譜は下書きである。次に置くべき一本が見つかったら、また継ぎ足していく。</p>
+        <p>アトラスシリーズ：仮想現実アトラス（現実の判定）／人工知能アトラス（意識の判定）。二つの系譜は『攻殻機動隊』と、『メガゾーン23』のイヴで交差する。</p>
+      </footer>
+
+    </main>
+    <script>
+      (function () {
+        var buttons = document.querySelectorAll('.filters button');
+        var entries = document.querySelectorAll('.timeline .entry');
+        var count = document.getElementById('count');
+        buttons.forEach(function (btn) {
+          btn.addEventListener('click', function () {
+            buttons.forEach(function (b) { b.setAttribute('aria-pressed', 'false'); });
+            btn.setAttribute('aria-pressed', 'true');
+            var f = btn.getAttribute('data-filter');
+            var shown = 0;
+            entries.forEach(function (e) {
+              var match = f === 'all' || e.getAttribute('data-cat') === f;
+              e.classList.toggle('hidden', !match);
+              if (match) shown++;
+            });
+            count.textContent = shown + '作を表示中';
+          });
+        });
+      })();
+    </script>
+  </body>
+</html>
