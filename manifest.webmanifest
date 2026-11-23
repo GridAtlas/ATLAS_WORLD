@@ -1,0 +1,17 @@
+{
+  "name": "アトラス大全 ― ATLAS WORLD",
+  "short_name": "アトラス大全",
+  "description": "SF・映画・文学の名作を「型の分類」と「年表」の二層で読み解く系譜集、全5冊・全181作の玄関。",
+  "lang": "ja",
+  "start_url": ".",
+  "scope": ".",
+  "display": "standalone",
+  "background_color": "#090f1e",
+  "theme_color": "#0d1526",
+  "icons": [
+    { "src": "icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" },
+    { "src": "icon-maskable.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "maskable" },
+    { "src": "icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" }
+  ]
+}
