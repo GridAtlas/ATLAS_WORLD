@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="color-scheme" content="light dark" />
+    <title>作品一覧 ― アトラス大全</title>
+    <meta name="description" content="アトラスシリーズ全6冊・全224作を横断して探す索引。検索と共通タグで絞り込み、同一作は1枚にまとめて表示します。" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho+B1:wght@500;700;800&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet" />
+    <link rel="manifest" href="../manifest.webmanifest" />
+    <link rel="icon" type="image/svg+xml" href="../icon.svg" />
+    <link rel="apple-touch-icon" href="../apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <style>
+      button, [role="button"], select, summary, input:not([type="checkbox"], [type="radio"]) { min-height: 2.25rem; }
+      * { box-sizing: border-box; }
+      :root {
+        --bg: #fbfaf6;
+        --surface: #ffffff;
+        --ink: #191b1d;
+        --ink-2: #45484b;
+        --muted: #71757a;
+        --line: #ddd8cc;
+        --line-soft: #eae6db;
+        --accent: #b23318;
+        --accent-ink: #96290f;
+        --teal: #0d5c50;
+        --gold: #8a6d1f;
+        --gold-bg: #f5ecd2;
+        --chip-bg: #f0ede4;
+        --deep-bg: #f3f0e7;
+      }
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --bg: #101315;
+          --surface: #171a1d;
+          --ink: #edeade;
+          --ink-2: #c6c9c4;
+          --muted: #9aa0a0;
+          --line: #33383b;
+          --line-soft: #262b2e;
+          --accent: #e4704e;
+          --accent-ink: #eda183;
+          --teal: #57bfa9;
+          --gold: #d9b95c;
+          --gold-bg: #38300f;
+          --chip-bg: #22262a;
+          --deep-bg: #181c1f;
+        }
+      }
+      html { scroll-behavior: smooth; }
+      @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--ink);
+        font-family: "Zen Kaku Gothic New", "Hiragino Kaku Gothic ProN", sans-serif;
+        font-size: 16px;
+        line-height: 1.85;
+        -webkit-font-smoothing: antialiased;
+      }
+      .wrap { max-width: 1020px; margin: 0 auto; padding: 0 20px 72px; }
+      .serif { font-family: "Shippori Mincho B1", "Hiragino Mincho ProN", serif; }
+
+      .series-nav {
+        border-bottom: 1px solid var(--line);
+        background: var(--bg);
+        font-size: 13px;
+      }
+      .series-nav .inner {
+        max-width: 1020px;
+        margin: 0 auto;
+        padding: 10px 20px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px 0;
+        align-items: baseline;
+      }
+      .series-nav a {
+        color: var(--ink-2);
+        text-decoration: none;
+        font-weight: 500;
+      }
+      .series-nav a:hover,
+      .series-nav a:focus-visible { color: var(--accent-ink); }
+      .series-nav a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+      .series-nav .home {
+        font-weight: 700;
+        color: var(--accent-ink);
+        margin-right: 14px;
+        letter-spacing: .06em;
+      }
+      .series-nav .home.here { color: var(--ink); }
+      .series-nav .vols {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px 0;
+        align-items: baseline;
+      }
+      .series-nav .vols a,
+      .series-nav .vols .here { padding: 0 8px; }
+      .series-nav .vols .here { font-weight: 700; color: var(--ink); }
+      .series-nav .sep { color: var(--muted); opacity: .55; user-select: none; }
+      .series-nav .index-link {
+        margin-left: auto;
+        padding: 0 0 0 12px;
+        font-weight: 700;
+        letter-spacing: .06em;
+        color: var(--accent-ink);
+      }
+      .series-nav .index-link.here { color: var(--ink); }
+
+      .intro { padding: 36px 0 8px; }
+      .intro .kicker {
+        color: var(--accent-ink); font-weight: 700; font-size: 13px; letter-spacing: .14em; margin: 0 0 14px;
+      }
+      .intro h1 {
+        font-family: "Shippori Mincho B1", serif; font-weight: 800;
+        font-size: clamp(32px, 7vw, 52px); line-height: 1.25; margin: 0 0 10px; letter-spacing: .04em;
+      }
+      .intro .lead { font-size: 16.5px; max-width: 44em; margin: 0 0 10px; }
+      .intro .lead strong { color: var(--accent-ink); font-weight: 700; }
+      .intro .note { font-size: 13.5px; color: var(--muted); max-width: 44em; margin: 0; }
+
+      .toolbar-sticky {
+        position: sticky;
+        top: 0;
+        z-index: 5;
+        background: color-mix(in srgb, var(--bg) 92%, transparent);
+        backdrop-filter: blur(8px);
+        padding: 10px 0 8px;
+        margin: 8px 0 0;
+        border-bottom: 1px solid var(--line-soft);
+      }
+      @supports not (background: color-mix(in srgb, black 50%, white)) {
+        .toolbar-sticky { background: var(--bg); }
+      }
+
+      .search-row { display: flex; flex-wrap: wrap; gap: 10px 14px; align-items: center; }
+      .search {
+        flex: 1 1 220px;
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+        margin: 0;
+      }
+      .search input[type="search"] {
+        width: 100%;
+        font: inherit;
+        font-size: 16px;
+        padding: 8px 12px;
+        border: 1px solid var(--line);
+        border-radius: 6px;
+        background: var(--surface);
+        color: var(--ink);
+      }
+      .search input[type="search"]:focus {
+        outline: 2px solid var(--accent);
+        outline-offset: 2px;
+        border-color: var(--accent);
+      }
+      .tools {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px 14px;
+        align-items: center;
+        flex: 1 1 240px;
+      }
+      .tools label {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin: 0;
+        font-size: 13.5px;
+        color: var(--ink-2);
+        font-weight: 500;
+      }
+      .tools select {
+        font: inherit;
+        font-size: 15px;
+        padding: 6px 10px;
+        border: 1px solid var(--line);
+        border-radius: 6px;
+        background: var(--surface);
+        color: var(--ink);
+      }
+      .tools select:focus { outline: 2px solid var(--accent); outline-offset: 2px; }
+      #count {
+        margin: 0;
+        font-size: 13.5px;
+        color: var(--ink-2);
+        flex: 1 1 160px;
+      }
+      #clear {
+        font: inherit;
+        font-size: 13.5px;
+        font-weight: 700;
+        color: var(--accent-ink);
+        background: transparent;
+        border: 1px solid var(--line);
+        border-radius: 6px;
+        padding: 4px 12px;
+        cursor: pointer;
+      }
+      #clear:hover, #clear:focus-visible { border-color: var(--accent); }
+      #clear:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+      .filter-groups {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 4px 16px;
+        margin-top: 8px;
+      }
+      @media (min-width: 720px) {
+        .filter-groups { grid-template-columns: 1fr 1fr; }
+      }
+      .fg {
+        border: 0;
+        border-bottom: 1px solid var(--line-soft);
+        padding: 2px 0 8px;
+      }
+      .fg summary {
+        cursor: pointer;
+        font-size: 13px;
+        font-weight: 700;
+        letter-spacing: .08em;
+        color: var(--teal);
+        list-style: none;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .fg summary::-webkit-details-marker { display: none; }
+      .fg summary::after { content: "＋"; font-family: "Shippori Mincho B1", serif; color: var(--muted); }
+      .fg[open] summary::after { content: "−"; }
+      .fg summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+      .chips { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+      .chip {
+        display: inline-flex;
+        align-items: center;
+        margin: 0;
+        cursor: pointer;
+      }
+      .chip input {
+        position: absolute;
+        opacity: 0;
+        pointer-events: none;
+      }
+      .chip span {
+        display: inline-block;
+        font-size: 13px;
+        line-height: 1.3;
+        padding: 5px 10px;
+        border-radius: 999px;
+        border: 1px solid var(--line);
+        background: var(--chip-bg);
+        color: var(--ink-2);
+        min-height: 2.25rem;
+        display: inline-flex;
+        align-items: center;
+      }
+      .chip input:checked + span {
+        background: var(--gold-bg);
+        border-color: var(--gold);
+        color: var(--ink);
+        font-weight: 700;
+      }
+      .chip input:focus-visible + span {
+        outline: 2px solid var(--accent);
+        outline-offset: 2px;
+      }
+
+      #work-list { margin-top: 18px; display: flex; flex-direction: column; gap: 0; }
+      .work-card {
+        display: grid;
+        grid-template-columns: 72px 1fr;
+        gap: 8px 16px;
+        padding: 16px 0 18px;
+        border-bottom: 1px solid var(--line-soft);
+      }
+      @media (max-width: 519px) {
+        .work-card { grid-template-columns: 1fr; gap: 2px 0; }
+        .work-card .year { margin-bottom: 2px; }
+      }
+      .work-card .year {
+        font-family: "Shippori Mincho B1", serif;
+        font-weight: 700;
+        font-size: 18px;
+        color: var(--accent-ink);
+        line-height: 1.3;
+        padding-top: 4px;
+      }
+      .work-card h2 {
+        font-family: "Shippori Mincho B1", serif;
+        font-weight: 800;
+        font-size: clamp(18px, 4vw, 22px);
+        line-height: 1.35;
+        margin: 0 0 2px;
+      }
+      .work-card h2 a { color: inherit; text-decoration: none; }
+      .work-card h2 a:hover, .work-card h2 a:focus-visible { color: var(--accent-ink); }
+      .work-card h2 a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+      .work-card .orig {
+        margin-left: 8px;
+        font-family: "Zen Kaku Gothic New", sans-serif;
+        font-weight: 500;
+        font-size: 13px;
+        color: var(--muted);
+        letter-spacing: .02em;
+      }
+      .work-card .byline { margin: 0 0 4px; font-size: 13.5px; color: var(--ink-2); }
+      .work-card .apps { margin: 0 0 8px; font-size: 13px; font-weight: 500; }
+      .work-card .apps a { color: var(--teal); text-decoration: none; }
+      .work-card .apps a:hover, .work-card .apps a:focus-visible { color: var(--accent-ink); }
+      .work-card .apps .sep { margin: 0 6px; color: var(--muted); opacity: .6; }
+      .work-card .snippet { margin: 0 0 10px; font-size: 14.5px; color: var(--ink-2); line-height: 1.75; }
+      .work-card .tags { display: flex; flex-wrap: wrap; gap: 6px; list-style: none; margin: 0; padding: 0; }
+      .work-card .tags li {
+        font-size: 11.5px;
+        letter-spacing: .04em;
+        color: var(--muted);
+        background: var(--deep-bg);
+        border-radius: 4px;
+        padding: 1px 8px;
+      }
+
+      #empty { margin: 28px 0; color: var(--ink-2); }
+      #empty[hidden] { display: none; }
+
+      footer.colophon { margin-top: 64px; border-top: 2px solid var(--ink); padding-top: 18px; }
+      footer.colophon p { font-size: 13.5px; color: var(--muted); margin: 0 0 6px; }
+      footer.colophon .fin { font-family: "Shippori Mincho B1", serif; font-size: 15px; color: var(--ink-2); }
+      footer a { color: var(--accent-ink); text-decoration: none; border-bottom: 1px solid currentColor; }
+      footer a:hover, footer a:focus-visible { color: var(--accent); }
+
+      .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="series-nav" aria-label="アトラスシリーズ">
+      <div class="inner">
+        <a class="home" href="../">アトラス大全</a>
+        <div class="vols"><a href="../virtual-reality/">仮想現実</a><span class="sep" aria-hidden="true">/</span><a href="../spacetime/">時空間</a><span class="sep" aria-hidden="true">/</span><a href="../management-society/">管理社会</a><span class="sep" aria-hidden="true">/</span><a href="../post-apocalypse/">ポストアポカリプス</a><span class="sep" aria-hidden="true">/</span><a href="../end-of-the-world/">終焉</a><span class="sep" aria-hidden="true">/</span><a href="../ai/">人工知能</a></div>
+        <span class="index-link here" aria-current="page">作品一覧</span>
+      </div>
+    </nav>
+
+    <main class="wrap">
+      <div class="intro">
+        <p class="kicker">アトラスシリーズ ― 横断索引</p>
+        <h1>作品一覧</h1>
+        <p class="lead">全6冊・全<strong>224</strong>作を、検索と共通のタグで横断します。同一の作品が複数のアトラスに載っている場合は、1枚にまとめて表示します（公式213作）。初期表示は本編と付録で、管理社会アトラスの読み物（9作）は「読み物」から足せます。</p>
+        <p class="note">グループが違う条件はすべて同時に満たす必要があります。同じグループの中（テーマ以外）はどれか一つに当てはまれば足ります。テーマは選んだものをすべて含む作品に絞ります。</p>
+      </div>
+
+      <form id="works-form" role="search">
+        <div class="toolbar-sticky">
+          <div class="search-row">
+            <label class="search">
+              <span class="sr-only">作品を探す</span>
+              <input type="search" id="q" name="q" placeholder="タイトル、作者、キーワード" autocomplete="off" enterkeyhint="search" />
+            </label>
+            <div class="tools">
+              <label>並び替え
+                <select id="sort" name="sort">
+                  <option value="year">発表年（古い順）</option>
+                  <option value="-year">発表年（新しい順）</option>
+                  <option value="title">タイトル</option>
+                  <option value="volume">アトラス、年</option>
+                </select>
+              </label>
+              <p id="count" aria-live="polite">読み込み中…</p>
+              <button type="button" id="clear">条件をクリア</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="filter-groups">
+          <details class="fg" open>
+            <summary>アトラス</summary>
+            <div class="chips" id="fg-vol"></div>
+          </details>
+          <details class="fg" open>
+            <summary>本編・付録・読み物</summary>
+            <div class="chips" id="fg-role"></div>
+          </details>
+          <details class="fg">
+            <summary>メディア</summary>
+            <div class="chips" id="fg-media"></div>
+          </details>
+          <details class="fg">
+            <summary>年代</summary>
+            <div class="chips" id="fg-decade"></div>
+          </details>
+          <details class="fg">
+            <summary>地域</summary>
+            <div class="chips" id="fg-region"></div>
+          </details>
+          <details class="fg">
+            <summary>テーマ（すべて含む）</summary>
+            <div class="chips" id="fg-theme"></div>
+          </details>
+        </div>
+      </form>
+
+      <p id="empty" hidden>該当する作品はありません。条件をゆるめてみてください。</p>
+      <div id="work-list"></div>
+
+      <footer class="colophon">
+        <p class="fin">作品一覧 ― アトラスシリーズ全6冊・全224作（本編157＋付録67）</p>
+        <p>収録の本文は各アトラスにあります。このページは索引であり、データは <code>works/works.json</code>（生成：<code>tools/build-works.py</code>）です。</p>
+        <p>アトラスシリーズ全6冊：<a href="../virtual-reality/">仮想現実アトラス</a>／<a href="../spacetime/">時空間アトラス</a>／<a href="../management-society/">管理社会アトラス</a>／<a href="../post-apocalypse/">ポストアポカリプスアトラス</a>／<a href="../end-of-the-world/">終焉アトラス</a>／<a href="../ai/">人工知能アトラス（下書き）</a>。玄関は<a href="../">アトラス大全</a>。</p>
+      </footer>
+    </main>
+    <script src="works.js"></script>
+  </body>
+</html>

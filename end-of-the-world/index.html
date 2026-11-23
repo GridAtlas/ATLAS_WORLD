@@ -192,6 +192,14 @@
       .series-nav .vols .here { padding: 0 8px; }
       .series-nav .vols .here { font-weight: 700; color: var(--ink); }
       .series-nav .sep { color: var(--muted); opacity: .55; user-select: none; }
+      .series-nav .index-link {
+        margin-left: auto;
+        padding: 0 0 0 12px;
+        font-weight: 700;
+        letter-spacing: .06em;
+        color: var(--accent-ink);
+      }
+      .series-nav .index-link.here { color: var(--ink); }
       footer a { color: var(--accent-ink); text-decoration: none; border-bottom: 1px solid currentColor; }
       footer a:hover, footer a:focus-visible { color: var(--accent); }
 
@@ -202,6 +210,7 @@
       <div class="inner">
         <a class="home" href="../">アトラス大全</a>
         <div class="vols"><a href="../virtual-reality/">仮想現実</a><span class="sep" aria-hidden="true">/</span><a href="../spacetime/">時空間</a><span class="sep" aria-hidden="true">/</span><a href="../management-society/">管理社会</a><span class="sep" aria-hidden="true">/</span><a href="../post-apocalypse/">ポストアポカリプス</a><span class="sep" aria-hidden="true">/</span><span class="here" aria-current="page">終焉</span><span class="sep" aria-hidden="true">/</span><a href="../ai/">人工知能</a></div>
+        <a class="index-link" href="../works/">作品一覧</a>
       </div>
     </nav>
     <main class="wrap">
@@ -210,7 +219,7 @@
         <p class="kicker">アトラスシリーズ ― 世界の危機の時間軸／終わる直前</p>
         <h1>終焉アトラス<span class="thin">― 世界が終わる直前、人は残り時間をどう生きるか ―</span></h1>
         <p class="lead">ポストアポカリプスが「終わった後」を描くのに対して、このアトラスが扱うのは<strong>終わる直前</strong>だ。社会はまだある。電車は走り、ニュースは流れ、学校も会社もある。その上で、誰もが知っている――あと何日、何ヶ月で、来るものが来る、と。</p>
-        <p class="lead">だからこのジャンルの本体は、隕石でもウイルスでも気候でもない。<strong>カウントダウンの中で、何を諦め、何を守り、何を最後まで日常として続けるか</strong>という、人間の側の設計だ。迎撃する者、逃げる者、受け入れる者、見ないふりをする者。同じ彗星が来ても、物語は四つに割れる。本編15作＋付録4作、全19作。「何が来るか」×「どう迎えるか」の二層で切る。</p>
+        <p class="lead">だからこのジャンルの本体は、隕石でもウイルスでも気候でもない。<strong>カウントダウンの中で、何を諦め、何を守り、何を最後まで日常として続けるか</strong>という、人間の側の設計だ。迎撃する者、逃げる者、受け入れる者、見ないふりをする者。同じ彗星が来ても、物語は四つに割れる。本編15作＋付録5作、全20作。「何が来るか」×「どう迎えるか」の二層で切る。</p>
         <p><a class="toc-link" href="#appendix">付録「終わりが日常に溶けている作品」へ ↓</a>　エヴァンゲリオンの常態化した終末、AKIRAの崩壊前夜、回避されるハルマゲドンのコメディ、そしてポストアポカリプス側へ渡る橋としての『ドラゴンヘッド』を置いた。</p>
         <div class="flow" aria-label="このアトラスの位置づけ">
           <b>ディストピア</b> ― 壊れたまま機能する社会<span class="arr">／</span><b>終焉（本書）</b> ― まだある社会＋決まった終わり<span class="arr">／</span><b>ポストアポカリプス</b> ― 終わった後の世界
@@ -259,7 +268,7 @@
         <p class="count" id="count"></p>
         <div class="timeline" id="tl">
 
-<article class="entry core" data-type="pro">
+<article class="entry core" data-type="pro" id="work-on-the-beach">
   <div class="year">1957<small>小説／映画1959</small></div>
   <div><h3>渚にて<span class="orig">On the Beach</span></h3><p class="byline">ネビル・シュート（小説1957）／映画 監督 スタンリー・クレイマー（1959）</p>
   <ul class="tags"><li class="phase">序 源流</li><li>放射能の雲</li><li class="buy">静かな終焉の古典</li></ul>
@@ -269,7 +278,7 @@
   <details class="deep"><summary>深掘り ― なぜ今も効くのか</summary><div class="body"><p>本作の残酷さは、誰も悪くないことにある。雲は誰のせいでもなく近づき、登場人物は最後まで礼儀正しい。グランプリレースに興じる男、来年用のワインを買い込む男、植えた庭の成長を見られないと知りながら種を蒔く人々。「意味がないと分かっている行為を、最後まで丁寧に続ける」姿が、終焉ものの最も古く、最も強い感情の設計である。ラストの無人の街に翻る救世軍の旗――「まだ時間はある、兄弟」という文句の空虚さと切実さが、このジャンルの原点の風景だ。</p></div></details></div>
 </article>
 
-<article class="entry core" data-type="b">
+<article class="entry core" data-type="b" id="work-w-c82407cf">
   <div class="year">1973<small>小説</small></div>
   <div><h3>日本沈没</h3><p class="byline">小松左京（映画1973／リメイク2006ほか）</p>
   <ul class="tags"><li class="phase">B 地球が壊れる</li><li>国土の沈没</li><li class="buy">日本の終焉ものの原点</li></ul>
@@ -279,7 +288,7 @@
   <details class="deep"><summary>深掘り ― 1973年という年</summary><div class="body"><p>刊行はオイルショックの年。高度成長の頂点で「国が沈む」という物語がベストセラーになったこと自体が、時代の無意識を示している。本作の終焉は天災の顔をしているが、実質は「繁栄の前提（国土・資源・安定）が消えたら何が残るか」という問いであり、その問いの立て方が後の日本SFの財産になった。</p></div></details></div>
 </article>
 
-<article class="entry core" data-type="d">
+<article class="entry core" data-type="d" id="work-w-0a6b1bbf">
   <div class="year">1980<small>映画</small></div>
   <div><h3>復活の日</h3><p class="byline">監督 深作欣二（原作 小松左京）</p>
   <ul class="tags"><li class="phase">D 感染の前夜</li><li>ウイルス MM-88</li><li>南極の863人</li></ul>
@@ -289,7 +298,7 @@
   <details class="deep"><summary>深掘り</summary><div class="body"><p>タイトルの「復活」は、滅びの先の再建を指す。だが映画が最も力を入れるのは滅びの過程の国際性で、イタリア、ソ連、アメリカ、日本を跨ぐ群像劇として終焉を描いた。当時の日本映画最大級のスケールであり、「終焉は一国の話ではない」ことを最初から示していた。</p></div></details></div>
 </article>
 
-<article class="entry core" data-type="a">
+<article class="entry core" data-type="a" id="work-deep-impact">
   <div class="year">1998<small>映画</small></div>
   <div><h3>ディープインパクト<span class="orig">Deep Impact</span></h3><p class="byline">監督 ミミ・レダー</p>
   <ul class="tags"><li class="phase">A 隕石・彗星</li><li>受容と犠牲</li><li>方舟計画</li></ul>
@@ -299,7 +308,7 @@
   <details class="deep"><summary>深掘り ― 1998年の二本</summary><div class="body"><p>公開は『アルマゲドン』の約2ヶ月前。興行的には迎撃型が勝ったが、批評的な評価と「最後に残る場面」の多さでは本作が勝ると言われることが多い。メシアの乗組員が家族に別れを告げる交信の場面は、技術の話ではなく、距離と時間差の中で人はどう別れるかという、『ほしのこえ』や『インターステラー』にも通じる通信の切なさの先行例である。</p></div></details></div>
 </article>
 
-<article class="entry core" data-type="a">
+<article class="entry core" data-type="a" id="work-armageddon">
   <div class="year">1998<small>映画</small></div>
   <div><h3>アルマゲドン<span class="orig">Armageddon</span></h3><p class="byline">監督 マイケル・ベイ</p>
   <ul class="tags"><li class="phase">A 隕石・彗星</li><li>迎撃の英雄譚</li><li>残り18日</li></ul>
@@ -309,7 +318,7 @@
   <details class="deep"><summary>深掘り</summary><div class="body"><p>ハリーの犠牲は、娘の恋人であるA・Jを生かすためのものでもある。世界を救う行為と、父親としての最後の仕事が一つのボタンに重なる。この「世界規模の救済を、家族の物語に落とし込む」縮小の技術こそ、マイケル・ベイ作品の本質であり、終焉ものの大衆化の鍵だった。</p></div></details></div>
 </article>
 
-<article class="entry" data-type="b">
+<article class="entry" data-type="b" id="work-the-day-after-tomorrow">
   <div class="year">2004<small>映画</small></div>
   <div><h3>デイ・アフター・トゥモロー<span class="orig">The Day After Tomorrow</span></h3><p class="byline">監督 ローランド・エメリッヒ</p>
   <ul class="tags"><li class="phase">B 地球が壊れる</li><li>気候の暴走</li><li>氷河期の急襲</li></ul>
@@ -319,7 +328,7 @@
   <details class="deep"><summary>深掘り</summary><div class="body"><p>アメリカ人が難民としてメキシコへ南下し、国境が逆転する描写は、当時としては意図的な皮肉だった。気候の終焉は、被害の分布を反転させる。誰が「逃げる側」で誰が「受け入れる側」かは、永遠に固定ではないという示唆が、B軸の政治性の核にある。</p></div></details></div>
 </article>
 
-<article class="entry" data-type="c">
+<article class="entry" data-type="c" id="work-sunshine">
   <div class="year">2007<small>映画</small></div>
   <div><h3>サンシャイン2057<span class="orig">Sunshine</span></h3><p class="byline">監督 ダニー・ボイル</p>
   <ul class="tags"><li class="phase">C 太陽と惑星</li><li>死にゆく太陽</li><li>ミッション</li></ul>
@@ -329,7 +338,7 @@
   <details class="deep"><summary>深掘り</summary><div class="body"><p>後半、前任船の生存者ピンバッカーの登場で映画はホラーへ傾く。「神が人類の死を望んでいる」という彼の確信は、科学的ミッションの中に宗教を持ち込む。終焉ものにおいて、終わりを「望む者」が現れるのは必然で、その最初の本格的な形のひとつがここにある。</p></div></details></div>
 </article>
 
-<article class="entry" data-type="b">
+<article class="entry" data-type="b" id="work-2012">
   <div class="year">2009<small>映画</small></div>
   <div><h3>2012<span class="orig">2012</span></h3><p class="byline">監督 ローランド・エメリッヒ</p>
   <ul class="tags"><li class="phase">B 地球が壊れる</li><li>地殻変動</li><li>方舟と選別</li></ul>
@@ -339,7 +348,7 @@
   <details class="deep"><summary>深掘り</summary><div class="body"><p>方舟に美術品（モナリザの複製とすり替えられた本物）が積まれる場面が象徴的だ。人類が残そうとするのは命だけではなく「文明の証拠」である。何を積むかの選別は、そのまま「文明とは何か」の選別になる。</p></div></details></div>
 </article>
 
-<article class="entry core" data-type="b">
+<article class="entry core" data-type="b" id="work-knowing">
   <div class="year">2009<small>映画</small></div>
   <div><h3>ノウイング<span class="orig">Knowing</span></h3><p class="byline">監督 アレックス・プロヤス</p>
   <ul class="tags"><li class="phase">B 地球が壊れる</li><li>太陽フレア</li><li>予言の数字</li></ul>
@@ -349,7 +358,7 @@
   <details class="deep"><summary>深掘り</summary><div class="body"><p>「囁く人々」の正体と、子供たちだけが新しい世界へ連れて行かれる結末は、ノアの方舟の露骨な再話である。B軸の方舟モチーフが、国家計画（『2012』）から神話的選別へ戻っていく地点として位置づけられる。賛否が割れるのは、この露骨さゆえである。</p></div></details></div>
 </article>
 
-<article class="entry core" data-type="d">
+<article class="entry core" data-type="d" id="work-contagion">
   <div class="year">2011<small>映画</small></div>
   <div><h3>コンテイジョン<span class="orig">Contagion</span></h3><p class="byline">監督 スティーヴン・ソダーバーグ</p>
   <ul class="tags"><li class="phase">D 感染の前夜</li><li>最もリアルな終焉</li><li class="buy">R0と媒介物</li></ul>
@@ -359,7 +368,7 @@
   <details class="deep"><summary>深掘り ― 最後のカット</summary><div class="body"><p>映画は「1日目」に戻り、ウイルスの起源――ブルドーザーが切り開いた森、追われたコウモリ、豚、バナナ、そしてカジノのテーブル――を静かに連鎖で見せる。終わりの原因は陰謀でも天罰でもなく、開発と接触の偶然の積み重なりだった。この冷たさが、本作を風刺でも英雄譚でもない「記録」にしている。</p></div></details></div>
 </article>
 
-<article class="entry core" data-type="c">
+<article class="entry core" data-type="c" id="work-melancholia">
   <div class="year">2011<small>映画</small></div>
   <div><h3>メランコリア<span class="orig">Melancholia</span></h3><p class="byline">監督 ラース・フォン・トリアー</p>
   <ul class="tags"><li class="phase">C 太陽と惑星</li><li>惑星衝突</li><li class="buy">鬱の視点</li></ul>
@@ -369,7 +378,7 @@
   <details class="deep"><summary>深掘り</summary><div class="body"><p>フォン・トリアー自身の鬱体験が出発点とされる。ジュスティーヌの「地球は悪いの。誰も惜しまない」という台詞は挑発だが、映画の本心はそこではない。終わりを前にして、儀式（結婚式、避難計画、科学的予測）が次々に剥がれ落ち、残るのは「一緒に座って待つ」という最小の作法だけになる。『渚にて』の作法の系譜が、ここで最も削ぎ落とされた形になる。</p></div></details></div>
 </article>
 
-<article class="entry core" data-type="e">
+<article class="entry core" data-type="e" id="work-perfect-sense">
   <div class="year">2011<small>映画</small></div>
   <div><h3>パーフェクト・センス<span class="orig">Perfect Sense</span></h3><p class="byline">監督 デヴィッド・マッケンジー</p>
   <ul class="tags"><li class="phase">E 感覚と日常</li><li>感覚の喪失</li><li>適応する日常</li></ul>
@@ -379,7 +388,7 @@
   <details class="deep"><summary>深掘り</summary><div class="body"><p>各感覚の喪失前に感情の爆発があるという設定は、「人は失う直前に、その感覚の意味を最大限に感じる」という残酷で美しい設計だ。最後に視覚が消える直前の「喜び」の爆発と抱擁で映画は終わる。何も解決していないのに、奇妙に肯定で終わる。この肯定の形は『渚にて』の種蒔きと確かに地続きである。</p></div></details></div>
 </article>
 
-<article class="entry core" data-type="e">
+<article class="entry core" data-type="e" id="work-take-shelter">
   <div class="year">2011<small>映画</small></div>
   <div><h3>テイク・シェルター<span class="orig">Take Shelter</span></h3><p class="byline">監督 ジェフ・ニコルズ</p>
   <ul class="tags"><li class="phase">E 感覚と日常</li><li>来るかもしれない嵐</li><li>予感か病か</li></ul>
@@ -389,7 +398,7 @@
   <details class="deep"><summary>深掘り ― ラストの解釈</summary><div class="body"><p>家族旅行先の海岸で、妻が空を見上げるラストカットは、今も解釈が割れる。重要なのは判定そのものより、妻がついに「カーティスの見ている空を、一緒に見た」という点だ。信じてもらえない予感の孤独が解ける瞬間として置かれており、終焉ものの「誰が知っているか」（Q3）を、家族という最小単位で描いた到達点である。</p></div></details></div>
 </article>
 
-<article class="entry core" data-type="a">
+<article class="entry core" data-type="a" id="work-greenland">
   <div class="year">2020<small>映画</small></div>
   <div><h3>グリーンランド ―地球最後の2日間―<span class="orig">Greenland</span></h3><p class="byline">監督 リック・ローマン・ウォー</p>
   <ul class="tags"><li class="phase">A 隕石・彗星</li><li>家族の逃避行</li><li>選別される側</li></ul>
@@ -399,7 +408,7 @@
   <details class="deep"><summary>深掘り</summary><div class="body"><p>インスリンをめぐるエピソードが本作の縮図だ。文明の存続は、巨大な方舟よりも「薬を切らさない」「子供を離さない」という最小単位の維持で決まる。終焉が大きくなればなるほど、物語は小さいものに帰っていくという、このジャンルの法則の最新例である。</p></div></details></div>
 </article>
 
-<article class="entry core" data-type="a">
+<article class="entry core" data-type="a" id="work-don-t-look-up">
   <div class="year">2021<small>映画</small></div>
   <div><h3>ドント・ルック・アップ<span class="orig">Don't Look Up</span></h3><p class="byline">監督 アダム・マッケイ</p>
   <ul class="tags"><li class="phase">A 隕石・彗星</li><li>否認する社会</li><li class="buy">風刺としての終焉</li></ul>
@@ -482,32 +491,40 @@
         <div class="strand">
           <div class="strand-head"><h3><span class="strand-no">付1</span>常態化した終焉と、前夜の空気</h3><p>終わりが事件ではなく、天気のようにそこにある世界。</p></div>
           <ul class="app-list">
-            <li class="app-item"><div class="app-year">1995<small>アニメ</small></div><h4>新世紀エヴァンゲリオン</h4><p class="byline">監督 庵野秀明／GAINAX</p><p class="text">西暦2000年のセカンドインパクトで人類の半分はすでに死んでいる。物語の舞台である2015年の第3新東京市は、その「後」でありながら、サードインパクトという次の終わりを常に待つ<strong>終焉間際の常態</strong>の中にある。要塞都市で学校生活が営まれ、警報のたびに都市が沈む。この「終わりかけのまま続く日常」こそ、本編E軸の感覚を日本のアニメの標準装備にした作品である。</p><p class="link-line">→ 本編との接続：ポストアポカリプス（インパクト後）であると同時に終焉（次のインパクト前）でもある、二つのアトラスの境界に立つ作品。</p></li>
-            <li class="app-item"><div class="app-year">1982<small>漫画／映画1988</small></div><h4>AKIRA</h4><p class="byline">大友克洋</p><p class="text">1988年、新型爆弾で東京は消えた。31年後のネオ東京は、復興の看板の下で腐っていく。軍、暴走族、カルト宗教、実験体の子供たち。誰もが「アキラ」の覚醒という次の崩壊を薄々感じながら、退廃の中で生きている。<strong>崩壊そのものではなく、崩壊前夜の空気</strong>――次に壊れることが分かっている都市の湿度――を描いた、日本の終焉感覚のもう一つの原点。</p><p class="link-line">→ 本編との接続：『日本沈没』の「国が壊れる予感」を、若者文化と都市の退廃の側から描いた系譜。</p></li>
+            <li class="app-item" id="work-w-da0e3078"><div class="app-year">1995<small>アニメ</small></div><h4>新世紀エヴァンゲリオン</h4><p class="byline">監督 庵野秀明／GAINAX</p><p class="text">西暦2000年のセカンドインパクトで人類の半分はすでに死んでいる。物語の舞台である2015年の第3新東京市は、その「後」でありながら、サードインパクトという次の終わりを常に待つ<strong>終焉間際の常態</strong>の中にある。要塞都市で学校生活が営まれ、警報のたびに都市が沈む。この「終わりかけのまま続く日常」こそ、本編E軸の感覚を日本のアニメの標準装備にした作品である。</p><p class="link-line">→ 本編との接続：ポストアポカリプス（インパクト後）であると同時に終焉（次のインパクト前）でもある、二つのアトラスの境界に立つ作品。</p></li>
+            <li class="app-item" id="work-akira"><div class="app-year">1982<small>漫画／映画1988</small></div><h4>AKIRA</h4><p class="byline">大友克洋</p><p class="text">1988年、新型爆弾で東京は消えた。31年後のネオ東京は、復興の看板の下で腐っていく。軍、暴走族、カルト宗教、実験体の子供たち。誰もが「アキラ」の覚醒という次の崩壊を薄々感じながら、退廃の中で生きている。<strong>崩壊そのものではなく、崩壊前夜の空気</strong>――次に壊れることが分かっている都市の湿度――を描いた、日本の終焉感覚のもう一つの原点。</p><p class="link-line">→ 本編との接続：『日本沈没』の「国が壊れる予感」を、若者文化と都市の退廃の側から描いた系譜。</p></li>
           </ul>
         </div>
 
         <div class="strand">
           <div class="strand-head"><h3><span class="strand-no">付2</span>回避される終末</h3><p>終わりが来ないことで、終わりについて語る作品。</p></div>
           <ul class="app-list">
-            <li class="app-item"><div class="app-year">1990<small>小説／ドラマ2019</small></div><h4>グッド・オーメンズ<span class="orig">Good Omens</span></h4><p class="byline">テリー・プラチェット＆ニール・ゲイマン</p><p class="text">ハルマゲドンは予定通り行われる。だが、地球での暮らしを気に入ってしまった天使アジラフェルと悪魔クロウリーは、それを止めようとする。反キリストは取り違えで普通の少年に育ち、天国と地獄の官僚機構は手続きに忙しい。<strong>終末を「世界の終わり」ではなく「予定されたイベントと、それを嫌がる現場の担当者」</strong>として描くコメディは、終焉もののすべての作法を裏返しにして見せる鏡である。</p><p class="link-line">→ 本編との接続：迎撃でも受容でもなく「回避とサボタージュ」。終わりを愛着で止めるという、家族に帰る終末の宇宙規模版。</p></li>
+            <li class="app-item" id="work-good-omens"><div class="app-year">1990<small>小説／ドラマ2019</small></div><h4>グッド・オーメンズ<span class="orig">Good Omens</span></h4><p class="byline">テリー・プラチェット＆ニール・ゲイマン</p><p class="text">ハルマゲドンは予定通り行われる。だが、地球での暮らしを気に入ってしまった天使アジラフェルと悪魔クロウリーは、それを止めようとする。反キリストは取り違えで普通の少年に育ち、天国と地獄の官僚機構は手続きに忙しい。<strong>終末を「世界の終わり」ではなく「予定されたイベントと、それを嫌がる現場の担当者」</strong>として描くコメディは、終焉もののすべての作法を裏返しにして見せる鏡である。</p><p class="link-line">→ 本編との接続：迎撃でも受容でもなく「回避とサボタージュ」。終わりを愛着で止めるという、家族に帰る終末の宇宙規模版。</p></li>
           </ul>
         </div>
 
         <div class="strand">
           <div class="strand-head"><h3><span class="strand-no">付3</span>ポストアポカリプス側への橋</h3><p>「直前」と「後」の境界が溶ける作品を、相互参照として置く。</p></div>
           <ul class="app-list">
-            <li class="app-item"><div class="app-year">1994<small>漫画</small></div><h4>ドラゴンヘッド</h4><p class="byline">望月峯太郎</p><p class="text">修学旅行の帰りの新幹線が、トンネルの中で脱線する。外に出たテルたちが見るのは、灰に覆われ、熱く、誰もいない日本列島。何が起きたのか――地震か、戦争か、富士山の噴火か――は最後まで確定しない。<strong>「何が来たか分からないまま、直前から後へ放り出される」</strong>体験そのものが作品であり、終焉アトラス（分からないカウントダウン）とポストアポカリプスアトラス（終わった後の彷徨）の、ちょうど継ぎ目に立つ。</p><p class="link-line">→ 相互参照：本作の本籍はポストアポカリプスアトラス側に置く。ここでは「情報のない終焉」という、本編Q3の極端な形として参照する。</p></li>
+            <li class="app-item" id="work-dragon-head"><div class="app-year">1994<small>漫画</small></div><h4>ドラゴンヘッド</h4><p class="byline">望月峯太郎</p><p class="text">修学旅行の帰りの新幹線が、トンネルの中で脱線する。外に出たテルたちが見るのは、灰に覆われ、熱く、誰もいない日本列島。何が起きたのか――地震か、戦争か、富士山の噴火か――は最後まで確定しない。<strong>「何が来たか分からないまま、直前から後へ放り出される」</strong>体験そのものが作品であり、終焉アトラス（分からないカウントダウン）とポストアポカリプスアトラス（終わった後の彷徨）の、ちょうど継ぎ目に立つ。</p><p class="link-line">→ 相互参照：本作の本籍はポストアポカリプスアトラス側に置く。ここでは「情報のない終焉」という、本編Q3の極端な形として参照する。</p></li>
           </ul>
         </div>
 
-        <div class="app-note"><b>三つのアトラスで読む。</b>ディストピアは「壊れたまま続く社会」、本書（終焉）は「終わりが決まった社会」、ポストアポカリプスは「終わった後の世界」を扱う。エヴァンゲリオンとドラゴンヘッドが示すように、現実の名作はしばしば境界の上に立つ。三冊を並べると、社会の終わり方の全体地図になる。</div>
+
+        <div class="strand">
+          <div class="strand-head"><h3><span class="strand-no">付4</span>感染が終末まで走る</h3><p>疫病が始まり、社会がまだ立っているうちに能力が宿り、終わりが後方ではなく前方へ伸びていく作品。</p></div>
+          <ul class="app-list">
+            <li class="app-item" id="work-mahotsukai-no-deshitachi"><div class="app-year">2010<small>小説</small></div><h4>魔法使いの弟子たち</h4><p class="byline">井上夢人 ― 長編小説（講談社。『小説現代』2008年5月〜2009年11月連載、2010年4月刊）</p><p class="text">致死率ほぼ百分の百の新興感染症「竜脳炎」（世界的にはドラゴンウイルス脳炎と呼ばれる）が、山梨から広がる。回復した者はごくわずかで、意識を取り戻した三人――仲屋京介、落合めぐみ、興津繁――には、人や物に残る記憶へ焦点を当て過去と未来を見る力、念力、若返りと他人の身体に関わる力が残る。病院もテレビも警察もあるさなかに、感染は第二波へ向かい、国家の機能が麻痺していく。本編の大半は「終わった後の残存」ではなく、「終わりが告知され、走り出す過程」にある。本巻の付録に置くのはそのためで、ポストアポカリプスアトラス（終わった後）にも、時間の操作を本籍とする時空間アトラスにも、移さない。</p><p class="link-line">→ 本編との接続：本編D軸（疫病・感染）の延長であり、能力の発現は終焉の「どう迎えるか」を変奏する。時空間アトラス本編の『七瀬ふたたび』とは、時間を装置ではなく超能力として置く系譜で交差する。ただし七瀬の漁藤子が時間そのものを遡行するのに対し、本作で中盤までに明示される仲屋の力は、過去と未来を「見る」側に近い。作者の井上夢人は『クラインの壺』（仮想現実アトラス本編）と『ダレカガナカニイル…』（人工知能アトラス付録）の系譜にも立つ。</p></li>
+          </ul>
+        </div>
+
+        <div class="app-note"><b>三つのアトラスで読む。</b>ディストピアは「壊れたまま続く社会」、本書（終焉）は「終わりが決まった社会」、ポストアポカリプスは「終わった後の世界」を扱う。エヴァンゲリオンとドラゴンヘッドが示すように、現実の名作はしばしば境界の上に立つ。『魔法使いの弟子たち』は感染のさなかに能力が宿り、社会がまだ立っているうちに終末へ走っていく点で、終わった後（ポストアポカリプス）でも、時間の透視（時空間）でもなく、こちらの付録に本籍を置く。三冊を並べると、社会の終わり方の全体地図になる。</div>
       </section>
 
       <footer>
-        <p>終焉アトラス ― 本編15作＋付録4作、全19作。分類は「何が来るか」（軸）と「どう迎えるか」（各作品の立場）の二層による。</p>
+        <p>終焉アトラス ― 本編15作＋付録5作、全20作。分類は「何が来るか」（軸）と「どう迎えるか」（各作品の立場）の二層による。</p>
         <p>アトラスシリーズ全6冊：<a href="../virtual-reality/">仮想現実アトラス</a>／<a href="../spacetime/">時空間アトラス</a>／<a href="../management-society/">管理社会アトラス</a>／<a href="../post-apocalypse/">ポストアポカリプスアトラス</a>／<a href="../end-of-the-world/">終焉アトラス</a>／<a href="../ai/">人工知能アトラス（下書き）</a>。</p>
-        <p>終焉は「直前」を、<a href="../post-apocalypse/">ポストアポカリプスアトラス</a>は「後」を担う対の巻である。付録の『ドラゴンヘッド』は同巻の付録にもあり、『AKIRA』は<a href="../management-society/">管理社会アトラス</a>の付録にもある。</p>
+        <p>終焉は「直前」を、<a href="../post-apocalypse/">ポストアポカリプスアトラス</a>は「後」を担う対の巻である。付録の『ドラゴンヘッド』は同巻の付録にもあり、『AKIRA』は<a href="../management-society/">管理社会アトラス</a>の付録にもある。付録に加えた『魔法使いの弟子たち』は、感染が社会のさなかで終末まで走る話であり、終わった後を本籍とするポストアポカリプス側には置かない。過去と未来を見る力は<a href="../spacetime/#work-w-15807ed2">時空間アトラス</a>本編の『七瀬ふたたび』と交差するが、本籍は移さない。</p>
       </footer>
 
     </main>

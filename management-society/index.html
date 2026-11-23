@@ -191,6 +191,14 @@
       .series-nav .vols .here { padding: 0 8px; }
       .series-nav .vols .here { font-weight: 700; color: var(--ink); }
       .series-nav .sep { color: var(--muted); opacity: .55; user-select: none; }
+      .series-nav .index-link {
+        margin-left: auto;
+        padding: 0 0 0 12px;
+        font-weight: 700;
+        letter-spacing: .06em;
+        color: var(--accent-ink);
+      }
+      .series-nav .index-link.here { color: var(--ink); }
       footer a { color: var(--accent-ink); text-decoration: none; border-bottom: 1px solid currentColor; }
       footer a:hover, footer a:focus-visible { color: var(--accent); }
 
@@ -201,6 +209,7 @@
       <div class="inner">
         <a class="home" href="../">アトラス大全</a>
         <div class="vols"><a href="../virtual-reality/">仮想現実</a><span class="sep" aria-hidden="true">/</span><a href="../spacetime/">時空間</a><span class="sep" aria-hidden="true">/</span><span class="here" aria-current="page">管理社会</span><span class="sep" aria-hidden="true">/</span><a href="../post-apocalypse/">ポストアポカリプス</a><span class="sep" aria-hidden="true">/</span><a href="../end-of-the-world/">終焉</a><span class="sep" aria-hidden="true">/</span><a href="../ai/">人工知能</a></div>
+        <a class="index-link" href="../works/">作品一覧</a>
       </div>
     </nav>
     <main class="wrap">
@@ -268,7 +277,7 @@
   <p>ユートピアとディストピアは、別のジャンルではない。<strong>「社会を設計できる」という同じ夢の表と裏</strong>である。実際、『われら』も『すばらしい新世界』も、ユートピア文学への返答として書かれた。ザミャーチンは合理主義の理想郷の行き着く先を書き、ハクスリーは快楽と安定を極めた理想郷の値段を書いた。本編の年表は、この裏面の二千三百年を受けて始まる。</p>
 </div>
 
-<article class="entry core" data-type="pro">
+<article class="entry core" data-type="pro" id="work-w-b970fb93">
   <div class="year">1921<small>小説</small></div>
   <div><h3>われら<span class="orig">Мы / We</span></h3><p class="byline">イェフゲニー・ザミャーチン（ロシア）</p>
   <ul class="tags"><li class="phase">序 原点</li><li>ガラスの国家</li><li>番号の人間</li></ul>
@@ -278,7 +287,7 @@
   <details class="deep"><summary>深掘り ― 発禁の原点</summary><div class="body"><p>本書はソ連で発禁となり、ロシア語での正式刊行は1988年まで待たなければならなかった。1924年に英訳が先に出るという逆転そのものが、描かれた社会の検閲（C軸の主題）を現実がなぞった形である。ジャンルの原点は、ジャンルが警告した通りの運命をたどった。</p></div></details></div>
 </article>
 
-<article class="entry" data-type="f">
+<article class="entry" data-type="f" id="work-metropolis">
   <div class="year">1927<small>映画</small></div>
   <div><h3>メトロポリス<span class="orig">Metropolis</span></h3><p class="byline">監督 フリッツ・ラング（ドイツ）</p>
   <ul class="tags"><li class="phase">F 階級</li><li>垂直の都市</li><li>機械人間</li></ul>
@@ -288,7 +297,7 @@
   <details class="deep"><summary>深掘り ― 「仲介者は心でなければならない」</summary><div class="body"><p>本作の結論は、頭（支配者）と手（労働者）の仲介者は「心」でなければならない、という寓話的な一文に集約される。階級の固定を描いた最初の大作が、解決を制度ではなく感情に置いたことは、その後の作品がことごとく裏切っていく楽観として記憶されるべきだろう。</p></div></details></div>
 </article>
 
-<article class="entry core" data-type="b">
+<article class="entry core" data-type="b" id="work-brave-new-world">
   <div class="year">1932<small>小説</small></div>
   <div><h3>すばらしい新世界<span class="orig">Brave New World</span></h3><p class="byline">オルダス・ハクスリー（イギリス）</p>
   <ul class="tags"><li class="phase">B 快楽と薬</li><li>ソーマ</li><li>条件付け</li></ul>
@@ -298,7 +307,7 @@
   <details class="deep"><summary>深掘り ― 反逆者は島へ行く</summary><div class="body"><p>この世界で反体制的な人間は、処刑も洗脳もされない。似た者同士が集まる島へ送られ、そこで自由に暮らす。管理が「完成」しているとは、反逆を潰す必要すらないということだ。Q4（管理は破綻するか、完成するか）への最も静かな回答がここにある。</p></div></details></div>
 </article>
 
-<article class="entry core" data-type="a">
+<article class="entry core" data-type="a" id="work-nineteen-eighty-four">
   <div class="year">1949<small>小説</small></div>
   <div><h3>1984年<span class="orig">Nineteen Eighty-Four</span></h3><p class="byline">ジョージ・オーウェル（イギリス）</p>
   <ul class="tags"><li class="phase">A 恐怖</li><li>テレスクリーン</li><li>二重思考</li><li>101号室</li></ul>
@@ -308,7 +317,7 @@
   <details class="deep"><summary>深掘り ― 敗北で終わる勇気</summary><div class="body"><p>結末でウィンストンは救われない。彼はビッグ・ブラザーを愛するようになって終わる。ディストピアの古典が「抵抗の物語」ではなく「同化の物語」で終わること――この容赦のなさが、後の作品の結末設計の水準を決めた。『Vフォー・ヴェンデッタ』のVが個人の復讐と解放にこだわるのも、この敗北への返答である。</p></div></details></div>
 </article>
 
-<article class="entry core" data-type="c">
+<article class="entry core" data-type="c" id="work-fahrenheit-451">
   <div class="year">1953<small>小説</small></div>
   <div><h3>華氏451度<span class="orig">Fahrenheit 451</span></h3><p class="byline">レイ・ブラッドベリ（アメリカ）</p>
   <ul class="tags"><li class="phase">C 情報</li><li>焚書</li><li>壁面テレビ</li></ul>
@@ -318,7 +327,7 @@
   <details class="deep"><summary>深掘り ― 華氏451度という温度</summary><div class="body"><p>タイトルは「紙が自然発火する温度」とされる。ブラッドベリ自身、後年「これは検閲の話である前に、テレビが読書を殺す話だ」と語っている。管理の手段が国家の焚書から家庭の娯楽へ移る視点は、B軸の快楽管理とC軸を繋ぐ結節点になっている。</p></div></details></div>
 </article>
 
-<article class="entry" data-type="b">
+<article class="entry" data-type="b" id="work-a-clockwork-orange">
   <div class="year">1962<small>小説／映画1971</small></div>
   <div><h3>時計じかけのオレンジ<span class="orig">A Clockwork Orange</span></h3><p class="byline">アンソニー・バージェス／映画 スタンリー・キューブリック</p>
   <ul class="tags"><li class="phase">B 快楽と薬</li><li>矯正の暴力</li><li>ルドヴィコ法</li></ul>
@@ -328,7 +337,7 @@
   <details class="deep"><summary>深掘り ― 欠けた最終章</summary><div class="body"><p>バージェスの原作は全21章で、アレックスの成長を示す最終章がある。だがアメリカ版では長く最終章が省かれ、キューブリックの映画もその版に基づいた。つまり世界的に有名な「救いのない結末」は、編集の事情が生んだ偶然でもある。管理されるテキストという意味で、本書自体がC軸的な運命をたどったのは皮肉である。</p></div></details></div>
 </article>
 
-<article class="entry" data-type="a">
+<article class="entry" data-type="a" id="work-v-for-vendetta">
   <div class="year">1982<small>漫画／映画2005</small></div>
   <div><h3>Vフォー・ヴェンデッタ<span class="orig">V for Vendetta</span></h3><p class="byline">アラン・ムーア＆デイヴィッド・ロイド（イギリス）／映画 ジェームズ・マクティーグ</p>
   <ul class="tags"><li class="phase">A 恐怖</li><li>監視国家</li><li>仮面</li></ul>
@@ -338,7 +347,7 @@
   <details class="deep"><summary>深掘り ― 原作者の距離</summary><div class="body"><p>ムーアは映画化に距離を置いたことで知られる。だが作品自体は、サッチャー政権下のイギリスへの応答として書かれた。A軸の恐怖管理は、遠い未来の話ではなく「今の政治の延長」として描く――その同時代性が、本作を古典の側に押し上げた。</p></div></details></div>
 </article>
 
-<article class="entry" data-type="d">
+<article class="entry" data-type="d" id="work-the-handmaid-s-tale">
   <div class="year">1985<small>小説</small></div>
   <div><h3>侍女の物語<span class="orig">The Handmaid's Tale</span></h3><p class="byline">マーガレット・アトウッド（カナダ）</p>
   <ul class="tags"><li class="phase">D 身体と生殖</li><li>ギレアド共和国</li><li>儀式</li></ul>
@@ -348,7 +357,7 @@
   <details class="deep"><summary>深掘り ― 「実際に起きたことだけを使う」</summary><div class="body"><p>アトウッドは執筆にあたり、作中の制度や出来事は「歴史上、人間が実際に行ったこと」だけを使うという規則を自分に課したと語っている。ギレアドの残酷さが空想ではなく前例の組み立てでできていること――それが本書の、管理の設計図としての精度と恐ろしさの源である。</p></div></details></div>
 </article>
 
-<article class="entry" data-type="a">
+<article class="entry" data-type="a" id="work-brazil">
   <div class="year">1985<small>映画</small></div>
   <div><h3>未来世紀ブラジル<span class="orig">Brazil</span></h3><p class="byline">監督 テリー・ギリアム（イギリス）</p>
   <ul class="tags"><li class="phase">A 恐怖</li><li>官僚制</li><li>書類</li></ul>
@@ -358,7 +367,7 @@
   <details class="deep"><summary>深掘り ― 誤字ひとつの死</summary><div class="body"><p>発端は、ハエがタイプライターに落ちて「Tuttle」が「Buttle」になる事故である。管理社会の恐ろしさは、悪意の精度ではなく、間違いを正す回路が存在しないことにある。訂正の申請書類がまた間違いを生む――この笑いと紙一重の絶望が、本作をコメディの顔をしたA軸の到達点にしている。</p></div></details></div>
 </article>
 
-<article class="entry" data-type="b">
+<article class="entry" data-type="b" id="work-gattaca">
   <div class="year">1997<small>映画</small></div>
   <div><h3>ガタカ<span class="orig">Gattaca</span></h3><p class="byline">監督 アンドリュー・ニコル（アメリカ）</p>
   <ul class="tags"><li class="phase">B 快楽と薬</li><li>遺伝子階級</li><li>生まれの設計</li></ul>
@@ -368,7 +377,7 @@
   <details class="deep"><summary>深掘り ― 意志の配分</summary><div class="body"><p>ヴィンセントの台詞に「疲れるために力を取っておかなかった」という趣旨の一節がある。設計された人間が設計通りの人生を生き、設計外の人間がすべてを賭ける。この反転は、優生学への批判であると同時に、「適性」という数値への最も古い反論の形をしている。後のスコアもの（ノーズダイブ）も、結局はこの反論の変奏である。</p></div></details></div>
 </article>
 
-<article class="entry" data-type="f">
+<article class="entry" data-type="f" id="work-w-574b79ff">
   <div class="year">1999<small>小説／映画2000</small></div>
   <div><h3>バトル・ロワイアル</h3><p class="byline">高見広春／映画 深作欣二</p>
   <ul class="tags"><li class="phase">F 階級</li><li>世代の固定</li><li>プログラム</li></ul>
@@ -378,7 +387,7 @@
   <details class="deep"><summary>深掘り ― キタノという教師</summary><div class="body"><p>映画版で深作欣二は、担任キタノをビートたけしに演じさせた。制度の執行者でありながら、生徒への歪んだ愛着を抱える教師の存在が、プログラムを「国家の暴力」から「大人と子供の関係の寓話」へ引き戻す。F軸の固定は、制度だけでなく感情の形でも行われることがここに示されている。</p></div></details></div>
 </article>
 
-<article class="entry" data-type="c">
+<article class="entry" data-type="c" id="work-w-c4999907">
   <div class="year">2006<small>小説</small></div>
   <div><h3>図書館戦争</h3><p class="byline">有川浩</p>
   <ul class="tags"><li class="phase">C 情報</li><li>メディア良化法</li><li>図書隊</li></ul>
@@ -388,7 +397,7 @@
   <details class="deep"><summary>深掘り ― 図書館の自由に関する宣言</summary><div class="body"><p>作中の図書隊の理念は、日本図書館協会が1954年に採択した実在の宣言に基づく。「図書館は資料収集の自由を有する」という現実の文章が、フィクションの中で銃を取る理由になる。この接続があるからこそ、本作の検閲は空想ではなく「あと一歩」の距離で描かれる。</p></div></details></div>
 </article>
 
-<article class="entry" data-type="d">
+<article class="entry" data-type="d" id="work-children-of-men">
   <div class="year">2006<small>映画</small></div>
   <div><h3>チャイルド・オブ・メン<span class="orig">Children of Men</span></h3><p class="byline">監督 アルフォンソ・キュアロン／原作 P・D・ジェイムズ『人類の子供たち』（1992）</p>
   <ul class="tags"><li class="phase">D 身体と生殖</li><li>出生ゼロ</li><li>難民管理</li></ul>
@@ -398,7 +407,7 @@
   <details class="deep"><summary>深掘り ― 銃声が止む瞬間</summary><div class="body"><p>クライマックス、戦闘のただ中で赤ん坊の泣き声が響き、兵士たちが武器を下ろして跪く場面がある。管理も戦争も、「次の世代」という前提を失ったときに始まった暴力だったことが、この静寂で一瞬だけ可視化される。D軸の作品の中で、出生が希望として描かれる稀な例である。</p></div></details></div>
 </article>
 
-<article class="entry" data-type="e">
+<article class="entry" data-type="e" id="work-w-43e40e77">
   <div class="year">2007<small>小説</small></div>
   <div><h3>虐殺器官</h3><p class="byline">伊藤計劃</p>
   <ul class="tags"><li class="phase">E スコアと健康</li><li>監視の内側と外側</li><li>虐殺の文法</li></ul>
@@ -408,7 +417,7 @@
   <details class="deep"><summary>深掘り ― 言葉が人を殺す</summary><div class="body"><p>「虐殺の文法」という発想は、言語が思考と行動を規定するという言語学の仮説を、兵器の水準まで押し上げたものである。『1984年』のニュースピークが「考えられなくする言語」なら、こちらは「殺させてしまう言語」。C軸の情報管理とE軸の身体管理が、言語という一点で交差する。</p></div></details></div>
 </article>
 
-<article class="entry core" data-type="e">
+<article class="entry core" data-type="e" id="work-harmony">
   <div class="year">2008<small>小説</small></div>
   <div><h3>ハーモニー<span class="orig">&lt;harmony/&gt;</span></h3><p class="byline">伊藤計劃</p>
   <ul class="tags"><li class="phase">E スコアと健康</li><li>生府</li><li>WatchMe</li><li>善意の管理</li></ul>
@@ -418,7 +427,7 @@
   <details class="deep"><summary>深掘り ― 意識はバグか、魂か</summary><div class="body"><p>本作の問いは管理論に留まらない。完璧に管理された身体と社会の中で、「意識」という不具合こそが人間の証なのではないか――ミァハの思想は、物語を「管理への抵抗」から「人間とは何か」の形而上学へ押し上げる。管理が完成した世界の最後の問いは、政治ではなく哲学になる。</p></div></details></div>
 </article>
 
-<article class="entry" data-type="e">
+<article class="entry" data-type="e" id="work-w-979420f1">
   <div class="year">2008<small>小説</small></div>
   <div><h3>新世界より</h3><p class="byline">貴志祐介</p>
   <ul class="tags"><li class="phase">E スコアと健康</li><li>村の管理</li><li>教育と忘却</li></ul>
@@ -428,7 +437,7 @@
   <details class="deep"><summary>深掘り ― 忘却という管理</summary><div class="body"><p>この村では、都合の悪い記憶は催眠と教育で消される。『1984年』の真理省が記録を書き換えるのに対し、ここでは人の頭の中の記憶そのものが書き換わる。C軸の情報管理が内面化しきった姿であり、「忘れさせられること」が最も静かな管理であることを示している。</p></div></details></div>
 </article>
 
-<article class="entry" data-type="e">
+<article class="entry" data-type="e" id="work-psychopass">
   <div class="year">2012<small>アニメ</small></div>
   <div><h3>PSYCHO-PASS サイコパス</h3><p class="byline">制作 Production I.G／総監督 本広克行／脚本 虚淵玄ほか</p>
   <ul class="tags"><li class="phase">E スコアと健康</li><li>シビュラシステム</li><li>犯罪係数</li></ul>
@@ -438,7 +447,7 @@
   <details class="deep"><summary>深掘り ― シビュラの正体と朱の選択</summary><div class="body"><p>シビュラシステムの正体を知った常守朱は、それでもシステムを倒さない。「今の社会にはこれが必要で、壊せばより悪いものが来る」という判断は、ディストピアの主人公としては異例の「管理との妥協」である。Q4への回答として、革命でも同化でもない第三の道――監視し続ける側に残ること――を提示した点が、本作の批評性の中核にある。</p></div></details></div>
 </article>
 
-<article class="entry" data-type="f">
+<article class="entry" data-type="f" id="work-snowpiercer">
   <div class="year">2013<small>映画</small></div>
   <div><h3>スノーピアサー<span class="orig">Snowpiercer</span></h3><p class="byline">監督 ポン・ジュノ／原作 ジャック・ロブ＆ジャン＝マルク・ロシェット『Le Transperceneige』</p>
   <ul class="tags"><li class="phase">F 階級</li><li>列車</li><li>前方への革命</li></ul>
@@ -448,7 +457,7 @@
   <details class="deep"><summary>深掘り ― エンジンという神</summary><div class="body"><p>列車の心臓であるエンジンは「聖なるもの」として崇められ、その維持が全階級の存在理由になっている。管理の正当化が宗教の形を取ること、そして革命の指導者までがその物語の内部に組み込まれていること。二重の閉塞が、本作を単なる階級闘争の映画で終わらせていない。</p></div></details></div>
 </article>
 
-<article class="entry" data-type="f">
+<article class="entry" data-type="f" id="work-elysium">
   <div class="year">2013<small>映画</small></div>
   <div><h3>エリジウム<span class="orig">Elysium</span></h3><p class="byline">監督 ニール・ブロムカンプ（アメリカ）</p>
   <ul class="tags"><li class="phase">F 階級</li><li>軌道ステーション</li><li>医療の格差</li></ul>
@@ -458,7 +467,7 @@
   <details class="deep"><summary>深掘り ― 市民権という鍵</summary><div class="body"><p>エリジウムの医療ポッドは、市民権を持つ者にしか作動しない。技術は万人を救えるのに、鍵は身分である。管理の本質が「能力の不足」ではなく「アクセスの設計」にあることを、本作は最も分かりやすい形で示している。ガタカの遺伝子の門と同じ構造が、ここでは市民権の門になっている。</p></div></details></div>
 </article>
 
-<article class="entry" data-type="e">
+<article class="entry" data-type="e" id="work-black-mirror-nosedive">
   <div class="year">2016<small>ドラマ</small></div>
   <div><h3>ブラック・ミラー「ノーズダイブ」<span class="orig">Black Mirror: Nosedive</span></h3><p class="byline">Netflix／脚本 ラシダ・ジョーンズ＆マイケル・シュア／原案 チャーリー・ブルッカー</p>
   <ul class="tags"><li class="phase">E スコアと健康</li><li>相互評価</li><li>五つ星社会</li></ul>
@@ -507,15 +516,15 @@
         <div class="block-head"><span class="no">05</span><h2>読み物 ― 現実の管理術 ― ビジネス書の系譜</h2></div>
         <p class="app-lead">フィクションの管理は、現実の管理術と鏡像の関係にある。工場の現場で発明された手法が、やがてオフィスを、街を、身体を管理する言葉になっていく。ここではビジネス書と生産管理の古典を年代順に辿り、それぞれが本編のどの管理の型と対応するかを示す。<strong>ディストピアは、管理の夢が行き着く先を先回りして描いたビジネス書の裏面でもある。</strong></p>
         <ul class="app-list">
-          <li class="app-item"><div class="app-year">1911<small>経営書</small></div><h4>科学的管理法<span class="orig">The Principles of Scientific Management</span></h4><p class="byline">フレデリック・W・テイラー</p><p class="text">作業を要素動作に分解し、ストップウォッチで測り、最も効率のよい「標準作業」を定めて労働者に課す。管理の出発点は、仕事のやり方を働く人間の手から、計画する側の頭へ移すことだった。効率の名のもとに、一日の動きが分刻みで設計される――フィクション側の対応物は、そのまま『われら』の「時刻律」である。</p><p class="link-line">→ 対応する収録作品：『われら』の時刻律と画一化、『メトロポリス』の時計のような労働。</p></li>
-          <li class="app-item"><div class="app-year">1913<small>生産方式</small></div><h4>フォードのライン生産 ― フォーディズム</h4><p class="byline">ヘンリー・フォード／フォード・モーター</p><p class="text">移動するベルトコンベアの前に労働者を並べ、部品も作業も徹底して規格化する。流れ作業は生産性を跳ね上げ、同時に、人間をラインの速度に合わせる存在に変えた。大量生産と大量消費の社会の原型であり、管理が工場を出て生活様式そのものになる転換点である。</p><p class="link-line">→ 対応する収録作品：『すばらしい新世界』――あの世界はフォードを神として崇め、「フォード紀元」で年を数える。ライン生産の論理が、人間の生産にまで拡張された姿である。</p></li>
-          <li class="app-item"><div class="app-year">1929<small>小説／記録</small></div><h4>蟹工船</h4><p class="byline">小林多喜二</p><p class="text"><strong>管理される側の記録。</strong>この系譜がここまで「管理する側」の理論書で並んできたのに対し、本作はその対になる一冊である。北洋のカニ缶詰工船・博光丸を舞台に、漁夫と工員たちが劣悪な環境で働かされる日々を描く。現場を支配する監督・浅川は、効率と生産の名のもとに暴力をふるい、労働者を部品のように扱う――テイラーが『科学的管理法』（1911）で説いた管理の論理が、同時代の日本の現場では何として現れたか、その裏面がここに記録されている。日本プロレタリア文学の代表作として知られるが、本書ではイデオロギーの旗としてではなく、<strong>測られ、区切られ、使われる側の視点の記録</strong>として置く。管理の理論は、管理される身体の側から読むことで初めて立体になる。</p><p class="link-line">→ 対になる理論：テイラー『科学的管理法』／ 対応する収録作品：『われら』の時刻律、『メトロポリス』の機械の前の労働――設計された労働が、現場ではどう感じられたかを示す一冊。</p></li>
-          <li class="app-item"><div class="app-year">1791／1975<small>思想／社会学</small></div><h4>パノプティコン ― そして『監獄の誕生』</h4><p class="byline">ジェレミー・ベンサム（設計1791）／ミシェル・フーコー『監獄の誕生』（1975）</p><p class="text">中心の監視塔から全ての独房が見渡せ、しかし囚人からは塔の中が見えない円形監獄。ベンサムのこの設計の要点は、実際に見られているかどうかではない。<strong>「見られているかもしれない」</strong>という可能性だけで、囚人は自らを監視し始める。フーコーはこれを近代社会全体の権力の模型として読み直し、規律が学校・病院・工場へ広がっていく過程を描いた。</p><p class="link-line">→ 対応する収録作品：『1984年』のテレスクリーンと内面化された監視、『われら』のガラスの建築。監視が装置から心の習慣に変わる転換を、この二冊が理論の側から裏づけている。</p></li>
-          <li class="app-item"><div class="app-year">1978<small>生産管理の原典</small></div><h4>トヨタ生産方式</h4><p class="byline">大野耐一</p><p class="text">トヨタ生産方式の生みの親自身が、その思想を現場の言葉で説いた生産管理の古典中の古典。必要なものを、必要なときに、必要なだけ作る<strong>ジャストインタイム</strong>と、異常があれば機械もラインも自ら止まる<strong>「自働化」</strong>（ニンベンのある自働化）の二本柱で、ムダを徹底して削る。そして現場の作業者自身が改善を続ける「カイゼン」――管理される側が管理に参加する仕組みは、現場の自律と管理の両立という、それまでの系譜にない形を作った。ただし裏返せば、改善の目が全員の内側に埋め込まれたということでもある。</p><p class="link-line">→ 対応する収録作品：『新世界より』の村――委員会と学校を通じ、共同体全員が管理の担い手になる姿は、自律と管理が同居する現場の、フィクション側の極端な形である。</p></li>
-          <li class="app-item"><div class="app-year">1984<small>小説形式の管理論</small></div><h4>ザ・ゴール<span class="orig">The Goal</span></h4><p class="byline">エリヤフ・ゴールドラット</p><p class="text">倒産寸前の工場を立て直す所長の物語の形で、<strong>制約理論（TOC）</strong>を説いた異色の名著。全体の生産量は最も弱い工程――ボトルネック――に決まる。だから部分ごとの効率を上げるのではなく、制約を見つけて、そこに全体を合わせる。部分最適から全体最適へという思考の転換を、小説の面白さそのもので伝えてみせた。フィクションの形をした管理論として、この読み物の棚に最も馴染む一冊である。</p><p class="link-line">→ 対応する収録作品：『PSYCHO-PASS』のシビュラ――社会全体を一つの工程として最適化しようとするシステムと、目先の数値を追う現場の齟齬は、本書の問いの社会版である。また本書自体が「管理を物語で考える」という、本アトラスの方法の現実側の先例になっている。</p></li>
-          <li class="app-item"><div class="app-year">1954〜<small>経営書→実務</small></div><h4>目標管理からKPI・OKRへ</h4><p class="byline">ピーター・ドラッカー『現代の経営』（1954）ほか</p><p class="text">ドラッカーが提唱した<strong>目標管理（MBO）</strong>は、上から監視する代わりに、目標と数値を本人に持たせて自己管理させる発想だった。その子孫が、現代のオフィスに満ちるKPI（重要業績評価指標）とOKR（目標と主要な結果）である。監視者はいなくなる。代わりに、数値が常に自分を見ている。テイラーのストップウォッチは、百年かけて本人のダッシュボードに引っ越した。</p><p class="link-line">→ 対応する収録作品：E軸全体――『PSYCHO-PASS』の犯罪係数、「ノーズダイブ」の五つ星。数値による自己管理の完成形が、フィクション側の現代型ディストピアである。</p></li>
-          <li class="app-item"><div class="app-year">2008<small>行動経済学</small></div><h4>ナッジ理論<span class="orig">Nudge</span></h4><p class="byline">リチャード・セイラー＆キャス・サンスティーン</p><p class="text">禁止も命令もしない。選択肢の並べ方、初期設定（デフォルト）、見せ方を設計することで、人の行動を望ましい方向へそっと押す。「選択の設計者（チョイス・アーキテクト）」という発想は、政策にも企業のサービス設計にも浸透した。自由は残されている。ただし、自由に選んだはずの道は、あらかじめ傾斜がついている。</p><p class="link-line">→ 対応する収録作品：『ハーモニー』――生府の健康管理は、ナッジが医療と善意と結びついて極限まで進んだ姿である。「あなたのため」という傾斜の行き着く先を、伊藤計劃は小説で検証した。</p></li>
-          <li class="app-item"><div class="app-year">2019<small>社会批評</small></div><h4>監視資本主義<span class="orig">The Age of Surveillance Capitalism</span></h4><p class="byline">ショシャナ・ズボフ</p><p class="text">検索、位置情報、購買、会話――人間の行動データは無料の原料として収奪され、予測商品に加工され、やがて行動そのものを改変する力になる。ズボフはこれを、産業資本主義に続く新しい経済秩序として描いた。管理者は国家ではなくプラットフォームであり、目的は統治ではなく予測と誘導である。現実の管理術の系譜は、ここでフィクションと地続きになる。</p><p class="link-line">→ 対応する収録作品：現代型ディストピアの現実側の裏づけ。「ノーズダイブ」の相互評価、『虐殺器官』の生体情報による管理社会は、いずれもこの収奪の構造の変奏である。</p></li>
+          <li class="app-item" id="work-the-principles-of-scientific-management"><div class="app-year">1911<small>経営書</small></div><h4>科学的管理法<span class="orig">The Principles of Scientific Management</span></h4><p class="byline">フレデリック・W・テイラー</p><p class="text">作業を要素動作に分解し、ストップウォッチで測り、最も効率のよい「標準作業」を定めて労働者に課す。管理の出発点は、仕事のやり方を働く人間の手から、計画する側の頭へ移すことだった。効率の名のもとに、一日の動きが分刻みで設計される――フィクション側の対応物は、そのまま『われら』の「時刻律」である。</p><p class="link-line">→ 対応する収録作品：『われら』の時刻律と画一化、『メトロポリス』の時計のような労働。</p></li>
+          <li class="app-item" id="work-w-b97fd540"><div class="app-year">1913<small>生産方式</small></div><h4>フォードのライン生産 ― フォーディズム</h4><p class="byline">ヘンリー・フォード／フォード・モーター</p><p class="text">移動するベルトコンベアの前に労働者を並べ、部品も作業も徹底して規格化する。流れ作業は生産性を跳ね上げ、同時に、人間をラインの速度に合わせる存在に変えた。大量生産と大量消費の社会の原型であり、管理が工場を出て生活様式そのものになる転換点である。</p><p class="link-line">→ 対応する収録作品：『すばらしい新世界』――あの世界はフォードを神として崇め、「フォード紀元」で年を数える。ライン生産の論理が、人間の生産にまで拡張された姿である。</p></li>
+          <li class="app-item" id="work-w-12adfaaa"><div class="app-year">1929<small>小説／記録</small></div><h4>蟹工船</h4><p class="byline">小林多喜二</p><p class="text"><strong>管理される側の記録。</strong>この系譜がここまで「管理する側」の理論書で並んできたのに対し、本作はその対になる一冊である。北洋のカニ缶詰工船・博光丸を舞台に、漁夫と工員たちが劣悪な環境で働かされる日々を描く。現場を支配する監督・浅川は、効率と生産の名のもとに暴力をふるい、労働者を部品のように扱う――テイラーが『科学的管理法』（1911）で説いた管理の論理が、同時代の日本の現場では何として現れたか、その裏面がここに記録されている。日本プロレタリア文学の代表作として知られるが、本書ではイデオロギーの旗としてではなく、<strong>測られ、区切られ、使われる側の視点の記録</strong>として置く。管理の理論は、管理される身体の側から読むことで初めて立体になる。</p><p class="link-line">→ 対になる理論：テイラー『科学的管理法』／ 対応する収録作品：『われら』の時刻律、『メトロポリス』の機械の前の労働――設計された労働が、現場ではどう感じられたかを示す一冊。</p></li>
+          <li class="app-item" id="work-w-100e7e76"><div class="app-year">1791／1975<small>思想／社会学</small></div><h4>パノプティコン ― そして『監獄の誕生』</h4><p class="byline">ジェレミー・ベンサム（設計1791）／ミシェル・フーコー『監獄の誕生』（1975）</p><p class="text">中心の監視塔から全ての独房が見渡せ、しかし囚人からは塔の中が見えない円形監獄。ベンサムのこの設計の要点は、実際に見られているかどうかではない。<strong>「見られているかもしれない」</strong>という可能性だけで、囚人は自らを監視し始める。フーコーはこれを近代社会全体の権力の模型として読み直し、規律が学校・病院・工場へ広がっていく過程を描いた。</p><p class="link-line">→ 対応する収録作品：『1984年』のテレスクリーンと内面化された監視、『われら』のガラスの建築。監視が装置から心の習慣に変わる転換を、この二冊が理論の側から裏づけている。</p></li>
+          <li class="app-item" id="work-w-1408c5ce"><div class="app-year">1978<small>生産管理の原典</small></div><h4>トヨタ生産方式</h4><p class="byline">大野耐一</p><p class="text">トヨタ生産方式の生みの親自身が、その思想を現場の言葉で説いた生産管理の古典中の古典。必要なものを、必要なときに、必要なだけ作る<strong>ジャストインタイム</strong>と、異常があれば機械もラインも自ら止まる<strong>「自働化」</strong>（ニンベンのある自働化）の二本柱で、ムダを徹底して削る。そして現場の作業者自身が改善を続ける「カイゼン」――管理される側が管理に参加する仕組みは、現場の自律と管理の両立という、それまでの系譜にない形を作った。ただし裏返せば、改善の目が全員の内側に埋め込まれたということでもある。</p><p class="link-line">→ 対応する収録作品：『新世界より』の村――委員会と学校を通じ、共同体全員が管理の担い手になる姿は、自律と管理が同居する現場の、フィクション側の極端な形である。</p></li>
+          <li class="app-item" id="work-the-goal"><div class="app-year">1984<small>小説形式の管理論</small></div><h4>ザ・ゴール<span class="orig">The Goal</span></h4><p class="byline">エリヤフ・ゴールドラット</p><p class="text">倒産寸前の工場を立て直す所長の物語の形で、<strong>制約理論（TOC）</strong>を説いた異色の名著。全体の生産量は最も弱い工程――ボトルネック――に決まる。だから部分ごとの効率を上げるのではなく、制約を見つけて、そこに全体を合わせる。部分最適から全体最適へという思考の転換を、小説の面白さそのもので伝えてみせた。フィクションの形をした管理論として、この読み物の棚に最も馴染む一冊である。</p><p class="link-line">→ 対応する収録作品：『PSYCHO-PASS』のシビュラ――社会全体を一つの工程として最適化しようとするシステムと、目先の数値を追う現場の齟齬は、本書の問いの社会版である。また本書自体が「管理を物語で考える」という、本アトラスの方法の現実側の先例になっている。</p></li>
+          <li class="app-item" id="work-kpiokr"><div class="app-year">1954〜<small>経営書→実務</small></div><h4>目標管理からKPI・OKRへ</h4><p class="byline">ピーター・ドラッカー『現代の経営』（1954）ほか</p><p class="text">ドラッカーが提唱した<strong>目標管理（MBO）</strong>は、上から監視する代わりに、目標と数値を本人に持たせて自己管理させる発想だった。その子孫が、現代のオフィスに満ちるKPI（重要業績評価指標）とOKR（目標と主要な結果）である。監視者はいなくなる。代わりに、数値が常に自分を見ている。テイラーのストップウォッチは、百年かけて本人のダッシュボードに引っ越した。</p><p class="link-line">→ 対応する収録作品：E軸全体――『PSYCHO-PASS』の犯罪係数、「ノーズダイブ」の五つ星。数値による自己管理の完成形が、フィクション側の現代型ディストピアである。</p></li>
+          <li class="app-item" id="work-nudge"><div class="app-year">2008<small>行動経済学</small></div><h4>ナッジ理論<span class="orig">Nudge</span></h4><p class="byline">リチャード・セイラー＆キャス・サンスティーン</p><p class="text">禁止も命令もしない。選択肢の並べ方、初期設定（デフォルト）、見せ方を設計することで、人の行動を望ましい方向へそっと押す。「選択の設計者（チョイス・アーキテクト）」という発想は、政策にも企業のサービス設計にも浸透した。自由は残されている。ただし、自由に選んだはずの道は、あらかじめ傾斜がついている。</p><p class="link-line">→ 対応する収録作品：『ハーモニー』――生府の健康管理は、ナッジが医療と善意と結びついて極限まで進んだ姿である。「あなたのため」という傾斜の行き着く先を、伊藤計劃は小説で検証した。</p></li>
+          <li class="app-item" id="work-the-age-of-surveillance-capitalism"><div class="app-year">2019<small>社会批評</small></div><h4>監視資本主義<span class="orig">The Age of Surveillance Capitalism</span></h4><p class="byline">ショシャナ・ズボフ</p><p class="text">検索、位置情報、購買、会話――人間の行動データは無料の原料として収奪され、予測商品に加工され、やがて行動そのものを改変する力になる。ズボフはこれを、産業資本主義に続く新しい経済秩序として描いた。管理者は国家ではなくプラットフォームであり、目的は統治ではなく予測と誘導である。現実の管理術の系譜は、ここでフィクションと地続きになる。</p><p class="link-line">→ 対応する収録作品：現代型ディストピアの現実側の裏づけ。「ノーズダイブ」の相互評価、『虐殺器官』の生体情報による管理社会は、いずれもこの収奪の構造の変奏である。</p></li>
         </ul>
 
         <div class="essay">
@@ -563,30 +572,30 @@
         <div class="strand">
           <div class="strand-head"><h3><span class="strand-no">付1</span>殺し合いの見世物</h3><p>管理の最も原始的な娯楽化――見せしめをショーにする型。本編『バトル・ロワイアル』の直系。</p></div>
           <ul class="app-list">
-            <li class="app-item"><div class="app-year">2008<small>小説／映画2012</small></div><h4>ハンガー・ゲーム<span class="orig">The Hunger Games</span></h4><p class="byline">スーザン・コリンズ</p><p class="text">国家パネムは、反乱への見せしめとして、各地区から少年少女を集めた殺し合いを全国中継する。パンとサーカスによる統治を、リアリティ番組の時代の文法で描き直した作品。主人公カットニスの「燃えるドレス」と三本指の敬礼は、作中でも現実でも、抵抗の象徴として流通した。</p><p class="link-line">→ 本編との接続：F軸の見せしめ管理＋A軸の象徴戦。『バトル・ロワイアル』との先後関係は長く論じられてきた。</p></li>
-            <li class="app-item"><div class="app-year">2021<small>ドラマ</small></div><h4>イカゲーム<span class="orig">오징어 게임 / Squid Game</span></h4><p class="byline">Netflix／監督 ファン・ドンヒョク</p><p class="text">借金に追われた456人が、賞金456億ウォンを懸けて子供の遊びの名を冠した死のゲームに集まる。管理者は国家ではなく、債務と格差そのものだ。ゲームの外の社会こそがディストピアであるという反転が、世界的ヒットの理由になった。</p><p class="link-line">→ 本編との接続：F軸（階級）の大衆形。管理の主体が国家から経済へ移った姿。</p></li>
+            <li class="app-item" id="work-the-hunger-games"><div class="app-year">2008<small>小説／映画2012</small></div><h4>ハンガー・ゲーム<span class="orig">The Hunger Games</span></h4><p class="byline">スーザン・コリンズ</p><p class="text">国家パネムは、反乱への見せしめとして、各地区から少年少女を集めた殺し合いを全国中継する。パンとサーカスによる統治を、リアリティ番組の時代の文法で描き直した作品。主人公カットニスの「燃えるドレス」と三本指の敬礼は、作中でも現実でも、抵抗の象徴として流通した。</p><p class="link-line">→ 本編との接続：F軸の見せしめ管理＋A軸の象徴戦。『バトル・ロワイアル』との先後関係は長く論じられてきた。</p></li>
+            <li class="app-item" id="work-squid-game"><div class="app-year">2021<small>ドラマ</small></div><h4>イカゲーム<span class="orig">오징어 게임 / Squid Game</span></h4><p class="byline">Netflix／監督 ファン・ドンヒョク</p><p class="text">借金に追われた456人が、賞金456億ウォンを懸けて子供の遊びの名を冠した死のゲームに集まる。管理者は国家ではなく、債務と格差そのものだ。ゲームの外の社会こそがディストピアであるという反転が、世界的ヒットの理由になった。</p><p class="link-line">→ 本編との接続：F軸（階級）の大衆形。管理の主体が国家から経済へ移った姿。</p></li>
           </ul>
         </div>
 
         <div class="strand">
           <div class="strand-head"><h3><span class="strand-no">付2</span>選別と実験の物語</h3><p>適性で分け、閉鎖空間で試す。YAディストピアの標準装備になった型。</p></div>
           <ul class="app-list">
-            <li class="app-item"><div class="app-year">2011<small>小説／映画2014</small></div><h4>ダイバージェント<span class="orig">Divergent</span></h4><p class="byline">ヴェロニカ・ロス</p><p class="text">人類は五つの派閥（無欲・平和・高潔・勇敢・博学）に分けられ、16歳の適性検査で所属が決まる。複数の適性を持つ「異端者（ダイバージェント）」は、管理の分類に収まらない存在として消される。分類社会への反逆を、分類される側の少女の目で描いたYAの代表作。</p><p class="link-line">→ 本編との接続：『すばらしい新世界』の階級設計と『ガタカ』の適性判定の、大衆小説への翻訳。</p></li>
-            <li class="app-item"><div class="app-year">2009<small>小説／映画2014</small></div><h4>メイズ・ランナー<span class="orig">The Maze Runner</span></h4><p class="byline">ジェームズ・ダシュナー</p><p class="text">記憶を消された少年たちが、巨大な迷路の中心の空き地（グレード）で共同生活を送る。迷路は実験であり、彼らは観察対象である。管理の「実験場」という設定は、『われら』のガラスの国家の末裔であり、閉鎖空間の共同体の設計は『新世界より』の村とも響き合う。</p><p class="link-line">→ 本編との接続：序の透明な管理と、E軸の観察・計測のエンタメ形。</p></li>
+            <li class="app-item" id="work-divergent"><div class="app-year">2011<small>小説／映画2014</small></div><h4>ダイバージェント<span class="orig">Divergent</span></h4><p class="byline">ヴェロニカ・ロス</p><p class="text">人類は五つの派閥（無欲・平和・高潔・勇敢・博学）に分けられ、16歳の適性検査で所属が決まる。複数の適性を持つ「異端者（ダイバージェント）」は、管理の分類に収まらない存在として消される。分類社会への反逆を、分類される側の少女の目で描いたYAの代表作。</p><p class="link-line">→ 本編との接続：『すばらしい新世界』の階級設計と『ガタカ』の適性判定の、大衆小説への翻訳。</p></li>
+            <li class="app-item" id="work-the-maze-runner"><div class="app-year">2009<small>小説／映画2014</small></div><h4>メイズ・ランナー<span class="orig">The Maze Runner</span></h4><p class="byline">ジェームズ・ダシュナー</p><p class="text">記憶を消された少年たちが、巨大な迷路の中心の空き地（グレード）で共同生活を送る。迷路は実験であり、彼らは観察対象である。管理の「実験場」という設定は、『われら』のガラスの国家の末裔であり、閉鎖空間の共同体の設計は『新世界より』の村とも響き合う。</p><p class="link-line">→ 本編との接続：序の透明な管理と、E軸の観察・計測のエンタメ形。</p></li>
           </ul>
         </div>
 
         <div class="strand">
           <div class="strand-head"><h3><span class="strand-no">付3</span>空間の寓話</h3><p>階級を一つの建築に圧縮する型の、最も抽象的な形。</p></div>
           <ul class="app-list">
-            <li class="app-item"><div class="app-year">2019<small>映画</small></div><h4>プラットフォーム<span class="orig">El Hoyo / The Platform</span></h4><p class="byline">監督 ガルデル・ガステル＝ウルティア（スペイン）</p><p class="text">垂直に何百層も続く「穴」。一日に一度、食料を載せた台（プラットフォーム）が上から下へ降りてくる。上の層の人間が食べ尽くせば、下の層には何も残らない。登場人物も設定も極限まで削ぎ落とされた、階級と配分の寓話。連帯は可能か、という問いだけが残る。</p><p class="link-line">→ 本編との接続：『メトロポリス』の垂直、『スノーピアサー』の水平を、再び垂直に戻したF軸の寓話形。</p></li>
+            <li class="app-item" id="work-el-hoyo-the-platform"><div class="app-year">2019<small>映画</small></div><h4>プラットフォーム<span class="orig">El Hoyo / The Platform</span></h4><p class="byline">監督 ガルデル・ガステル＝ウルティア（スペイン）</p><p class="text">垂直に何百層も続く「穴」。一日に一度、食料を載せた台（プラットフォーム）が上から下へ降りてくる。上の層の人間が食べ尽くせば、下の層には何も残らない。登場人物も設定も極限まで削ぎ落とされた、階級と配分の寓話。連帯は可能か、という問いだけが残る。</p><p class="link-line">→ 本編との接続：『メトロポリス』の垂直、『スノーピアサー』の水平を、再び垂直に戻したF軸の寓話形。</p></li>
           </ul>
         </div>
 
         <div class="strand">
           <div class="strand-head"><h3><span class="strand-no">付4</span>相互参照 ― ポストアポカリプスとの交点</h3><p>終わった後の世界と、管理される世界が重なる場所。</p></div>
           <ul class="app-list">
-            <li class="app-item"><div class="app-year">1982<small>漫画／映画1988</small></div><h4>AKIRA</h4><p class="byline">大友克洋</p><p class="text">第三次世界大戦と「アキラ」による東京壊滅から31年。2019年のネオ東京は、軍政の戒厳、反政府ゲリラ、超能力の軍事研究、荒廃した若者文化が同居する街である。社会は終わったのに、軍と研究所の管理だけは生き残っている。ディストピアとポストアポカリプスの境界に立つ、日本の最重要作の一つ。</p><p class="link-line">→ 相互参照：本格的な収録は『ポストアポカリプスアトラス』側に置く。こちらでは「終わった後にも残る管理」の例として参照する。</p></li>
+            <li class="app-item" id="work-akira"><div class="app-year">1982<small>漫画／映画1988</small></div><h4>AKIRA</h4><p class="byline">大友克洋</p><p class="text">第三次世界大戦と「アキラ」による東京壊滅から31年。2019年のネオ東京は、軍政の戒厳、反政府ゲリラ、超能力の軍事研究、荒廃した若者文化が同居する街である。社会は終わったのに、軍と研究所の管理だけは生き残っている。ディストピアとポストアポカリプスの境界に立つ、日本の最重要作の一つ。</p><p class="link-line">→ 相互参照：本格的な収録は『ポストアポカリプスアトラス』側に置く。こちらでは「終わった後にも残る管理」の例として参照する。</p></li>
           </ul>
         </div>
 
