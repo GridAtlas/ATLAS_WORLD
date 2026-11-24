@@ -8,6 +8,8 @@ SF・映画・文学の名作を「型の分類」と「年表」の二層で読
 
 六冊を貫く「判定」の読みは、[判定](https://gridatlas.github.io/ATLAS_WORLD/judgment/)。
 
+同じく「記憶」の読みは、[記憶](https://gridatlas.github.io/ATLAS_WORLD/memory/)。
+
 ## 収録アトラス
 
 | 冊 | 内容 | 収録 |
