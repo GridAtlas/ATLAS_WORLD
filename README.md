@@ -4,7 +4,7 @@ SF・映画・文学の名作を「型の分類」と「年表」の二層で読
 
 公開ページ： <https://gridatlas.github.io/ATLAS_WORLD/>
 
-全6冊を横断する検索・フィルタは、[作品一覧](https://gridatlas.github.io/ATLAS_WORLD/works/)（データは [`works/works.json`](works/works.json)、生成は [`tools/build-works.py`](tools/build-works.py)）。
+全6冊を横断する検索・フィルタは、[作品一覧](https://gridatlas.github.io/ATLAS_WORLD/works/)（データは [`works/works.json`](works/works.json)、生成は [`tools/build-works.py`](tools/build-works.py)）。題名の漢字と読み（「壺」と「つぼ」など）の両方で探せます。
 
 六冊を貫く「判定」の読みは、[判定](https://gridatlas.github.io/ATLAS_WORLD/judgment/)。
 

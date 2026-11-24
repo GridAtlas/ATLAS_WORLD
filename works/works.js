@@ -60,6 +60,7 @@
     if (w.media) parts = parts.concat(w.media);
     if (w.regions) parts = parts.concat(w.regions);
     if (w.themes) parts = parts.concat(w.themes);
+    if (w.yomi) parts = parts.concat(w.yomi);
     (w.appearances || []).forEach(function (a) {
       parts.push(a.volumeLabel, a.role, a.titleInVolume);
     });

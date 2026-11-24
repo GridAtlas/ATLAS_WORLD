@@ -1,0 +1,2 @@
+# Used by tools/build-works.py to generate yomi (kanji readings) in works.json.
+pykakasi

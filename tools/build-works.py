@@ -2,7 +2,7 @@
 """Extract a cross-atlas works index from the six volume HTML files.
 
 Reads each volume's 本編 articles and 付録/読み物 app-items, assigns stable
-ids, maps tags onto a shared vocabulary, writes works/works.json, and
+ids, maps tags onto a shared vocabulary, writes works/works.json (including yomi readings; install pykakasi from tools/requirements.txt), and
 injects id anchors into the volume pages (idempotent).
 
 Usage (from the repository root):
@@ -276,6 +276,81 @@ def kana_fold(s: str) -> str:
 def alias_key(title: str, orig: str = "") -> str:
     # Prefer the Japanese title; also return checks against orig separately.
     return kana_fold(title)
+
+
+# Curated readings that pykakasi (or a missing install) would get wrong.
+# Longer keys win. Used both for titles and creator names.
+YOMI_OVERRIDES = {
+    "うる星やつら": "うるせいやつら",
+    "君の名は": "きみのなは",
+    "弟子たち": "でしたち",
+    "復活の日": "ふっかつのひ",
+    "押井守": "おしいまもる",
+    "今敏": "こんさとし",
+    "丹後国風土記": "たんごのくにふどき",
+    "井上夢人": "いのうえゆめひと",
+    "士郎正宗": "しろうまさむね",
+    "宮崎駿": "みやざきはやお",
+    "庵野秀明": "あんのひであき",
+    "新海誠": "しんかいまこと",
+    "大友克洋": "おおともかつひろ",
+    "壺": "つぼ",
+}
+
+_KAKASI = None
+_KAKASI_READY = False
+
+
+def _kakasi_hira(s: str) -> str:
+    """Hiragana reading via pykakasi when available; otherwise the original text."""
+    global _KAKASI, _KAKASI_READY
+    if not _KAKASI_READY:
+        try:
+            from pykakasi import kakasi as _Kakasi
+            _KAKASI = _Kakasi()
+        except ImportError:
+            _KAKASI = None
+        _KAKASI_READY = True
+    if not s:
+        return ""
+    if _KAKASI is None:
+        return s
+    parts = []
+    for item in _KAKASI.convert(s):
+        parts.append(item.get("hira") or item.get("orig") or "")
+    return "".join(parts)
+
+
+def reading_of(text: str) -> str:
+    """Kanji/kana reading: apply YOMI_OVERRIDES, then pykakasi on the rest."""
+    if not text:
+        return ""
+    keys = sorted(YOMI_OVERRIDES, key=len, reverse=True)
+    out = []
+    i = 0
+    n = len(text)
+    while i < n:
+        hit = next((k for k in keys if text.startswith(k, i)), None)
+        if hit:
+            out.append(YOMI_OVERRIDES[hit])
+            i += len(hit)
+            continue
+        j = i + 1
+        while j < n and not any(text.startswith(k, j) for k in keys):
+            j += 1
+        out.append(_kakasi_hira(text[i:j]))
+        i = j
+    return kana_fold("".join(out))
+
+
+def yomi_tokens(*parts: str) -> list[str]:
+    tokens: list[str] = []
+    for part in parts:
+        r = reading_of(part or "")
+        if r and r not in tokens:
+            tokens.append(r)
+    return tokens
+
 
 
 def slugify(title: str, orig: str = "") -> str:
@@ -708,6 +783,7 @@ def enrich(entry: Entry) -> None:
         entry.themes = list(THEME_OVERRIDES[entry.work_id])
     if entry.work_id in REGION_OVERRIDES:
         entry.regions = list(REGION_OVERRIDES[entry.work_id])
+    entry.yomi = yomi_tokens(entry.title, entry.orig, entry.byline)
 
 
 def merge_entries(entries: list[Entry]) -> list[dict]:
@@ -737,9 +813,9 @@ def merge_entries(entries: list[Entry]) -> list[dict]:
                 bylines.append(e.byline)
         byline = bylines[0] if bylines else ""
         snippet = next((snippet_of(e.desc) for e in items_sorted if e.desc), "")
-        media, regions, themes = [], [], []
+        media, regions, themes, yomi = [], [], [], []
         for e in items_sorted:
-            for x, bucket in ((e.media, media), (e.regions, regions), (e.themes, themes)):
+            for x, bucket in ((e.media, media), (e.regions, regions), (e.themes, themes), (e.yomi, yomi)):
                 for v in x:
                     if v not in bucket:
                         bucket.append(v)
@@ -766,6 +842,7 @@ def merge_entries(entries: list[Entry]) -> list[dict]:
             "media": media,
             "regions": regions,
             "themes": themes,
+            "yomi": yomi,
             "appearances": appearances,
         })
 
