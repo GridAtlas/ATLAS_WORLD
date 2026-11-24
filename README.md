@@ -25,4 +25,6 @@ SF・映画・文学の名作を「型の分類」と「年表」の二層で読
 
 トップページ（大全）は [index.html](index.html)。
 
+共通の組版と紙面は [`assets/css/atlas.css`](assets/css/atlas.css) にまとめてある。
+
 関連：年表として作品と思想を同じ時間軸で眺める先の試みに、[Timeline Atlas](https://gridatlas.github.io/TIMELINE_ATLAS/) がある。

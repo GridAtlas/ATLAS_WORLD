@@ -4,207 +4,21 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <meta name="color-scheme" content="light dark" />
-    <link rel="icon" href="data:," />
     <title>ポストアポカリプスアトラス ― 終わった後に、何が残ったか</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho+B1:wght@500;700;800&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet" />
-    <style>
-      button, [role="button"], select, summary, input:not([type="checkbox"], [type="radio"]) { min-height: 2.25rem; }
-      * { box-sizing: border-box; }
-      :root {
-        --bg: #faf7f1; --surface: #ffffff; --ink: #1c1a17; --ink-2: #4a453e; --muted: #7a7368;
-        --line: #d9d0bf; --line-soft: #eae3d3; --accent: #9c4416; --accent-ink: #8a3a10;
-        --teal: #5c6650; --gold: #8a6d1f; --gold-bg: #f5ecd2;
-        --chip-bg: #f0eadd; --deep-bg: #f2ecdf;
-      }
-      @media (prefers-color-scheme: dark) {
-        :root {
-          --bg: #121110; --surface: #1a1815; --ink: #ede7da; --ink-2: #c9c2b2; --muted: #9d968a;
-          --line: #38342c; --line-soft: #28251f; --accent: #e08a52; --accent-ink: #eda678;
-          --teal: #a3b18a; --gold: #d9b95c; --gold-bg: #38300f; --chip-bg: #23211c; --deep-bg: #1a1813;
-        }
-      }
-      html { scroll-behavior: smooth; }
-      @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
-      body { margin: 0; background: var(--bg); color: var(--ink); font-family: "Zen Kaku Gothic New", "Hiragino Kaku Gothic ProN", sans-serif; font-size: 16px; line-height: 1.85; -webkit-font-smoothing: antialiased; }
-      .wrap { max-width: 1020px; margin: 0 auto; padding: 0 20px 72px; }
-      .intro { padding: 44px 0 8px; }
-      .intro .kicker { color: var(--accent-ink); font-weight: 700; font-size: 13px; letter-spacing: .14em; margin: 0 0 14px; }
-      .intro h1 { font-family: "Shippori Mincho B1", serif; font-weight: 800; font-size: clamp(32px, 6vw, 48px); line-height: 1.3; margin: 0 0 18px; letter-spacing: .02em; }
-      .intro h1 .thin { display: block; font-size: .5em; font-weight: 500; color: var(--ink-2); margin-top: 8px; letter-spacing: .06em; }
-      .intro .lead { font-size: 17px; max-width: 44em; margin: 0 0 10px; }
-      .intro .lead strong { color: var(--accent-ink); font-weight: 700; }
-      figure.hero { margin: 26px 0 6px; }
-      figure.hero img { width: 100%; height: auto; display: block; border: 1px solid var(--line); border-radius: 4px; }
-      figure.hero figcaption { font-size: 13px; color: var(--muted); margin-top: 8px; line-height: 1.7; }
-      section.block { margin-top: 52px; }
-      .block-head { display: flex; align-items: baseline; gap: 14px; border-bottom: 2px solid var(--ink); padding-bottom: 8px; margin-bottom: 20px; }
-      .block-head h2 { font-family: "Shippori Mincho B1", serif; font-size: clamp(21px, 4vw, 27px); font-weight: 800; margin: 0; }
-      .block-head .no { color: var(--accent-ink); font-family: "Shippori Mincho B1", serif; font-weight: 700; }
-      .questions { list-style: none; margin: 0; padding: 0; }
-      .questions li { display: grid; grid-template-columns: 52px 1fr; gap: 6px 14px; padding: 14px 0; border-bottom: 1px solid var(--line-soft); }
-      .questions .qno { font-family: "Shippori Mincho B1", serif; font-size: 26px; font-weight: 800; color: var(--accent-ink); line-height: 1.2; grid-row: span 2; }
-      .questions h3 { margin: 0; font-size: 17px; font-weight: 700; }
-      .questions p { margin: 2px 0 0; color: var(--ink-2); font-size: 15px; grid-column: 2; }
-      .flow { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 8px; margin: 18px 0 0; padding: 16px 18px; background: var(--deep-bg); border: 1px solid var(--line-soft); border-radius: 6px; font-size: 14px; }
-      .flow b { font-family: "Shippori Mincho B1", serif; }
-      .flow .arr { color: var(--accent-ink); font-weight: 700; }
-      .types { display: grid; gap: 0; }
-      .type-row { display: grid; grid-template-columns: 92px 1fr; gap: 4px 18px; padding: 18px 0; border-bottom: 1px solid var(--line-soft); }
-      .type-row:last-child { border-bottom: none; }
-      .type-mark { font-family: "Shippori Mincho B1", serif; font-size: 30px; font-weight: 800; color: var(--accent-ink); line-height: 1.2; }
-      .type-mark small { display: block; font-family: "Zen Kaku Gothic New", sans-serif; font-size: 11px; font-weight: 700; letter-spacing: .08em; color: var(--muted); margin-top: 4px; }
-      .type-row h3 { margin: 0; font-size: 18px; font-weight: 700; }
-      .type-row p { margin: 4px 0 0; color: var(--ink-2); font-size: 15px; max-width: 44em; }
-      .type-row .works { margin: 6px 0 0; font-size: 13.5px; color: var(--muted); }
-      .type-row .works b { color: var(--ink-2); font-weight: 700; }
-      .type-row .layer { display: grid; grid-template-columns: 110px 1fr; gap: 2px 12px; margin-top: 8px; font-size: 14px; }
-      .type-row .layer dt { font-weight: 700; color: var(--teal); }
-      .type-row .layer dd { margin: 0; color: var(--ink-2); }
-      .filters { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 6px; }
-      .filters button { font: inherit; font-size: 14px; font-weight: 500; padding: 6px 16px; min-height: 40px; border: 1px solid var(--line); border-radius: 999px; background: var(--surface); color: var(--ink-2); cursor: pointer; }
-      .filters button[aria-pressed="true"] { background: var(--ink); color: var(--bg); border-color: var(--ink); font-weight: 700; }
-      .count { font-size: 13px; color: var(--muted); margin: 8px 0 0; }
-      .timeline { position: relative; margin-top: 10px; }
-      .timeline::before { content: ""; position: absolute; left: 118px; top: 6px; bottom: 6px; width: 1px; background: var(--line); }
-      .entry { position: relative; display: grid; grid-template-columns: 96px 1fr; gap: 0 44px; padding: 30px 0; border-bottom: 1px solid var(--line-soft); }
-      .entry::before { content: ""; position: absolute; left: 113px; top: 44px; width: 11px; height: 11px; border-radius: 50%; background: var(--bg); border: 2px solid var(--accent); }
-      .entry.core::before { background: var(--accent); }
-      .year { font-family: "Shippori Mincho B1", serif; font-weight: 800; font-size: 21px; line-height: 1.35; text-align: right; padding-top: 4px; }
-      .year small { display: block; font-size: 12px; font-weight: 500; color: var(--muted); font-family: "Zen Kaku Gothic New", sans-serif; margin-top: 4px; letter-spacing: .05em; }
-      .entry h3 { font-family: "Shippori Mincho B1", serif; font-size: clamp(20px, 4.4vw, 25px); font-weight: 800; margin: 0; line-height: 1.45; }
-      .entry h3 .orig { font-size: .58em; font-weight: 500; color: var(--muted); margin-left: 10px; letter-spacing: .04em; white-space: nowrap; }
-      .byline { font-size: 14px; color: var(--ink-2); margin: 3px 0 0; }
-      .tags { display: flex; flex-wrap: wrap; gap: 6px; margin: 10px 0 0; padding: 0; list-style: none; }
-      .tags li { font-size: 12px; font-weight: 500; padding: 2px 10px; border-radius: 999px; background: var(--chip-bg); color: var(--ink-2); line-height: 1.9; }
-      .tags li.phase { background: transparent; border: 1px solid var(--line); color: var(--teal); font-weight: 700; }
-      .tags li.remain { background: var(--gold-bg); color: var(--gold); font-weight: 700; }
-      .entry .desc { margin: 12px 0 0; max-width: 42em; }
-      .points { margin: 14px 0 0; display: grid; gap: 8px; }
-      .points div { display: grid; grid-template-columns: 118px 1fr; gap: 4px 12px; font-size: 14.5px; }
-      .points dt { font-weight: 700; color: var(--teal); white-space: nowrap; }
-      .points dd { margin: 0; color: var(--ink-2); }
-      details.deep { margin-top: 12px; border: 1px solid var(--line-soft); border-radius: 6px; background: var(--surface); }
-      details.deep summary { cursor: pointer; padding: 8px 16px; font-weight: 700; font-size: 14px; color: var(--accent-ink); list-style: none; display: flex; align-items: center; min-height: 44px; }
-      details.deep summary::-webkit-details-marker { display: none; }
-      details.deep summary::after { content: "＋"; margin-left: auto; font-weight: 400; }
-      details.deep[open] summary::after { content: "−"; }
-      details.deep .body { padding: 2px 16px 14px; font-size: 14.5px; color: var(--ink-2); }
-      details.deep .body p { margin: 6px 0; }
-      .hidden { display: none !important; }
-      .essay { padding: 22px 0; border-bottom: 1px solid var(--line-soft); }
-      .essay:last-child { border-bottom: none; }
-      .essay h3 { font-family: "Shippori Mincho B1", serif; font-size: 20px; font-weight: 800; margin: 0 0 4px; }
-      .essay h3 .vs { color: var(--accent-ink); }
-      .essay .sub { font-size: 13px; color: var(--muted); margin: 0 0 10px; }
-      .essay p { margin: 8px 0; max-width: 44em; color: var(--ink-2); }
-      .essay p strong, .essay p b { color: var(--ink); }
-      .routes { display: grid; gap: 0; }
-      .route { padding: 18px 0; border-bottom: 1px solid var(--line-soft); }
-      .route:last-child { border-bottom: none; }
-      .route h3 { margin: 0 0 4px; font-size: 17px; font-weight: 700; }
-      .route h3 .time { font-size: 13px; color: var(--muted); font-weight: 500; margin-left: 8px; }
-      .route p { margin: 4px 0 8px; color: var(--ink-2); font-size: 15px; max-width: 44em; }
-      .route .steps { font-family: "Shippori Mincho B1", serif; font-weight: 700; font-size: 15.5px; }
-      .route .steps .arr { color: var(--accent-ink); margin: 0 4px; }
-      .app-lead { max-width: 44em; color: var(--ink-2); margin: 0 0 8px; }
-      .app-lead strong { color: var(--ink); }
-      .app-note { background: var(--deep-bg); border: 1px solid var(--line-soft); border-radius: 6px; padding: 16px 18px; font-size: 14.5px; color: var(--ink-2); margin: 18px 0 6px; }
-      .app-note b { color: var(--ink); }
-      .strand { margin-top: 34px; }
-      .strand-head h3 { font-family: "Shippori Mincho B1", serif; font-size: 20px; font-weight: 800; margin: 0; line-height: 1.5; }
-      .strand-head h3 .strand-no { color: var(--accent-ink); margin-right: 8px; }
-      .strand-head p { margin: 4px 0 0; font-size: 14.5px; color: var(--ink-2); max-width: 44em; }
-      .app-list { list-style: none; margin: 10px 0 0; padding: 0; }
-      .app-item { display: grid; grid-template-columns: 76px 1fr; gap: 2px 18px; padding: 16px 0; border-bottom: 1px solid var(--line-soft); }
-      .app-item:last-child { border-bottom: none; }
-      .app-year { font-family: "Shippori Mincho B1", serif; font-weight: 800; font-size: 17px; text-align: right; padding-top: 2px; white-space: nowrap; }
-      .app-year small { display: block; font-family: "Zen Kaku Gothic New", sans-serif; font-size: 11px; font-weight: 500; color: var(--muted); margin-top: 2px; }
-      .app-item h4 { font-family: "Shippori Mincho B1", serif; font-size: 18px; font-weight: 800; margin: 0; line-height: 1.5; }
-      .app-item h4 .orig { font-size: .62em; font-weight: 500; color: var(--muted); margin-left: 8px; white-space: nowrap; }
-      .app-item .byline { font-size: 13px; color: var(--muted); margin: 1px 0 0; }
-      .app-item .text { grid-column: 2; margin: 6px 0 0; font-size: 14.5px; color: var(--ink-2); max-width: 44em; }
-      .app-item .text strong { color: var(--ink); }
-      .app-item .link-line { grid-column: 2; margin: 6px 0 0; font-size: 13.5px; color: var(--teal); font-weight: 700; }
-      .toc-link { display: inline-block; margin-top: 10px; font-weight: 700; color: var(--accent-ink); text-decoration: none; border-bottom: 1px solid currentColor; padding-bottom: 1px; }
-      footer { margin-top: 56px; padding-top: 18px; border-top: 1px solid var(--line); font-size: 13px; color: var(--muted); }
-      footer p { margin: 4px 0; }
-      @media (max-width: 640px) {
-        .timeline::before { left: 5px; }
-        .entry { grid-template-columns: 1fr; gap: 2px; padding: 26px 0 26px 26px; }
-        .entry::before { left: 0; top: 36px; }
-        .year { text-align: left; font-size: 18px; padding-top: 0; }
-        .year small { display: inline; margin-left: 8px; }
-        .points div { grid-template-columns: 1fr; gap: 0; }
-        .points dt { margin-top: 4px; }
-        .questions li { grid-template-columns: 40px 1fr; }
-        .type-row { grid-template-columns: 1fr; gap: 0; }
-        .type-mark small { display: inline; margin-left: 10px; }
-        .type-row .layer { grid-template-columns: 1fr; gap: 0; }
-        .type-row .layer dt { margin-top: 4px; }
-        .app-item { grid-template-columns: 1fr; }
-        .app-year { text-align: left; }
-        .app-year small { display: inline; margin-left: 8px; }
-        .app-item .text, .app-item .link-line { grid-column: 1; }
-        .wrap { padding: 0 16px 56px; }
-      }
-    
-      /* ---------- series nav ---------- */
-      .series-nav {
-        border-bottom: 1px solid var(--line);
-        background: var(--bg);
-        font-size: 13px;
-      }
-      .series-nav .inner {
-        max-width: 1020px;
-        margin: 0 auto;
-        padding: 10px 20px;
-        display: flex;
-        flex-wrap: wrap;
-        gap: 8px 0;
-        align-items: baseline;
-      }
-      .series-nav a {
-        color: var(--ink-2);
-        text-decoration: none;
-        font-weight: 500;
-      }
-      .series-nav a:hover,
-      .series-nav a:focus-visible { color: var(--accent-ink); }
-      .series-nav a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
-      .series-nav .home {
-        font-weight: 700;
-        color: var(--accent-ink);
-        margin-right: 14px;
-        letter-spacing: .06em;
-      }
-      .series-nav .home.here { color: var(--ink); }
-      .series-nav .vols {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 6px 0;
-        align-items: baseline;
-      }
-      .series-nav .vols a,
-      .series-nav .vols .here { padding: 0 8px; }
-      .series-nav .vols .here { font-weight: 700; color: var(--ink); }
-      .series-nav .sep { color: var(--muted); opacity: .55; user-select: none; }
-      .series-nav .index-link {
-        margin-left: auto;
-        padding: 0 0 0 12px;
-        font-weight: 700;
-        letter-spacing: .06em;
-        color: var(--accent-ink);
-      }
-      .series-nav .index-link.here { color: var(--ink); }
-      .series-nav .index-link + .index-link { margin-left: 0; padding-left: 14px; }
-      footer a { color: var(--accent-ink); text-decoration: none; border-bottom: 1px solid currentColor; }
-      footer a:hover, footer a:focus-visible { color: var(--accent); }
-
-    </style>
-  <link rel="manifest" href="../manifest.webmanifest"><link rel="icon" type="image/svg+xml" href="../icon.svg"><link rel="apple-touch-icon" href="../apple-touch-icon.png"><meta name="apple-mobile-web-app-capable" content="yes"></head>
-  <body>
+    <link rel="stylesheet" href="../assets/css/atlas.css" />
+    <link rel="manifest" href="../manifest.webmanifest" />
+    <meta name="theme-color" content="#fbfaf6" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#101315" media="(prefers-color-scheme: dark)" />
+    <link rel="icon" type="image/svg+xml" href="../icon.svg" />
+    <link rel="apple-touch-icon" href="../apple-touch-icon.png" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-title" content="アトラス大全" />
+  </head>
+  <body data-atlas="post-apocalypse">
     <nav class="series-nav" aria-label="アトラスシリーズ">
       <div class="inner">
         <a class="home" href="../">アトラス大全</a>
@@ -229,7 +43,7 @@
       </div>
 
       <section class="block" id="how">
-        <div class="block-head"><span class="no">01</span><h2>読み方 ― 四つの問い</h2></div>
+        <div class="block-head"><span class="no">其一</span><h2>読み方 ― 四つの問い</h2></div>
         <ol class="questions">
           <li><span class="qno">Q1</span><h3>どう終わったか</h3><p>核戦争か、疫病か、生態系の反転か、緩慢な衰退か。終わり方は作品の「物理法則」を決める。放射能の荒野と、黙って沈んでいく衰退とでは、歩き方も怖さもまったく違う。</p></li>
           <li><span class="qno">Q2</span><h3>何が残ったか</h3><p>このアトラスの主軸。残るのは物資だけではない。買い出し、配達、狩り、祈り、物語を語ること――「生活の手続き」が残るかどうかで、作品は絶望にも牧歌にもなる。</p></li>
@@ -242,7 +56,7 @@
       </section>
 
       <section class="block" id="types">
-        <div class="block-head"><span class="no">02</span><h2>型の系譜 ― 五つの終わり方、二層の読み</h2></div>
+        <div class="block-head"><span class="no">其二</span><h2>型の系譜 ― 五つの終わり方、二層の読み</h2></div>
         <div class="types">
           <div class="type-row"><div class="type-mark">序<small>原点</small></div><div><h3>序 源流 ― 最後のひとり</h3><p>爆発も怪物もない。疫病がゆっくり世界を空にし、最後のひとりの記録として物語が残る。終末SFの原点は、スペクタクルではなく「証言」の形をしていた。</p><dl class="layer"><dt>どう終わったか</dt><dd>疫病による緩慢な消滅</dd><dt>何が残ったか</dt><dd>記録すること自体／語る相手のいない手記</dd></dl><p class="works"><b>収録：</b>『最後の人間』</p></div></div>
           <div class="type-row"><div class="type-mark">A<small>核の後</small></div><div><h3>A 核の後 ― 荒野と灰</h3><p>冷戦が生んだ最も具体的な終末。核の冬、放射能、国家の蒸発。その後の社会は「西部劇」と「部族社会」に回帰する。最も過酷な描写（『スレッズ』）と、最も様式化された暴力（『北斗の拳』）が同居する束。</p><dl class="layer"><dt>どう終わったか</dt><dd>核戦争／資源枯渇による秩序の崩壊</dd><dt>何が残ったか</dt><dd>ガソリンと暴力の経済／核シェルターと地下の避難所／それでも続く夫婦の日常</dd></dl><p class="works"><b>収録：</b>『マッドマックス』／『北斗の拳』／『スレッズ』／『風が吹くとき』／『Fallout』</p></div></div>
@@ -254,7 +68,7 @@
       </section>
 
       <section class="block" id="timeline">
-        <div class="block-head"><span class="no">03</span><h2>年表 ― 本編25作</h2></div>
+        <div class="block-head"><span class="no">其三</span><h2>年表 ― 本編25作</h2></div>
         <div class="filters" role="group" aria-label="型で絞り込み">
           <button type="button" data-filter="all" aria-pressed="true">すべて</button>
           <button type="button" data-filter="pro" aria-pressed="false">序 源流</button>
@@ -575,7 +389,7 @@
       </section>
 
       <section class="block" id="themes">
-        <div class="block-head"><span class="no">04</span><h2>横断テーマ ― 終わりと残り方を横に読む</h2></div>
+        <div class="block-head"><span class="no">其四</span><h2>横断テーマ ― 終わりと残り方を横に読む</h2></div>
 
         <div class="essay">
           <h3>日常は、終わりの後にも残る <span class="vs">― D軸の発明</span></h3>
@@ -614,7 +428,7 @@
       </section>
 
       <section class="block" id="routes">
-        <div class="block-head"><span class="no">05</span><h2>入口コース ― どこから入るか</h2></div>
+        <div class="block-head"><span class="no">其五</span><h2>入口コース ― どこから入るか</h2></div>
         <div class="routes">
           <div class="route">
             <h3>まず映画3本で全体像<span class="time">週末コース</span></h3>
@@ -704,7 +518,7 @@
         <div class="app-note"><b>数え方の注記：</b>本編は序1作＋A軸5作＋B軸6作＋C軸4作＋D軸4作＋E軸5作の計25作、付録5作で全30作。『ワールド・ウォーZ』は原作小説（2006）を本籍とし映画版（2013）に言及、『風の谷のナウシカ』は漫画版（1982）を本籍とし映画版（1984）に言及、『メトロ2033』はゲーム版（2010）を本籍とし原作小説（2005）に言及した。アトラスシリーズの他巻：『仮想現実アトラス』（全58作）、『時空間アトラス』（全58作）。</div>
       </section>
 
-      <footer>
+      <footer class="colophon">
         <p>ポストアポカリプスアトラス ― アトラスシリーズ終末編。本編25作＋付録5作、全30作。</p>
         <p>二層の読み：第一層「どう終わったか」（序・A核／B感染／C環境／D衰退／E機械）、第二層「何が残ったか」（各作品のタグと項目で横断）。</p>
         <p>アトラスシリーズ全6冊：<a href="../virtual-reality/">仮想現実アトラス</a>／<a href="../spacetime/">時空間アトラス</a>／<a href="../management-society/">管理社会アトラス</a>／<a href="../post-apocalypse/">ポストアポカリプスアトラス</a>／<a href="../end-of-the-world/">終焉アトラス</a>／<a href="../ai/">人工知能アトラス</a>。</p>

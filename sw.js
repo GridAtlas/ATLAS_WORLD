@@ -4,14 +4,14 @@
  * Other same-origin assets (covers, scripts, manifest): stale-while-revalidate.
  * Pages are cached when visited, not precached in full.
  */
-const VERSION = "v1";
+const VERSION = "v2";
 const CACHE_NAME = "atlas-world-" + VERSION;
 
 self.addEventListener("install", function (event) {
   self.skipWaiting();
   event.waitUntil(
     caches.open(CACHE_NAME).then(function (cache) {
-      return cache.addAll(["./", "./404.html", "./manifest.webmanifest"]).catch(function () {
+      return cache.addAll(["./", "./404.html", "./manifest.webmanifest", "./assets/css/atlas.css"]).catch(function () {
         /* first visit may run before those are available; ignore */
       });
     })
